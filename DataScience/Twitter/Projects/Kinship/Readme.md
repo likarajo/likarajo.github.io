@@ -2,8 +2,7 @@
 #### Kinship 
 .... is a simple tool that finds out what are the **related words (kins)** to a particular word that twitter users have twitted.
 
-For example, if we take into account the word *Wimbledon*, this tool will fetch the twitter stream of all tweets containing this word 
-  and display the **top n** most related words to that word.
+For example, if we take into account the word *Wimbledon*, this tool will fetch the twitter stream of all tweets containing the word *Wimbledon*, and display the **top n** most related words - like *Federer*, *Tennis*, *Champion*, *record* etc. expectedly.
   
 ##### INPUTS:
   * ACCESS_TOKEN 
