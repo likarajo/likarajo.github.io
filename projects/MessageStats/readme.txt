@@ -41,8 +41,8 @@ Along with that, it also calculates the average request message processing time 
 Requirements:
 -------------
 
-Connect to application server (Linux) using Putty tool and required credentials
-Take a note of the log file location and change the script accordingly
+Connect to application server (Linux) using Putty or the Windows UI designed with Java. Log in with required credentials when asked.
+Take a note of the log file location and change the script accordingly.
 
 Inputs:
 -------
