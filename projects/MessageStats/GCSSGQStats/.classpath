@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.eclipse.swt"/>
+	<classpathentry kind="lib" path="D:/# STORE/RAJARSHI/PROGRAMMING/Java/jar/Shell/com.jcraft.jsch_0.1.27.jar/com.jcraft.jsch_0.1.27.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="cls"/>
+</classpath>
