@@ -69,6 +69,10 @@
 	display:inline;
 }
 
+#navcontainer li {
+	display:inline;
+}
+
 #navcontainer a {
 	display: block;
 	width: 100%;
