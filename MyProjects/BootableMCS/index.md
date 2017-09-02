@@ -1,4 +1,7 @@
-CONTENTS OF THIS FILE
+Bootable Microcontroller System Board
+-------------------------------------
+
+Contents
 ---------------------
    
  * Paper Title
