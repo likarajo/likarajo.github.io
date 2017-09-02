@@ -1,5 +1,8 @@
-﻿CONTENTS OF THIS FILE
----------------------
+Message Stats Tool
+------------------
+
+Contents
+--------
    
  * Background
  * Problems faced
