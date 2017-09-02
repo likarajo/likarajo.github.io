@@ -1,4 +1,7 @@
-CONTENTS OF THIS FILE
+Kinship
+-------
+
+Contents
 ---------------------
    
  * Introduction
