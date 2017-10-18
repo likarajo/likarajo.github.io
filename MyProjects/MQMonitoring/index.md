@@ -5,22 +5,18 @@ Contents
 --------
    
  * Background
- * Problems faced
- * How the tool helps
- * Description
- * Requirements
- * Inputs
- * Outputs
- * Note
-
+ * Action point
+ * Value and benefits
+ * Implementation
+ 
 Background:
 -----------
 
 The application that we support in our project is connected to multiple other external applications via message queues.
-Those external applications are downstream applications, which either receive feed from the central application, or can communicate with the central application on request-reply basis via message queues.
+Those external applications are downstream applications, which either receive feed from the central application, or can communicate with the central application on request-reply basis via message queues (IBM Websphere MQ).
 
-Proactive Monitoring & Alerting demands automation like developing an automated script which will send alerts to the support team periodically.
-It includes building checkpoints into the different interfaces, which can minimize monitoring efforts.
+Proactive Monitoring & Alerting demands automation like developing an automated script which will send alerts and status updates to the support team periodically with the queue depth of each MQ.
+It includes building checkpoints into the different interfaces, which can minimize, or rather eliminate manual monitoring efforts.
 
 Action point:
 ------------
@@ -36,7 +32,7 @@ This includes the following details:
 Value and benefits:
 -------------
 
-There are benefits for the Client and IBM on this implemention.
+Both client and IBM benefit with this implemention.
 Without continuous status and threshold checking, we are left with inefficient, reactive monitoring - waiting until a problem is reported, while performing a limited series of standard checks based on knowledge gained from previous issues experienced, all after the event.
 So it is recommend that we proactively and continuously monitor the environment.
 Best practice is automating the MQ monitoring and develop a solution that will send status report of the MQs via email notification to the designated team members at equal intervals throughout the day.
