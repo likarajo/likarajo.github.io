@@ -22,14 +22,21 @@ Therefore automation of the same like developing an automated script which will 
 
 Action point:
 ------------
+The Backout MQ reporting includes the daily reporting of current queue depth of the GCSS MQ Backout queues, where an email is sent to the client with the following details:
+• Production node name
+• Backout queue name
+• Current queue depth
+This is generally done by Production support team member by manually parsing through the GCSS Queue Managers in IBM WebSphere MQ and noting down the queue depth of the Backout queues individually. 
 
-Automated email updates of current Backout Message Queue report of the application Message Queues (MQ) to be sent to designated team members at frequent intervals throughout the day, for the purpose of proactive monitoring and action taking.
+So the action point is that automated email updates of current Backout Message Queue report of the application Message Queues (MQ) to be sent to designated team members at frequent intervals throughout the day, for the purpose of proactive monitoring and action taking.
 
 This includes the following details:
 • Server name
 • MQ name
 • Current Queue Depth
 • Latest Get time
+
+Also a Dynamic Web Application can be developed using Java and JSP, that will generate this report on a single mouse click.
 
 Value and benefits:
 -------------
