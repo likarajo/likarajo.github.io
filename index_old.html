@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<title>Rajarshi Chattopadhyay</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+
+<body class="w3-dark-grey">
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-dark-grey w3-padding">
+  <div class="w3-left w3-dark-grey">
+	<a href="https://drive.google.com/open?id=1RO4qsTyDoTtOXHNrLDsouLPhdD1HeuRM" target="_blank" class="w3-large w3-button">Resume</a> <i class="w3-small">02-Dec-2017</i>
+  </div>
+  <div class="w3-right w3-dark-grey">
+	<i class="w3-large">Shortcuts</i> <a href="javascript:void(0)" class="w3-xlarge w3-button" onclick="w3_open()"><b>☰</b></a>
+  </div>
+</header>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#aboutme" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">About Me</a>  
+  <a href="#education" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Education</a> 
+  <a href="#career" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Career</a>
+  <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Projects</a>
+  <a href="#papers" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Papers</a>
+  <a href="#activities" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Academic Activities</a>
+  <a href="#certifications" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Certifications</a>
+  <!--a href="https://sites.google.com/site/likarajo" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Google Site</a-->
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">Contact</a>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-2">
+	  
+        <div class="w3-display-container w3-margin-bottom">
+		  <br><br>
+          <img src="https://likarajo.github.io/assets/images/prof-pic.JPG" style="width:100%" alt="Avatar" border="5">
+        </div>
+		
+		<div class="w3-container">          
+			<!--a href="https://www.facebook.com/likarajo91" target="_blank"><i class="fa fa-facebook-official w3-xlarge w3-text-blue w3-hover-opacity"></i></a-->
+			<!--a href="https://www.instagram.com/likarajo" target="_blank"><i class="fa fa-instagram w3-xlarge w3-text-amber w3-hover-opacity"></i></a-->
+			<!--i class="fa fa-snapchat w3-hover-opacity"></i-->
+			<!--i class="fa fa-pinterest-p w3-hover-opacity"></i-->
+			<a href="https://twitter.com/likarajo" target="_blank"><i class="fa fa-twitter w3-xlarge w3-text-blue w3-hover-opacity"></i></a>
+			<a href="https://www.linkedin.com/in/likarajo" target="_blank"><i class="fa fa-linkedin w3-xlarge w3-text-blue w3-hover-opacity"></i></a>
+			<a href="https://github.com/likarajo" target="_blank"><i class="fa fa-github-square w3-xlarge w3-text-blue w3-hover-opacity"></i></a>
+			<a href="https://www.youracclaim.com/user/likarajo" target="_blank"><i class="w3-hover-opacity"><img src="https://likarajo.github.io/assets/images/icons/acclaiml.png" height="24" width="24"></i></a>
+		</div>		
+		<hr>
+		<div class="w3-container">
+			<p class="w3-text-grey"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>System Engineer @ <a href="https://www.ibm.com/in-en/" target="_blank">IBM</a> <a href="http://www-07.ibm.com/in/careers/gbs/aboutus.html" target="_blank">Client Innovation Centre</a></p>
+            <p class="w3-text-grey"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>India</p>
+            <p class="w3-text-grey"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="mailto:likarajo@gmail.com">likarajo@gmail.com</a></p>
+            <!-- <p class="w3-text-grey"><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p> -->
+        </div>
+		<hr>		
+		<div class="w3-container">		  
+		    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+            <p class="w3-text-grey">Programming languages and scripting: SQL, PL-SQL, UNIX Shell Scripting, C, C++, Java, Python, Assembly Language, VHDL</p>
+		    <p class="w3-text-grey">Frameworks: Spring, MVC, Hadoop</p>
+			<p class="w3-text-grey">Softwares and Tools: Maven, Git, Docker, Matlab, Eclipse</p>
+		    <p class="w3-text-grey">Others: Computer Networking</p>
+		</div>		
+		<hr>
+		
+		<!--div class="w3-container">
+		    <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+            <p class="w3-text-grey">English</p>
+            <div class="w3-light-grey w3-round-small">
+				<div class="w3-round-small w3-teal" style="height:15px;width:100%"></div>
+            </div>
+            <p class="w3-text-grey">Bengali</p>
+            <div class="w3-light-grey w3-round-small">
+				<div class="w3-round-small w3-teal" style="height:15px;width:100%"></div>
+            </div>
+            <p class="w3-text-grey">Hindi</p>
+            <div class="w3-light-grey w3-round-small">
+				<div class="w3-round-small w3-teal" style="height:15px;width:80%"></div>
+            </div>
+            <br>
+        </div>		
+		<hr-->
+		
+		<!-- Contact Section -->
+		<div class="w3-container" id="contact" style="min-height:100%;">
+			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+			<p>Lets get in touch to talk about our interests and exchange knowledge!</p>
+			<form action="mailto:likarajo@gmail.com" target="_blank">
+				<input class="w3-input" type="text" placeholder="Name" required name="Name">
+				<input class="w3-input w3-section" type="text" placeholder="Email" required name="Email">
+				<input class="w3-input w3-section" type="text" placeholder="Subject" required name="Subject">
+				<input class="w3-input w3-section" type="text" placeholder="Comment" required name="Comment">
+				<button class="w3-button w3-black w3-section" type="submit"><i class="fa fa-paper-plane"></i>SEND MESSAGE</button>
+			</form>
+		</div>
+		
+      </div>
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">	
+	  	
+	  <div class="w3-container w3-card w3-white w3-margin-bottom" id="opener">
+	    <br><br>
+		<div class="w3-half" id="timeline">
+			<h5 class="w3-text-grey w3-padding-16"><i class="fa fa-clock-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>My timeline</h5>
+			<div class="timeline">
+				<iframe src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1tn6AWYmxnQBSdjha1p7EjwnRZydycS-aEt_1M7_bsoc&font=Default&lang=en&initial_zoom=2&height=400" height="400" width="100%"></iframe>
+			</div>
+		</div>  
+		<div class="w3-half" id="wordle">
+			<h5 class="w3-text-grey w3-padding-16"><i class="fa fa-search-minus fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>My areas of work</h5>
+			<div class="wordle">
+				<iframe src="https://likarajo.github.io/assets/images/wordcloud.jpg" height="400" width="100%"></iframe>
+			</div>
+		</div>
+		<br>
+	  </div>	
+	  
+	  <div class="w3-container w3-card w3-white w3-margin-bottom" id="aboutme">
+	    <br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>About Me</h2>
+		<div>
+			<b><font size="+2">Rajarshi Chattopadhyay</font></b> is a System Engineer at <a href="https://www.ibm.com/in-en/" target="_blank">IBM</a> - <a href="http://www-07.ibm.com/in/careers/gbs/aboutus.html" target="_blank">Client Innovation Centre</a>, India, where he is currently serving as Application Developer in Distribution sector - Shipping domain.<br>
+			He currently works in the areas of <i>Software Development, Data mining and Analysis</i>.
+			He was intern at Bharat Sanchar Nigam Ltd. and SIEMENS Metal technologies, where he worked on Computer Networking and Automation respectively. He also worked part-time at Hi-Q Solutions on embedded systems.<br><br>
+			Rajarshi received his Bachelor of Technology degree in Electronics and Communication Engineering from <a href="http://www.wbut.ac.in/" target="_blank">West Bengal University of Technology (WBUT)</a>, Kolkata, India.<br><br>
+			His cross disciplinary research interests lie in areas of <i>Big Data mining and analysis, Applied Machine Learning, and Artificial Intelligence in Embedded Systems and Internet-of-Things</i>.<br>  <br>
+		</div>
+		<br>
+	  </div>	
+	  
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="education">
+		<br><br>
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="http://www.wbut.ac.in/" target="_blank">West Bengal University of Technology</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2014</h6>
+		  <p class="w3-text-grey">Bachelor of Technology - Electronics Engineering</p><br>
+        </div>
+      </div>
+	
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="career">
+	    <br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Career</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>System Engineer / <a href="https://www.ibm.com/in-en/" target="_blank">IBM</a> <a href="http://www-07.ibm.com/in/careers/gbs/aboutus.html" target="_blank">Client Innovation Centre</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2014 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <p class="w3-text-grey">Responsibilities: Application Developement, Data mining, Data analysis, Database maintenance, Automation</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Embedded System Engineer / <a href="http://hiqsolutions.in/" target="_blank">Hi-Q Solutions</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2012 - Dec 2013</h6>
+          <p class="w3-text-grey">Responsibilities: Embedded product programming, designing and development</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Associate Engineer / <a href="http://www.bsnl.co.in/" target="_blank">Bharat Sanchar Nigam Ltd. (BSNL)</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2013 - May 2013</h6>
+          <p class="w3-text-grey">Responsibilities: Network Designing</p>
+		  <hr>
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Associate Engineer / <a href="http://www.siemens.co.in/en/news_press/index/news_archive/aug_21_2008.htm" target="_blank">Siemens VAI Metal Technologies</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2012 - Feb 2013</h6>
+          <p class="w3-text-grey">Responsibilities: Program Logic Designing</p>
+		  <hr>
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Engineer Trainee / <a href="http://www.bsnl.co.in/" target="_blank">Bharat Sanchar Nigam Ltd. (BSNL)</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2012 - Feb 2013</h6>
+          <p class="w3-text-grey">Responsibilities: Communication System monitoring and analysis</p>
+		  <br>		  
+        </div>
+      </div>
+	  
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="projects">
+	    <br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-github-square fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Projects</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/Kinship" target="_blank">Kin’ship Tool</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jul 2017</h6>
+          <p class="w3-text-grey">Desc: Twitter data mining and development of model to find out the most related words (kin) to a word/phrase used in tweets.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/MQReporting" target="_blank">Automation of Message Queue Reporting</a></b> / IBM, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>June 2017</h6>
+          <p class="w3-text-grey">Desc: Development of automated MQ status reporting job and setting up the same in Cron.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/MQMonitoring" target="_blank">Automation of Message Queue Monitoring</a></b> / IBM, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2017</h6>
+          <p class="w3-text-grey">Desc: Development of automated MQ status monitoring job and setting up the same in Cron.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/MessageStats" target="_blank">Application-Interface Message Statistics Tool</a></b> / IBM, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Nov 2015</h6>
+          <p class="w3-text-grey">Desc: Development of Bash shell Script, Windows GUI, and Web Application to mine application logs and extract data to calculate statistics of application – interface message exchange.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/Processor" target="_blank">RISC Processor based on Harvard Architecture</a></b> / Senior Thesis</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Apr 2014</h6>
+          <p class="w3-text-grey">Desc: Design and development of a 16-bit customized Reduced Instruction Set Processor based on Harvard Architecture, that incorporates both Operation Code and Data within 16 bits, and implementation of the same with minimum area in FPGA.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/BootableMCS" target="_blank">Bootable Microcontroller (8051) board with optional ROM</a></b> / Hi-Q Solutions, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jul 2013</h6>
+          <p class="w3-text-grey">Desc: Design and development of a microcontroller panel which can be used to directly program a microcontroller without the need to write and burn the monitor program on a ROM separately; Owner of the intellectual property of the prototype.</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b><a href="https://likarajo.github.io/CollegeNetwork" target="_blank">College Network</a></b> / Bharat Sanchar Nigam Ltd, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2013</h6>
+          <p class="w3-text-grey">Desc: Design a college network for connecting institutes present in three isolated locations using a pre-defined pool of IP address (IPV4), and implement using NetSim (Network Simulator).</p>
+		  <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Automatic Pump Controller</b> / Hi-Q Solutions, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2012</h6>
+          <p class="w3-text-grey">Desc: Design and develop an embedded system comprising of a controller, which can be connected to sensors that detect fluid level in a container, and accordingly switch motor ON/OFF based on fluid level.</p>
+		  <br>
+		</div>
+	  </div>
+	  
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="papers">
+	    <br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-pencil-square fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Papers</h2>
+        <div class="w3-container">
+          <h6 class="w3-opacity"><b>Rajarshi Chattopadhyay</b>, Sagnik Raha and Rabindranath Sarkar, <i>Design, development and prototyping of Bootable MCS-51 Board having optional ROM</i>, <b>Product development</b> on behalf of Hi-Q Solutions. [<b>Owner of the intellectual property</b>]</h6>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013</h6>
+          <hr>		  
+        </div>
+		<div class="w3-container">
+          <h6 class="w3-opacity"><b>Rajarshi Chattopadhyay</b>, Sagnik Raha and Rabindranath Sarkar, <i>Development of 16-bit RISC processor with Harvard architecture and implementation utilizing minimum area on FPGA</i>, <b>2013 Technical Paper Contest</b> by Institute of Electronic and Telecommunication Engineers (IETE) Student Forum. <b>[Submitted to IETE Journal of Research (20th October 2017)]</b></h6>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Apr 2014</h6>
+          <br>		  
+        </div>
+	  </div>
+	  
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="activities">
+	    <br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-microphone fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Academic Activities</h2>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>OJT Trainer</b>, Maersk Line IT Application Support / IBM, India</h5>
+			<li>Service Adapter Architecture of Global Customer Service System</li>
+			<li>Application business process, logic and data integration in Shipping industry</li>
+			<li>RDBMS, SQL, Shell scripting, MVC</li>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2015 - present</h6>
+          <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Presentation</b> on <i>RISC Processors and Harvard Architecture</i> in <b>National Seminar on 'Advanced Microprocessor and VLSI Devices'</b> / Narula Institute of Technology, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Apr 2014</h6>
+          <hr>		  
+        </div>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Presentation</b> on <i>Wireless and Cellular Communications</i> in <b>Industry based Educational Program</b> / Narula Institute of Technology, Kolkata, India</h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jul 2012</h6>
+          <br>		  
+        </div>
+	  </div>
+
+	  <div class="w3-container w3-card-2 w3-white w3-margin-bottom" id="certifications">
+		<br><br>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Certifications</h2>
+        <table>
+			<tr>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="1f9cc7ba-6947-4b68-b19a-dd87ca7358f2"></div>
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwMUdpTVZFX1NoaW8" target="_blank">IBM Blockchain Essentials</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Nov 2017</h6>
+					</div>
+				</td>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="f8683ce3-65ef-4370-a014-b90e4e764ba4"></div>
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwMUdpTVZFX1NoaW8" target="_blank">Oracle Certified Associate Java SE8 Programmer</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2017</h6>
+					</div>
+				</td>			
+			</tr>	
+			<tr>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="539ed004-cc7d-4e7f-ac5f-b44f024d9bf4"></div>
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwb1JWRVpwZVZIYU0" target="_blank">Hadoop Programming Level 1</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2017</h6>
+					</div>
+				</td>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="da3fba74-7fc3-4eca-8f37-45fbbaade1b1"></div>
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwOGppMUFuSGU0QUU" target="_blank">Hadoop Foundations Level 1</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2017</h6>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="d16d7bef-403b-4f33-bd2f-46cb6ab86de6"></div>
+					  
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwUHQ5Xzg0bkdrM3c" target="_blank">Big Data Foundations Level 1</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Feb 2017</h6>
+					</div>
+				</td>
+				<td>
+					<div class="w3-container">
+					  <div data-iframe-width="300" data-iframe-height="270" data-share-badge-id="988cb1ad-c09e-4f88-8161-60bd14da9522"></div>
+					  <!--h5 class="w3-opacity"><b><a href="https://drive.google.com/open?id=0Bz0lZ7iGOOPwWGNoa29wZExDU3M" target="_blank">IBM Design Thinking Practitioner</a></b></h5-->
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Nov 2016</h6>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="w3-container">
+					  <h5 class="w3-opacity"><b>Oracle Database 11g SQL Fundamentals 1</a></b></h5>
+					  <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2016</h6><br>
+					</div>
+				</td>
+			</tr>
+		</table>
+	  </div>			
+
+	<!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+<!-- Open and Close sidebar -->
+<script>
+	function w3_open() {
+		document.getElementById("mySidebar").style.display = "block";
+		document.getElementById("myOverlay").style.display = "block";
+	}
+
+	function w3_close() {
+		document.getElementById("mySidebar").style.display = "none";
+		document.getElementById("myOverlay").style.display = "none";
+	}
+</script>
+
+<!-- Acclaim badges -->
+<script type="text/javascript">
+	    (function() {
+		     var s = document.createElement('script');
+		     s.type = 'text/javascript';
+		     s.async = true;
+		     s.src = '//cdn.youracclaim.com/assets/utilities/embed.js';
+		     var o = document.getElementsByTagName('script')[0];
+		     o.parentNode.insertBefore(s, o);
+		})();
+  	</script>
+
+<!-- Google Analytics -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-105786857-2', 'auto');
+	ga('send', 'pageview');
+</script>
+
+</body>
+</html>
