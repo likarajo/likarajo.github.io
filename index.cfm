@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	
-<cfset mydata = XmlParse(ExpandPath("https://likarajo.github.io/data.xml")) />
+<cfset mydata = XmlParse("https://likarajo.github.io/data.xml") />
 
 <cfoutput>
 
