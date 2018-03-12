@@ -1,8 +1,8 @@
 <html>
 <body>
-	<cffile action="read" file="https://likarajo.github.io/data.xml" variable="myxml" />
+	<!--<cffile action="read" file="https://likarajo.github.io/data.xml" variable="myxml" />
 	<cfset mydata = xmlParse(myxml) />
-	<cfdump var= "#mydata#" >
-	<cfoutput>#mydata.data.aboutme.description.xmltext#</cfoutput>
+	<cfdump var= "#mydata#" >-->
+	<cfoutput>raj</cfoutput>
 </body>
 </html>
