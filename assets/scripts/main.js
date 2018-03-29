@@ -57,3 +57,17 @@ function hide_prev_projects() {
   document.getElementById("prev_projects").style.display = "none";
   document.getElementById("show_prev_projects").style.display = "block";
 }
+
+function twoDigit(n) {
+  return n<10 ? "0"+n : n;
+}
+
+function last_modified() {
+  var date = new Date(document.lastModified);
+  var months = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+  document.write(twoDigit(date.getUTCDate())+"-"+months[date.getUTCMonth()]+"-"+date.getUTCFullYear()+" "+twoDigit(date.getUTCHours())+":"+twoDigit(date.getUTCMinutes())+" UTC");
+}
+
+function author_name() {
+  document.write(document.head.querySelector("[name=author]").content);
+}
