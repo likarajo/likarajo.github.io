@@ -12,11 +12,13 @@
 
   <link rel="canonical" href="https://likarajo.github.io" />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="cust.css" />
+  <link rel="stylesheet" href="assets/main.css" />
+  <link rel="stylesheet" href="assets/cust.css" />
+
+  <script type="text/javascript" src="assets/main.js"></script>
 
 </head>
 
@@ -25,31 +27,60 @@
 
   <div id="page">
     <div class="content">
-      <div id="likarajo">
-        <div id="banner">
-          <div id="likarajo-logo">
-            <div class="logo-pic">
-              <img src="prof-pic.jpg" />
-            </div>
+      <div id="banner">
+        <div id="likarajo-logo">
+          <div class="logo-pic">
+            <img src="assets/prof-pic.jpg" />
           </div>
-          <div id="likarajo-text">likarajo</div>
         </div>
+        <div id="likarajo-text">likarajo</div>
+      </div>
+      <div id="likarajo">        
         <div id="projects">
-		  <a href="https://likarajo.github.io/clock" target="_blank">Clock</a> <font size="-1">(2018)</font>
-		  <br>
-          <a href="https://likarajo.github.io/brickbreaker" target="_blank">Brick Breaker</a> <font size="-1">(2018)</font>
+          <a href="https://likarajo.github.io/clock" target="_blank">Clock</a>
+          <font size="-1">(2018)</font>
           <br>
-          <a href="https://likarajo.github.io/kinship" target="_blank">Kinship</a> <font size="-1">(2017)</font>
+          <a href="https://likarajo.github.io/brickbreaker" target="_blank">Brick Breaker</a>
+          <font size="-1">(2018)</font>
+          <br>
+          <a href="https://likarajo.github.io/kinship" target="_blank">Kinship</a>
+          <font size="-1">(2017)</font>
+          <br>
+          <font size="-1"><span id="showMoreLink" href="" onclick="showMore()">More</span></font>
+          <div id="more">
+            <a href="https://likarajo.github.io/mqstats" target="_blank">MQ Statistics</a>
+            <font size="-1">(IBM 2016)</font>
+            <br>
+            <a href="https://likarajo.github.io/mqreporting" target="_blank">MQ Reporting</a>
+            <font size="-1">(IBM 2016)</font>
+            <br>
+            <a href="https://likarajo.github.io/mqmonitoring" target="_blank">MQ Monitoring</a>
+            <font size="-1">(IBM 2016)</font>
+            <br>
+            <a href="https://likarajo.github.io/processor" target="_blank">16 bit RISC Processor</a>
+            <font size="-1">(HQS 2014)</font>
+            <br>
+            <a href="https://likarajo.github.io/bootable-mcs" target="_blank">Bootable Microcontroller System board</a>
+            <font size="-1">(HQS 2013)</font>
+            <br>
+            <a href="https://likarajo.github.io/college-network" target="_blank">College Network</a>
+            <font size="-1">(BSNL 2013)</font>
+            <br>
+            <font size="-1"><span id="hideMoreLink" onclick="hideMore()">Hide</span></font>
+          </div>
         </div>
         <div id="social">
           <a class="fa fa-twitter" href="https://www.twitter.com/likarajo" target="_blank"></a>
           <a class="fa fa-github" href="https://www.github.com/likarajo" target="_blank"></a>
           <a class="fa fa-linkedin" href="https://www.linkedin.com/in/likarajo" target="_blank"></a>
-		  <a class="fa fa-link" href="https://likarajo.github.io/website" target="_blank"></a>
+          <a class="fa fa-link" href="https://likarajo.github.io/website" target="_blank"></a>
         </div>
       </div>
     </div>
   </div>
 
+
+
 </body>
+
 </html>
