@@ -1,7 +1,8 @@
 <div align="center">
   <img alt="Logo" src="favicon.png" width="100" />
+  <a href="https://likarajo.github.io" target="_blank">likarajo.github.io</a>
 </div>
-<a align="center" href="https://likarajo.github.io" target="_blank">likarajo.github.io</a>
+
 <div align="center">
   <img alt="Logo" src="landing_page.png" width="200" />
 </div>
