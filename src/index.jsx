@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import '@tesla/design-system/dist/index.css';
 import './index.css'
 
 import Header from './components/Header.jsx';
