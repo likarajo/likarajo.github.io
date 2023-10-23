@@ -1,23 +1,20 @@
 import { useState } from "react";
-import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 import { Drawer, IconButton, List, ListItem, ListItemButton, Stack } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 
-function Header(props) {
-
-    const { isLandscape, isPortrait } = props;
-
-    const logo = new URL('../images/favicon.png', import.meta.url).href
-    const isTabletLandscapeUp = !isMobileOnly || !isTablet || (isTablet && isLandscape)
-
-
+function Header() {
+    
+    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
+    const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     const [open, setOpen] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(isTabletLandscapeUp);
-
+    const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop || (!isDesktopOrLaptop && !isPortrait));
     window.addEventListener('resize', () => {
         setOpen(false);
-        setIsDesktop(isTabletLandscapeUp);
+        setIsDesktop(isDesktopOrLaptop || (!isDesktopOrLaptop && !isPortrait));
     });
+
+    const logo = new URL('../images/favicon.png', import.meta.url).href
 
     return (
         <div style={{display:'flex', justifyContent: 'space-between', alignItems:'center', height:50, width:'100%'}}>
@@ -53,4 +50,4 @@ function Header(props) {
     )
 }
 
-export default withOrientationChange(Header)
+export default Header

@@ -11,10 +11,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/travel" element={<Travel />} />
-          <Route exact path="/leisure" element={<Leisure />} />
-          <Route exact path="/profession" element={<Profession />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/travel" element={<Travel />} />
+          <Route path="/leisure" element={<Leisure />} />
+          <Route path="/profession" element={<Profession />} />
         </Routes>
       </BrowserRouter>
     </div>
