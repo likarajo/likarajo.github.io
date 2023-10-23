@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Icon, Modal, ModalContent, NavItem, NavItemGroup, SiteHeader } from "@tesla/design-system-react";
-import { iconMenu } from '@tesla/design-system-icons';
 import { isMobileOnly, isTablet, withOrientationChange } from 'react-device-detect';
+import { Drawer, IconButton, List, ListItem, ListItemButton, Stack } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 
 function Header(props) {
 
@@ -19,47 +19,36 @@ function Header(props) {
         setIsDesktop(isTabletLandscapeUp);
     });
 
-    const navItems = [
-        <NavItem animated href="/travel" key="item-1" highlighted={window.location.pathname==='/travel'}>
-            Travel
-        </NavItem>,
-        <NavItem animated href="/leisure" key="item-2" highlighted={window.location.pathname==='/leisure'}>
-            Leisure
-        </NavItem>,
-        <NavItem animated href="/profession" key="item-3" highlighted={window.location.pathname==='/profession'}>
-            Profession
-        </NavItem>,
-    ];
-
     return (
-        <div>
-            <SiteHeader animated fadeIn style={{alignItems:'center', height:'4vh', width:'100%'}}>
+        <div style={{display:'flex', justifyContent: 'space-between', alignItems:'center', height:50, width:'100%'}}>
+            <div id="logo" style={{float:'left'}}>
                 <a href="/"><img src={logo} alt="Logo" height={50}/></a>
+            </div>
+            <div id="nav" style={{float:'right'}}>
                 {isDesktop && (
-                    <NavItemGroup align="center">{navItems}</NavItemGroup>
+                    <Stack spacing={2} direction="row">
+                        <ListItemButton href="/travel" disabled={(window.location.pathname==='/travel')}>Travel</ListItemButton>
+                        <ListItemButton href="/leisure" disabled={(window.location.pathname==='/leisure')}>Leisure</ListItemButton>
+                        <ListItemButton href="/profession" disabled={(window.location.pathname==='/profession')}>Profession</ListItemButton>
+                    </Stack>
                 )}
                 {!isDesktop && (
-                    <NavItem animated onClick={() => setOpen(true)} style={{cursor:'pointer'}}>
-                        <Icon data={iconMenu}/>
-                    </NavItem>
+                    <IconButton onClick={() => setOpen(true)} style={{cursor:'pointer'}}>
+                        <MenuIcon />
+                    </IconButton>
                 )}
-            </SiteHeader>
-            {!isDesktop && (
-                <Modal
-                    className="tds-site-header-modal tds-modal--sheet-small tds-scrim--white"
-                    onClose={() => setOpen(false)}
-                    open={open}
-                    variant="sheet-right"
-                >
-                    <ModalContent>
-                        <NavItemGroup layout="vertical">
-                            {/* <NavItem animated href="/">Home</NavItem> */}
-                            {navItems}
-                            {/* <NavItem animated href="/contact">Contact</NavItem> */}
-                        </NavItemGroup>
-                    </ModalContent>
-                </Modal>
-            )}
+            </div>
+            <Drawer
+                anchor={'right'}
+                open={open}
+                onClose={() => setOpen(false)}
+            >
+                <List>
+                    <ListItem key="item-1"><ListItemButton href="/travel">Travel</ListItemButton></ListItem>
+                    <ListItem key="item-2"><ListItemButton href="/leisure">Leisure</ListItemButton></ListItem>
+                    <ListItem key="item-3"><ListItemButton href="/profession">Profession</ListItemButton></ListItem>
+                </List>
+            </Drawer>
         </div>
     )
 }
