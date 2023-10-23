@@ -5,13 +5,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 function Header() {
     
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
-    const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+    const widescreen = useMediaQuery({query: '(min-width: 900px)'})
     const [open, setOpen] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop || (!isDesktopOrLaptop && !isPortrait));
+    const [isDesktop, setIsDesktop] = useState(widescreen);
     window.addEventListener('resize', () => {
         setOpen(false);
-        setIsDesktop(isDesktopOrLaptop || (!isDesktopOrLaptop && !isPortrait));
+        setIsDesktop(widescreen);
     });
 
     const logo = new URL('../images/favicon.png', import.meta.url).href
