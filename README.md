@@ -2,5 +2,5 @@
 
 Development Server: [Vite](https://vitejs.dev/)
 Programming Language: [React (JSX)](https://react.dev/)
-Components Library: [Tesla Design Systems](https://design.tesla.com/)
+Components Library: [Material UI](https://mui.com/)
 Host: [GitHub pages](https://docs.github.com/pages)
