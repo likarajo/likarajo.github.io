@@ -1,8 +1,11 @@
-function Leisure() {
+import Cards from "../components/leisure/Cards"
+import Scrollup from "../components/common/Scrollup"
 
+function Leisure() {
     return (
         <div id="leisure">
-            Leisure
+            <Cards />
+            <Scrollup />
         </div>
     )
 }
