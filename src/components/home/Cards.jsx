@@ -26,7 +26,7 @@ function Cards() {
     return (
         <>
         {isDesktop ?
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', paddingBottom: '20px', width:'66%', gap: '3%', minWidth:'400px', marginTop:'20px'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', width:'66%', gap: '3%', minWidth:'400px', marginTop:'20px'}}>
                 <Card style={{width: '33%', aspectRatio: '3/4'}}>
                     <a href="/#/travel">
                         <div style={{position: 'relative'}}>
@@ -59,7 +59,7 @@ function Cards() {
                 </Card>
             </div>
         :
-            <div style={{ justifyContent: 'center', alignItems: 'center', margin: '20px auto', width:'400px', position:'relative'}}>
+            <div style={{ justifyContent: 'center', alignItems: 'center', margin: '20px auto', width:'40%', minWidth:'300px', maxWidth:'700px', position:'relative'}}>
                 <Card style={{width: '100%', aspectRatio: '4/3', margin: '20px 0'}} href={"/#/travel"}>
                     <a href="/#/travel">
                         <div style={{position: 'relative'}}>
