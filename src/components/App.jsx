@@ -8,7 +8,7 @@ import Profession from '../pages/Profession'
 
 function App() {
   return (
-    <div id="app" style={{alignItems:'center', height:'91vh', width:'100%'}}>
+    <div id="app" style={{alignItems: 'center', minHeight: '82vh', width:' 100%'}}>
       <HashRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />

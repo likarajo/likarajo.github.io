@@ -1,8 +1,11 @@
-function Home() {
+import About from "../components/home/About";
+import Cards from "../components/home/Cards";
 
+function Home() {
     return (
         <div id="home">
-            Home
+            <About />
+            <Cards />
         </div>
     )
 }

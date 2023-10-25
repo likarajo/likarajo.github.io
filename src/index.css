@@ -16,11 +16,10 @@
   margin-left: 20px;
   margin-right: 20px;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 #app {
-  background-image: url("./images/background.jpg");
+  background-image: url("/images/site/background.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
