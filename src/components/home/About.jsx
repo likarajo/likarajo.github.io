@@ -2,7 +2,7 @@ import { Card, Typography } from "@mui/material"
 
 function About() {
     return (
-        <Card variant="outlined" style={{ padding: '30px 20px', margin: '0 auto', width:'40%', minWidth:'300px', maxWidth:'700px'}}>
+        <Card variant="outlined" style={{ padding: '30px 20px', margin: '0 auto', width:'40%', minWidth:'290px', maxWidth:'700px'}}>
             <Typography>
                 I'm a software developer by profession, and I love traveling whenever I can. 
                 Whether it's learning about technology, exploring cities, hiking through beautiful landscapes, trying various cuisines, 

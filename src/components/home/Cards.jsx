@@ -9,14 +9,11 @@ function Cards() {
     const tabletSize = useMediaQuery({query: '(min-width: 768px)'});
     const tabletSmallSize = useMediaQuery({query: '(min-width: 481px)'});
     const phoneSize = useMediaQuery({query: '(max-width: 480px)'});
-    
-    const [open, setOpen] = useState(false);
     const [isDesktop, setIsDesktop] = useState(desktopSize);
     const [isTablet, setIsTablet] = useState(tabletSize);
     const [isTabletSmall, setIsTabletSmall] = useState(tabletSmallSize);
     const [isPhone, setIsPhone] = useState(phoneSize);
     window.addEventListener('resize', () => {
-        setOpen(false);
         setIsDesktop(desktopSize);
         setIsTablet(tabletSize);
         setIsTabletSmall(tabletSmallSize);
@@ -59,7 +56,7 @@ function Cards() {
                 </Card>
             </div>
         :
-            <div style={{ justifyContent: 'center', alignItems: 'center', margin: '20px auto', width:'40%', minWidth:'300px', maxWidth:'700px', position:'relative'}}>
+            <div style={{ justifyContent: 'center', alignItems: 'center', margin: '20px auto', width:'40%', minWidth:'280px', maxWidth:'700px', position:'relative'}}>
                 <Card style={{width: '100%', aspectRatio: '4/3', margin: '20px 0'}} href={"/#/travel"}>
                     <a href="/#/travel">
                         <div style={{position: 'relative'}}>
