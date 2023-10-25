@@ -1,8 +1,11 @@
-function Travel() {
+import Cards from "../components/travel/Cards"
+import Scrollup from "../components/common/Scrollup"
 
+function Travel() {
     return (
         <div id="travel">
-            Travel
+            <Cards />
+            <Scrollup />
         </div>
     )
 }

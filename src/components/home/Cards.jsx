@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Card, CardMedia, IconButton, Typography } from "@mui/material";
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { Card, CardMedia, Typography } from "@mui/material";
 
 function Cards() {
 
@@ -24,7 +23,7 @@ function Cards() {
         <>
         {isDesktop ?
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', width:'66%', gap: '3%', minWidth:'400px', marginTop:'20px'}}>
-                <Card style={{width: '33%', aspectRatio: '3/4'}}>
+                <Card style={{width: '33%', aspectRatio: '3/4', borderRadius: 10}}>
                     <a href="/#/travel">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/travel.jpg" alt="travel" style={{position: 'relative'}} />
@@ -34,7 +33,7 @@ function Cards() {
                         </div>
                     </a>
                 </Card>
-                <Card style={{width: '33%', aspectRatio: '3/4'}}>
+                <Card style={{width: '33%', aspectRatio: '3/4', borderRadius: 10}}>
                     <a href="/#/leisure">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/leisure.jpg" alt="leisure" style={{position: 'relative'}} />
@@ -44,7 +43,7 @@ function Cards() {
                         </div>
                     </a>
                 </Card>
-                <Card style={{width: '33%', aspectRatio: '3/4'}}>
+                <Card style={{width: '33%', aspectRatio: '3/4', borderRadius: 10}}>
                     <a href="/#/profession">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/profession.jpg" alt="profession" style={{position: 'relative'}} />
@@ -57,7 +56,7 @@ function Cards() {
             </div>
         :
             <div style={{ justifyContent: 'center', alignItems: 'center', margin: '20px auto', width:'40%', minWidth:'280px', maxWidth:'700px', position:'relative'}}>
-                <Card style={{width: '100%', aspectRatio: '4/3', margin: '20px 0'}} href={"/#/travel"}>
+                <Card style={{width: '100%', aspectRatio: '4/3', borderRadius: 10, margin: '20px 0'}} href={"/#/travel"}>
                     <a href="/#/travel">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/travel.jpg" alt="travel" style={{position: 'relative'}} />
@@ -67,7 +66,7 @@ function Cards() {
                         </div>
                     </a>
                 </Card>
-                <Card style={{width: '100%', aspectRatio: '4/3', margin: '20px 0'}}>
+                <Card style={{width: '100%', aspectRatio: '4/3', borderRadius: 10, margin: '20px 0'}}>
                     <a href="/#/leisure">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/leisure.jpg" alt="leisure" style={{position: 'relative'}} />
@@ -77,7 +76,7 @@ function Cards() {
                         </div>
                     </a>
                 </Card>
-                <Card style={{width: '100%', aspectRatio: '4/3', margin: '20px 0'}}>
+                <Card style={{width: '100%', aspectRatio: '4/3', borderRadius: 10, margin: '20px 0'}}>
                     <a href="/#/profession">
                         <div style={{position: 'relative'}}>
                             <CardMedia component="img" image="images/home/profession.jpg" alt="profession" style={{position: 'relative'}} />
@@ -88,11 +87,6 @@ function Cards() {
                     </a>
                 </Card>
                 <br/>
-                <Card variant="outlined" style={{position:'fixed', right:'28px', bottom:'55px'}}>
-                    <IconButton style={{zIndex:5}} onClick={() => window.scrollTo({top:0, behavior:'smooth'})}>
-                        <ArrowUpwardIcon fontSize="large" />
-                    </IconButton>
-                </Card>
             </div>
         }
         </>    
