@@ -7,6 +7,7 @@ import Cities from '../pages/Cities'
 import Nature from '../pages/Nature'
 import Leisure from '../pages/Leisure'
 import Culinary from '../pages/Culinary'
+import Blogs from "../pages/Blogs";
 import Profession from '../pages/Profession'
 import NotFound from "../pages/NotFound";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/travel/nature" element={<Nature />} />
           <Route path="/leisure" element={<Leisure />} />
           <Route path="/leisure/culinary" element={<Culinary />} />
+          <Route path="/leisure/blogs" element={<Blogs />} />
           <Route path="/profession" element={<Profession />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
