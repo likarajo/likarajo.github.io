@@ -1,7 +1,9 @@
-import { Divider, Drawer, IconButton, List, ListItem, ListItemButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import { Dialog, Divider, Drawer, IconButton, List, ListItem, ListItemButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import MenuIcon from '@mui/icons-material/Menu';
+import SocialMedia from "../leisure/SocialMedia";
+import Multimedia from "../leisure/Multimedia";
 
 function Navbar() {
     
@@ -30,6 +32,10 @@ function Navbar() {
     const openMenu3 = Boolean(anch3);
     
     const [openDrawer, setOpenDrawer] = useState(false);
+
+    const [openSocialMedia, setOpenSocialMedia] = useState(false);
+
+    const [openMultimedia, setOpenMultimedia] = useState(false);
 
     return (
         <>
@@ -68,6 +74,9 @@ function Navbar() {
             >
                 <MenuItem onClick={() => window.open("/#/leisure", "_self")}><Typography>Leisure</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("/#/leisure/culinary", "_self")}><Typography style={{marginLeft: '10px'}}>Culinary</Typography></MenuItem>
+                <MenuItem onClick={() => window.open("https://likarajoblogs.wordpress.com/")}><Typography style={{marginLeft: '10px'}}>Blogs</Typography></MenuItem>
+                <MenuItem onClick={() => setOpenSocialMedia(true)}><Typography style={{marginLeft: '10px'}}>Social Media</Typography></MenuItem>
+                <MenuItem onClick={() => setOpenMultimedia(true)}><Typography style={{marginLeft: '10px'}}>Multimedia</Typography></MenuItem>
             </Menu>
 
             <Menu
@@ -79,7 +88,6 @@ function Navbar() {
             >
                 <MenuItem onClick={() => window.open("/#/profession", "_self")}><Typography>Profession</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("https://linkedin.com/in/likarajo")}><Typography style={{marginLeft: '10px'}}>LinkedIn</Typography></MenuItem>
-                <MenuItem onClick={() => window.open("https://likarajoblogs.wordpress.com/")}><Typography style={{marginLeft: '10px'}}>Blogs</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("docs/resume.pdf")}><Typography style={{marginLeft: '10px'}}>Resume</Typography></MenuItem>
             </Menu>
 
@@ -96,14 +104,24 @@ function Navbar() {
                     <Divider/>
                     <ListItem key="item-2"><ListItemButton href="/#/leisure"><Typography>Leisure</Typography></ListItemButton></ListItem>
                     <ListItem key="item-2.1"><ListItemButton href="/#/leisure/culinary"><Typography style={{marginLeft: '10px'}}>Culinary</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-2.2"><ListItemButton href="https://likarajoblogs.wordpress.com/" target="_blank"><Typography style={{marginLeft: '10px'}}>Blogs</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-2.3"><ListItemButton onClick={() => setOpenSocialMedia(true)}><Typography style={{marginLeft: '10px'}}>Social Media</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-2.4"><ListItemButton onClick={() => setOpenMultimedia(true)}><Typography style={{marginLeft: '10px'}}>Multimedia</Typography></ListItemButton></ListItem>
                     <Divider/>
                     <ListItem key="item-3"><ListItemButton href="/#/profession"><Typography>Profession</Typography></ListItemButton></ListItem>
                     <ListItem key="item-3.1"><ListItemButton href="https://linkedin.com/in/likarajo" target="_blank"><Typography style={{marginLeft: '10px'}}>LinkedIn</Typography></ListItemButton></ListItem>
-                    <ListItem key="item-3.2"><ListItemButton href="https://likarajoblogs.wordpress.com/" target="_blank"><Typography style={{marginLeft: '10px'}}>Blogs</Typography></ListItemButton></ListItem>
-                    <ListItem key="item-3.3"><ListItemButton href="docs/resume.pdf" target="_blank"><Typography style={{marginLeft: '10px'}}>Resume</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-3.2"><ListItemButton href="docs/resume.pdf" target="_blank"><Typography style={{marginLeft: '10px'}}>Resume</Typography></ListItemButton></ListItem>
                     <Divider/>
                 </List>
             </Drawer>
+
+            <Dialog open={openSocialMedia} onClose={() => setOpenSocialMedia(false)}>
+                <SocialMedia />
+            </Dialog>
+
+            <Dialog open={openMultimedia} onClose={() => setOpenMultimedia(false)}>
+                <Multimedia />
+            </Dialog>
         </>
     )
 }
