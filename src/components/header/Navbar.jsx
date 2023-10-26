@@ -76,7 +76,7 @@ function Navbar() {
             >
                 <MenuItem onClick={() => window.open("/#/leisure", "_self")}><Typography>Leisure</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("/#/leisure/culinary", "_self")}><Typography style={{marginLeft: '10px'}}>Culinary</Typography></MenuItem>
-                <MenuItem onClick={() => window.open("https://likarajoblogs.wordpress.com/")}><Typography style={{marginLeft: '10px'}}>Blogs</Typography></MenuItem>
+                <MenuItem onClick={() => window.open("/#/leisure/blogs", "_self")}><Typography style={{marginLeft: '10px'}}>Blogs</Typography></MenuItem>
                 <MenuItem onClick={() => setOpenSocialMedia(true)}><Typography style={{marginLeft: '10px'}}>Social Media</Typography></MenuItem>
                 <MenuItem onClick={() => setOpenMultimedia(true)}><Typography style={{marginLeft: '10px'}}>Multimedia</Typography></MenuItem>
             </Menu>
@@ -108,7 +108,7 @@ function Navbar() {
                     <Divider/>
                     <ListItem key="item-2"><ListItemButton href="/#/leisure"><Typography>Leisure</Typography></ListItemButton></ListItem>
                     <ListItem key="item-2.1"><ListItemButton href="/#/leisure/culinary"><Typography style={{marginLeft: '10px'}}>Culinary</Typography></ListItemButton></ListItem>
-                    <ListItem key="item-2.2"><ListItemButton href="https://likarajoblogs.wordpress.com/" target="_blank"><Typography style={{marginLeft: '10px'}}>Blogs</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-2.2"><ListItemButton href="/#/leisure/blogs"><Typography style={{marginLeft: '10px'}}>Blogs</Typography></ListItemButton></ListItem>
                     <ListItem key="item-2.3"><ListItemButton onClick={() => setOpenSocialMedia(true)}><Typography style={{marginLeft: '10px'}}>Social Media</Typography></ListItemButton></ListItem>
                     <ListItem key="item-2.4"><ListItemButton onClick={() => setOpenMultimedia(true)}><Typography style={{marginLeft: '10px'}}>Multimedia</Typography></ListItemButton></ListItem>
                     <Divider/>

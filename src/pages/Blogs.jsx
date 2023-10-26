@@ -1,13 +1,14 @@
 import { NavigateNext } from "@mui/icons-material"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
 
-function Profession() {
+function Blogs() {
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
-        <Typography key="2">Profession</Typography>
+        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/leisure"><b>Leisure</b></Link>,
+        <Typography key="3">Blogs</Typography>
     ]
     return (
-        <div id="profession">
+        <div id="blogs">
             <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
@@ -15,4 +16,4 @@ function Profession() {
     )
 }
   
-export default Profession
+export default Blogs
