@@ -6,18 +6,9 @@ import AppButton from "../common/AppButton";
 function Cards() {
 
     const desktopSize = useMediaQuery({query: '(min-width: 1025px)'});
-    const tabletSize = useMediaQuery({query: '(min-width: 768px)'});
-    const tabletSmallSize = useMediaQuery({query: '(min-width: 481px)'});
-    const phoneSize = useMediaQuery({query: '(max-width: 480px)'});
     const [isDesktop, setIsDesktop] = useState(desktopSize);
-    const [isTablet, setIsTablet] = useState(tabletSize);
-    const [isTabletSmall, setIsTabletSmall] = useState(tabletSmallSize);
-    const [isPhone, setIsPhone] = useState(phoneSize);
     window.addEventListener('resize', () => {
         setIsDesktop(desktopSize);
-        setIsTablet(tabletSize);
-        setIsTabletSmall(tabletSmallSize);
-        setIsPhone(phoneSize);
     });
 
     return (
@@ -27,7 +18,7 @@ function Cards() {
                 <div style={{width: '45%'}}>
                     <Typography variant="h5" gutterBottom>Culinary Delights</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '20px 0'}}>
-                        <CardMedia component="img" image="images/leisure/culinary.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/leisure/culinary.jpg" alt="culinary" /> 
                     </Card>
                     <Typography>
                         Preparing or tasting the flavors of different cultures and 
@@ -39,7 +30,7 @@ function Cards() {
                 <div style={{width: '45%'}}>
                     <Typography variant="h5" gutterBottom>Blogs</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '20px 0'}}>
-                        <CardMedia component="img" image="images/leisure/blogs.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/leisure/blogs.jpg" alt="blogs" /> 
                     </Card>
                     <Typography>
                         I like to express my ideas and thoughts that stem from my life experiences 

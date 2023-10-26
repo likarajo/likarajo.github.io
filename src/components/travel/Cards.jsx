@@ -27,7 +27,7 @@ function Cards() {
                 <div style={{width: '45%'}}>
                     <Typography variant="h5" gutterBottom>Exploring Cities</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '20px 0'}}>
-                        <CardMedia component="img" image="images/travel/cities.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/travel/cities.jpg" alt="cities" /> 
                     </Card>
                     <Typography>
                         Through discovering the hidden gems, experiencing  the local culture, 
@@ -39,7 +39,7 @@ function Cards() {
                 <div style={{width: '45%'}}>
                     <Typography variant="h5" gutterBottom>Unforgettable Nature</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '20px 0'}}>
-                        <CardMedia component="img" image="images/travel/nature.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/travel/nature.jpg" alt="nature" /> 
                     </Card>
                     <Typography>
                         From breathtaking mountains to serene beaches, 
@@ -54,7 +54,7 @@ function Cards() {
                 <div style={{width: '100%', margin: '20px 0'}}>
                     <Typography variant="h5" gutterBottom>Exploring Cities</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '10px 0'}}>
-                        <CardMedia component="img" image="images/travel/cities.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/travel/cities.jpg" alt="cities" /> 
                     </Card>
                     <Typography>
                         Through discovering the hidden gems, experiencing  the local culture, 
@@ -66,7 +66,7 @@ function Cards() {
                 <div style={{width: '100%', margin: '20px 0'}}>
                     <Typography variant="h5" gutterBottom>Unforgettable Nature</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '10px 0'}}>
-                        <CardMedia component="img" image="images/travel/nature.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/travel/nature.jpg" alt="nature" /> 
                     </Card>
                     <Typography>
                         From breathtaking mountains to serene beaches, 
