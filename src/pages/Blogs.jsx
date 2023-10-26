@@ -1,5 +1,6 @@
-import { NavigateNext } from "@mui/icons-material"
-import { Breadcrumbs, Link, Typography } from "@mui/material"
+import { LinkedIn, NavigateNext } from "@mui/icons-material"
+import { Breadcrumbs, IconButton, Link, Stack, Typography } from "@mui/material"
+import Articles from "../components/blogs/Articles"
 
 function Blogs() {
     const breadcrumbs = [
@@ -11,7 +12,13 @@ function Blogs() {
         <div id="blogs">
             <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
+                <Stack direction="row" alignItems="center">
+                    <Typography>Articles</Typography> 
+                    <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank"><img src="images/site/wordpress.png" width="30px"/></IconButton>
+                    <IconButton href={"https://linkedin.com/in/likarajo/recent-activity/articles/"} target="_blank" style={{color: "black"}}><LinkedIn/></IconButton>
+                </Stack>
             </Breadcrumbs>
+            <Articles />
         </div>
     )
 }

@@ -1,0 +1,104 @@
+[
+    {
+        "title": "COVID-19 Quarantining",
+        "img": "https://likarajoblogs.files.wordpress.com/2020/03/3.jpg",
+        "link": "https://likarajoblogs.wordpress.com/2020/03/23/covid-19-quarantine-assorted/",
+        "tags": ["Social"]
+    },
+    {
+        "title": "Work From Home",
+        "img": "images/blogs/wfh.jpg",
+        "link": "https://www.linkedin.com/pulse/work-from-home-rajarshi-chattopadhyay/",
+        "tags": ["Social", "Professional"]
+    },
+    {
+        "title": "Positivity and Passion",
+        "img": "images/blogs/positivity.jpg",
+        "link": "https://www.linkedin.com/pulse/positivity-passion-rajarshi-chattopadhyay/",
+        "tags": ["Social"]
+    },
+    {
+        "title": "RISC Processor",
+        "img": "https://likarajoblogs.files.wordpress.com/2018/06/chip-1710300_960_720.png",
+        "link": "https://likarajoblogs.wordpress.com/2018/06/08/risc-using-harvard/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "Kinship - Data Mining",
+        "img": "https://likarajoblogs.files.wordpress.com/2018/06/data-mining-moving-abstract-squares-background_bifntk-ve_thumbnail-full01.png",
+        "link": "https://likarajoblogs.wordpress.com/2018/06/08/kinship/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "Big Data in Agriculture",
+        "img": "https://likarajoblogs.files.wordpress.com/2018/06/imag0032.jpg",
+        "link": "https://likarajoblogs.wordpress.com/2018/06/04/bigdatainagriculture/",
+        "tags": ["Social", "Technology"]
+    },
+    {
+        "title": "TKinter - Python Basic",
+        "img": "images/blogs/tkinter.jpg",
+        "link": "https://www.linkedin.com/pulse/basics-python-tkinter-rajarshi-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "Docker Images",
+        "img": "images/blogs/docker.jpg",
+        "link": "https://www.linkedin.com/pulse/creating-publishing-docker-images-beginners-guide-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "CICD - Jenkins",
+        "img": "images/blogs/cicd.jpg",
+        "link": "https://www.linkedin.com/pulse/devops-continuous-integration-deployment-using-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "Functional Programming vs OOP",
+        "img": "images/blogs/fpoop.jpg",
+        "link": "https://www.linkedin.com/pulse/functional-vs-object-oriented-programming-rajarshi-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "SWE Internship - Copart",
+        "img": "images/blogs/copart.jpg",
+        "link": "https://www.linkedin.com/pulse/software-engineer-internship-experience-summer-2019-chattopadhyay/",
+        "tags": ["Technology", "Professional"]
+    },
+    {
+        "title": "SWE Internship - Tesla",
+        "img": "images/blogs/tesla.jpg",
+        "link": "https://www.linkedin.com/pulse/tesla-software-engineering-internship-rajarshi-chattopadhyay/",
+        "tags": ["Technology", "Professional"]
+    },
+    {
+        "title": "COVID-19 Analysis",
+        "img": "images/blogs/covid19.jpg",
+        "link": "https://www.linkedin.com/pulse/analyzing-covid19-nov-coronavirus-data-rajarshi-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "COVID-19 Datasources",
+        "img": "images/blogs/covid19ds.jpg",
+        "link": "https://www.linkedin.com/pulse/covid-19-data-sources-rajarshi-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "COVID-19 Sentiments",
+        "img": "images/blogs/covid19snt.jpg",
+        "link": "https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/",
+        "tags": ["Technology"]
+    },
+    {
+        "title": "Graduation - MS CS",
+        "img": "images/blogs/grad.jpg",
+        "link": "https://www.linkedin.com/pulse/my-graduation-2020-rajarshi-chattopadhyay/",
+        "tags": ["Professional"]
+    },
+    {
+        "title": "Deep Learning Graph Compilers",
+        "img": "images/blogs/deeplearning.jpg",
+        "link": "https://www.linkedin.com/feed/update/urn:li:activity:6740162341784166400/",
+        "tags": ["Technology"]
+    }
+]

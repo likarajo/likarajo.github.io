@@ -1,5 +1,7 @@
 import { NavigateNext } from "@mui/icons-material"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
+import Cards from "../components/profession/Cards";
+import Scrollup from "../components/common/Scrollup";
 
 function Profession() {
     const breadcrumbs = [
@@ -11,8 +13,10 @@ function Profession() {
             <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
+            <Cards />
+            <Scrollup />
         </div>
     )
 }
-  
+
 export default Profession
