@@ -46,7 +46,7 @@ function Cards() {
                         and expertise as I believe that it is a powerful tool for building a community 
                         and connecting with like-minded individuals who share similar interests.
                     </Typography>
-                    <AppButton variant="contained" href="https://likarajoblogs.wordpress.com/" target="_blank" style={{margin: '20px 0'}}>Read More</AppButton>
+                    <AppButton variant="contained" href="/#/leisure/blogs" style={{margin: '20px 0'}}>Read More</AppButton>
                 </div>
             </div>
         :
