@@ -14,7 +14,7 @@ function Articles() {
     return (
         <ImageList variant="masonry" sx={{ width: "60%", minWidth: "280px", margin: "0 auto", paddingBottom: "20px" }} cols={isDesktop?2:1}>
             {articles.sort((a,b) => a.title - b.title).map((item) => (
-                <a key={item.title} href={item.link} target="_blank">
+                <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
                     <ImageListItem style={{width: "100%", aspectRatio: "4/3"}}>
                         <img 
                             srcSet={`${item.img}?fit=crop&auto=format&dpr=2 2x`}

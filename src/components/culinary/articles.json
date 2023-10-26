@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Sample Item 1",
+        "location": "Kek",
+        "city": "Delft, Netherlands",
+        "tags": ["Food"],
+        "img": "images/culinary/table.jpg",
+        "link": "/#/leisure/culinary/sample"
+    },
+    {
+        "title": "Sample Item 2",
+        "location": null,
+        "city": null,
+        "tags": ["Cooking"],
+        "img": "images/culinary/table.jpg",
+        "link": "/#/leisure/culinary/sample"
+    }
+]

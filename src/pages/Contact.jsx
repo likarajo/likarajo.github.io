@@ -1,4 +1,3 @@
-import { NavigateNext } from "@mui/icons-material"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
 import Form from "../components/contact/Form"
 
@@ -9,7 +8,7 @@ function Contact() {
     ]
     return (
         <div id="contact">
-            <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
             <Form />

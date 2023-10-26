@@ -1,5 +1,5 @@
-import { NavigateNext } from "@mui/icons-material"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
+import Articles from "../components/cities/Articles"
 
 function Cities() {
     const breadcrumbs = [
@@ -9,9 +9,10 @@ function Cities() {
     ]
     return (
         <div id="cities">
-            <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
+            <Articles />
         </div>
     )
 }
