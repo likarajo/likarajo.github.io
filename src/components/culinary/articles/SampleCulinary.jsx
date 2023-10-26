@@ -1,19 +1,19 @@
 import { Breadcrumbs, Link, Typography } from "@mui/material"
-import Form from "../components/contact/Form"
 
-function Contact() {
+function SampleCulinary() {
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
-        <Typography key="2">Contact</Typography>
+        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/leisure"><b>Leisure</b></Link>,
+        <Link key="3" color="inherit" style={{textDecoration: "none"}} href="/#/leisure/culinary"><b>Culinary</b></Link>,
+        <Typography key="4">Sample</Typography>
     ]
     return (
-        <div id="contact">
+        <div id="nature">
             <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
-            <Form />
         </div>
     )
 }
   
-export default Contact
+export default SampleCulinary

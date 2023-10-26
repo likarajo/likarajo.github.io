@@ -1,5 +1,5 @@
-import { NavigateNext } from "@mui/icons-material"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
+import Articles from "../components/nature/Articles"
 
 function Nature() {
     const breadcrumbs = [
@@ -9,9 +9,10 @@ function Nature() {
     ]
     return (
         <div id="nature">
-            <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
+            <Articles />
         </div>
     )
 }

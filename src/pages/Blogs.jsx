@@ -1,4 +1,4 @@
-import { LinkedIn, NavigateNext } from "@mui/icons-material"
+import { LinkedIn } from "@mui/icons-material"
 import { Breadcrumbs, IconButton, Link, Stack, Typography } from "@mui/material"
 import Articles from "../components/blogs/Articles"
 
@@ -10,7 +10,7 @@ function Blogs() {
     ]
     return (
         <div id="blogs">
-            <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
                 <Stack direction="row" alignItems="center">
                     <Typography>Articles</Typography> 

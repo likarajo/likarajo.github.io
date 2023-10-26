@@ -2,7 +2,6 @@ import Cards from "../components/leisure/Cards"
 import Media from "../components/leisure/Media"
 import Scrollup from "../components/common/Scrollup"
 import { Breadcrumbs, Link, Typography } from "@mui/material"
-import { NavigateNext } from "@mui/icons-material"
 
 function Leisure() {
     const breadcrumbs = [
@@ -11,7 +10,7 @@ function Leisure() {
     ]
     return (
         <div id="leisure">
-            <Breadcrumbs separator={<NavigateNext fontSize="small"/>} style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
                 {breadcrumbs}
             </Breadcrumbs>
             <Cards />

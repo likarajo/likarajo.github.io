@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Sample City",
+        "location": "Netherlands",
+        "tags": ["City"],
+        "img": "images/cities/city.jpg",
+        "link": "/#/travel/cities/sample"
+    },
+    {
+        "title": "Sample Landmark",
+        "location": "Dubai, UAE",
+        "tags": ["Landmark"],
+        "img": "images/cities/landmark.jpg",
+        "link": "/#/travel/cities/sample"
+    }
+]
