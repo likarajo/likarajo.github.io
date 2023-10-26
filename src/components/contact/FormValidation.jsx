@@ -52,10 +52,24 @@ export const useFormControls = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         if (formIsValid()) {
-            //await postContactForm(values);
+            await postContactForm(values);
             alert("You've sent the message!")
         }
     };
+
+    const postContactForm = (values) => {
+        // send email
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                setValues({
+                  ...values,
+                    formSubmitted: true,
+                    success: true
+                });
+                resolve();
+            }, 3000);
+        });
+    }
    
     return {
         handleInputValue,
