@@ -31,7 +31,7 @@ function Media() {
                     </div>
                 </div>
             :
-                <div style={{ justifyContent: 'center', margin: '0px auto', width:'45%', minWidth:'280px', paddingBottom: '20px'}}>
+                <div style={{ justifyContent: 'center', margin: '0px auto', width:'45%', minWidth:'280px', paddingBottom: '10px'}}>
                     <div style={{width: '100%', margin: '20px 0'}}>
                         <Typography variant="h5" gutterBottom>Social Media</Typography>
                         <AppButton variant="contained" onClick={() => setOpenSocialMedia(true)} style={{margin: '5px 0'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Links&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</AppButton>

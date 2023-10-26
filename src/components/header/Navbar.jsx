@@ -1,7 +1,8 @@
-import { Dialog, Divider, Drawer, IconButton, List, ListItem, ListItemButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
+import { Dialog, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import SocialMedia from "../leisure/SocialMedia";
 import Multimedia from "../leisure/Multimedia";
 
@@ -45,6 +46,7 @@ function Navbar() {
                         <ListItemButton id="nav-travel" onClick={(e) => setAnch1(e.currentTarget)}>Travel</ListItemButton>
                         <ListItemButton id="nav-leisure" onClick={(e) => setAnch2(e.currentTarget)}>Leisure</ListItemButton>
                         <ListItemButton id="nav-profession" onClick={(e) => setAnch3(e.currentTarget)}>Profession</ListItemButton>
+                        <IconButton href="/"><HomeIcon/></IconButton>
                     </Stack>
                 :
                     <IconButton onClick={() => setOpenDrawer(!openDrawer)} style={{cursor:'pointer'}}>
@@ -98,6 +100,8 @@ function Navbar() {
                 onClick={() => setOpenDrawer(false)}
             >
                 <List dense>
+                    <ListItem key="item-0"><ListItemButton href="/" alignItems="center"><ListItemIcon><HomeIcon/></ListItemIcon></ListItemButton></ListItem>
+                    <Divider/>
                     <ListItem key="item-1"><ListItemButton href="/#/travel"><Typography>Travel</Typography></ListItemButton></ListItem>
                     <ListItem key="item-1.1"><ListItemButton href="/#/travel/cities"><Typography style={{marginLeft: '10px'}}>Cities</Typography></ListItemButton></ListItem>
                     <ListItem key="item-1.2"><ListItemButton href="/#/travel/nature"><Typography style={{marginLeft: '10px'}}>Nature</Typography></ListItemButton></ListItem>
