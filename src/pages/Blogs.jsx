@@ -1,8 +1,12 @@
 import { LinkedIn } from "@mui/icons-material"
 import { Breadcrumbs, IconButton, Link, Stack, Typography } from "@mui/material"
 import Articles from "../components/blogs/Articles"
+import { useEffect } from "react";
 
 function Blogs() {
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
         <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/leisure"><b>Leisure</b></Link>,
