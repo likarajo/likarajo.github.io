@@ -91,6 +91,7 @@ function Navbar() {
                 <MenuItem onClick={() => window.open("/#/profession", "_self")}><Typography>Profession</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("https://linkedin.com/in/likarajo")}><Typography style={{marginLeft: '10px'}}>LinkedIn</Typography></MenuItem>
                 <MenuItem onClick={() => window.open("docs/resume.pdf")}><Typography style={{marginLeft: '10px'}}>Resume</Typography></MenuItem>
+                <MenuItem onClick={() => window.open("https://www.credly.com/users/likarajo")}><Typography style={{marginLeft: '10px'}}>Badges</Typography></MenuItem>
             </Menu>
 
             <Drawer
@@ -115,6 +116,7 @@ function Navbar() {
                     <ListItem key="item-3"><ListItemButton href="/#/profession"><Typography>Profession</Typography></ListItemButton></ListItem>
                     <ListItem key="item-3.1"><ListItemButton href="https://linkedin.com/in/likarajo" target="_blank"><Typography style={{marginLeft: '10px'}}>LinkedIn</Typography></ListItemButton></ListItem>
                     <ListItem key="item-3.2"><ListItemButton href="docs/resume.pdf" target="_blank"><Typography style={{marginLeft: '10px'}}>Resume</Typography></ListItemButton></ListItem>
+                    <ListItem key="item-3.1"><ListItemButton href="https://credly.com/users/likarajo" target="_blank"><Typography style={{marginLeft: '10px'}}>Badges</Typography></ListItemButton></ListItem>
                     <Divider/>
                 </List>
             </Drawer>

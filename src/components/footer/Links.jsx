@@ -19,6 +19,7 @@ function Links() {
                 <IconButton href={"https://twitter.com/likarajo/"} target="_blank" style={{color: "black"}}><Twitter fontSize={isDesktop?"large":"medium"}/></IconButton>
                 <IconButton href={"https://pinterest.com/likarajo/"} target="_blank" style={{color: "black"}}><Pinterest fontSize={isDesktop?"large":"medium"}/></IconButton>
                 <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank"><img src="images/site/wordpress.png" width={isDesktop?"40px":"28px"}/></IconButton>
+                <IconButton href={"https://www.credly.com/users/likarajo/"} target="_blank"><img src="images/site/credly.png" width={isDesktop?"30px":"20px"}/></IconButton>
                 <IconButton href={"https://linkedin.com/in/likarajo/"} target="_blank" style={{color: "black"}}><LinkedIn fontSize={isDesktop?"large":"medium"}/></IconButton>
             </Stack>
             <Stack direction="row" style={{margin: '0 auto', justifyContent: 'center', alignItems: 'center'}}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Card, CardMedia, Stack, Typography } from "@mui/material";
 import AppButton from "../common/AppButton";
-import { Description, LinkedIn } from "@mui/icons-material";
+import { Description, LinkedIn, Star } from "@mui/icons-material";
 
 function Cards() {
 
@@ -23,6 +23,7 @@ function Cards() {
                     <Stack direction="row" spacing={1} style={{marginTop: "10px"}}>
                         <AppButton variant="contained" href="https://www.linkedin.com/in/likarajo/" target="_blank"><LinkedIn/>LinkedIn</AppButton>
                         <AppButton variant="contained" href="docs/resume.pdf" target="_blank"><Description/>Resume</AppButton>
+                        <AppButton variant="contained" href="https://www.credly.com/users/likarajo/" target="_blank"><Star/>Badges</AppButton>
                     </Stack>
                 </div>
             </div>
@@ -35,6 +36,7 @@ function Cards() {
                     <Stack direction="row" spacing={1} style={{marginTop: "10px"}}>
                         <AppButton variant="contained" href="https://www.linkedin.com/in/likarajo/" target="_blank"><LinkedIn/>LinkedIn</AppButton>
                         <AppButton variant="contained" href="docs/resume.pdf" target="_blank"><Description/>Resume</AppButton>
+                        <AppButton variant="contained" href="https://www.credly.com/users/likarajo/" target="_blank"><Star/>Badges</AppButton>
                     </Stack>
                 </div>
             </div>
