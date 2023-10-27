@@ -24,7 +24,7 @@ function Form() {
                     />
                     <TextField name="lastName" style={{margin: "10px 0"}}
                         onBlur={(e) => handleInputValue(e)} onChange={(e) => handleInputValue(e)}
-                        label="Last Name (optional" fullWidth autoComplete="none" 
+                        label="Last Name (optional)" fullWidth autoComplete="none" 
                         {...(errors["lastName"] && {error: true, helperText: errors["lastName"]})}
                     />
                     <TextField name="email" style={{margin: "10px 0"}}

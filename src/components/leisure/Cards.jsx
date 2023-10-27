@@ -45,7 +45,7 @@ function Cards() {
                 <div style={{width: '100%', margin: '20px 0'}}>
                     <Typography variant="h5" gutterBottom>Culinary Delights</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '10px 0'}}>
-                        <CardMedia component="img" image="images/leisure/culinary.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/leisure/culinary.jpg" alt="culinary" /> 
                     </Card>
                     <Typography>
                         Preparing or tasting the flavors of different cultures and 
@@ -57,14 +57,14 @@ function Cards() {
                 <div style={{width: '100%', margin: '20px 0'}}>
                     <Typography variant="h5" gutterBottom>Blogs</Typography>
                     <Card style={{width: '100%', aspectRatio: '2/1', borderRadius: 10, margin: '10px 0'}}>
-                        <CardMedia component="img" image="images/leisure/blogs.jpg" alt="travel" /> 
+                        <CardMedia component="img" image="images/leisure/blogs.jpg" alt="blogs" /> 
                     </Card>
                     <Typography>
                         I like to express my ideas and thoughts that stem from my life experiences 
                         and expertise as I believe that it is a powerful tool for building a community 
                         and connecting with like-minded individuals who share similar interests.
                     </Typography>
-                    <AppButton variant="contained" href="https://likarajoblogs.wordpress.com/" target="_blank" style={{margin: '10px 0'}}>Read More</AppButton>
+                    <AppButton variant="contained" href="/#/leisure/blogs" style={{margin: '10px 0'}}>Read More</AppButton>
                 </div>
             </div>
         }
