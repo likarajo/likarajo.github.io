@@ -15,7 +15,7 @@ function Links() {
         <div style={{display: isDesktop?'flex':'block', justifyContent: 'center', alignItems: 'center', margin: '0 auto', width: '280px', height: isDesktop?'50px':'80px'}}>
             <Stack direction="row" style={{margin: '0 auto', justifyContent: 'center', alignItems: 'center'}}>
                 <IconButton href={"https://instagram.com/likarajo/"} target="_blank" style={{color: "black"}}><Instagram fontSize={isDesktop?"large":"medium"}/></IconButton>
-                <IconButton href={"https://facebook.com/likarajo/"} target="_blank" style={{color: "black"}}><Facebook fontSize={isDesktop?"large":"medium"}/></IconButton>
+                {/* <IconButton href={"https://facebook.com/likarajo/"} target="_blank" style={{color: "black"}}><Facebook fontSize={isDesktop?"large":"medium"}/></IconButton> */}
                 <IconButton href={"https://twitter.com/likarajo/"} target="_blank" style={{color: "black"}}><Twitter fontSize={isDesktop?"large":"medium"}/></IconButton>
                 <IconButton href={"https://pinterest.com/likarajo/"} target="_blank" style={{color: "black"}}><Pinterest fontSize={isDesktop?"large":"medium"}/></IconButton>
                 <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank"><img src="images/site/wordpress.png" width={isDesktop?"40px":"28px"}/></IconButton>
