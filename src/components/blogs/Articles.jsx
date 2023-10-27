@@ -32,7 +32,7 @@ function Articles() {
             <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
                 {filtered?.map((item) => (
                     <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
-                        <ImageListItem style={{width: "100%", aspectRatio: "4/3"}}>
+                        <ImageListItem style={{width: "100%", aspectRatio: "4/3", position: "relative"}}>
                             <img 
                                 srcSet={`${item.img}?fit=crop&auto=format&dpr=2 2x`}
                                 src={`${item.img}?fit=crop&auto=format`}
@@ -40,15 +40,14 @@ function Articles() {
                                 loading="lazy"
                                 width={"100%"}
                             />
+                            <Stack direction="row" alignItems="center" spacing={1} style={{position: "absolute", top: 0, right: 0, margin: "2px"}}>
+                                {item.tags.map((tag) => (
+                                    <Chip key={tag} label={tag} size="small" style={{backgroundColor: "white", opacity: "80%"}}/>
+                                ))}
+                            </Stack>
                             <ImageListItemBar
                                 title={<Typography variant={isDesktop?"h6":"span"}><b>{item.title}</b></Typography>}
-                                subtitle={
-                                    <Stack direction="row" alignItems="center" spacing={1} style={{margin:"5px 0"}}>
-                                        {item.tags.map((tag) => (
-                                            <Chip key={tag} label={tag} size="small" style={{backgroundColor: "white"}}/>
-                                        ))}
-                                    </Stack>
-                                }
+                                subtitle={<Chip></Chip>}
                             />
                         </ImageListItem>
                     </a>

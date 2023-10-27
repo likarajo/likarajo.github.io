@@ -9,8 +9,8 @@
     },
     {
         "title": "Sample Item 2",
-        "location": null,
-        "city": null,
+        "location": "",
+        "city": "",
         "tags": ["Cooking"],
         "img": "images/culinary/table.jpg",
         "link": "/#/leisure/culinary/sample"
