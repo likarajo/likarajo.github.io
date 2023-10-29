@@ -1,18 +1,57 @@
 [
     {
-        "title": "Sample Item 1",
-        "location": "Kek",
-        "city": "Delft, Netherlands",
-        "tags": ["Food"],
-        "img": "images/culinary/table.jpg",
-        "link": "/#/leisure/culinary/sample"
+        "title": "Biscoff caramel waffles",
+        "img": "images/culinary/kek.jpg",
+        "location": "https://kekdelft.nl/",
+        "tags": ["Restaurant"]
     },
     {
-        "title": "Sample Item 2",
-        "location": "",
-        "city": "",
-        "tags": ["Cooking"],
-        "img": "images/culinary/table.jpg",
-        "link": "/#/leisure/culinary/sample"
+        "title": "JOJO original Coffee Flight",
+        "img": "images/culinary/jojo.jpg",
+        "location": "https://jojocoffeehouse.com/craft-coffee-and-espresso",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Chicken Rigatoni",
+        "img": "images/culinary/taverna.jpg",
+        "location": "https://www.tavernabylombardi.com/austin-domain-northside-menu",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Grilled Chicken in Chimichurri marinade",
+        "img": "images/culinary/gauchos.jpg",
+        "location": "https://www.gauchosgrill.nl/en/",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Breakfast, Cafe Oud Patershol",
+        "img": "images/culinary/patershol.jpg",
+        "location": "https://www.instagram.com/oudpatershol/",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Waterzooi de Poissons",
+        "img": "images/culinary/chezleon.jpg",
+        "location": "https://chezleon.be/en/",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Croquettes Crevettes",
+        "img": "images/culinary/houtsiplou.jpg",
+        "location": "https://www.houtsiplou.be/",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Chicken Schnitzel & Possmann Cider",
+        "img": "images/culinary/hauptwache.jpg",
+        "location": "https://www.cafe-hauptwache.de/?lang=en",
+        "tags": ["Restaurant"]
+    },
+    {
+        "title": "Yemeni Chicken Zurbian",
+        "img": "images/culinary/desertrose.jpg",
+        "location": "https://www.instagram.com/desertroseqr",
+        "tags": ["Restaurant"]
     }
 ]
+
