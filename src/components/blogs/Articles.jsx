@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Chip, ImageList, ImageListItem, ImageListItemBar, Pagination, Stack, TextField, Typography } from "@mui/material";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import articles from "./articles.json";
+
 
 function Articles() {
     
@@ -45,12 +47,11 @@ function Articles() {
             <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
-                        <ImageListItem style={{width: "100%", aspectRatio: "4/3", position: "relative"}}>
-                            <img 
-                                srcSet={item.img}
+                        <ImageListItem style={{width: "100%", position: "relative"}}>
+                            <LazyLoadImage
                                 src={item.img}
                                 alt={item.title}
-                                loading="lazy"
+                                width={"100%"}
                             />
                             <Stack direction="row" alignItems="center" spacing={1} style={{position: "absolute", top: 0, right: 0, margin: "2px"}}>
                                 {item.tags.map((tag) => (

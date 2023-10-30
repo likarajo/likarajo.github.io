@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Backdrop, Chip, Dialog, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, Pagination, Stack, TextField, Typography } from "@mui/material";
-import articles from "./articles.json";
 import { Close, Info, LinkRounded, LocationOn, RemoveRedEye } from "@mui/icons-material";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import articles from "./articles.json";
+
 
 function Nature() {
     
@@ -66,12 +68,11 @@ function Nature() {
             />}
             <ImageList sx={{ width: "100%", minWidth: "280px", margin: "0 auto"}} cols={isDesktop?2:1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
-                    <ImageListItem key={item.img} style={{width: "100%", aspectRatio: "4/3", position: 'relative'}}>
-                        <img 
-                            srcSet={item.img}
+                    <ImageListItem key={item.img} style={{width: "100%", position: 'relative'}}>
+                        <LazyLoadImage
                             src={item.img}
                             alt={item.title}
-                            loading="lazy"
+                            width={"100%"}
                         />
                         <RemoveRedEye style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', top: 0, left: 0, margin: '2px'}} onClick={() => handleOpen(item)} fontSize="small"/>
                         <Info style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', bottom:0, right: 0, margin: '2px'}} onClick={() => handleOpenInfo(item)} fontSize="small"/>

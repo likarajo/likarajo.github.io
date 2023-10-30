@@ -11,9 +11,6 @@ import Blogs from "../pages/Blogs";
 import Profession from '../pages/Profession'
 import NotFound from "../pages/NotFound";
 
-import SampleCity from "./cities/articles/SampleCity";
-import SampleNature from "./nature/articles/SampleNature";
-import SampleCulinary from "./culinary/articles/SampleCulinary";
 
 function App() {
   return (
@@ -35,10 +32,6 @@ function App() {
           <Route path="/leisure/blogs" element={<Blogs />} />
           <Route path="/profession" element={<Profession />} />
           <Route path="*" element={<NotFound />} />
-          {/* Articles Routes */}
-          <Route path="/travel/cities/sample" element={<SampleCity />} />
-          <Route path="/travel/nature/sample" element={<SampleNature />} />
-          <Route path="/leisure/culinary/sample" element={<SampleCulinary />} />
         </Routes>
       </HashRouter>
     </div>
