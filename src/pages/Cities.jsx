@@ -1,6 +1,7 @@
 import { Breadcrumbs, Link, Typography } from "@mui/material"
 import Articles from "../components/cities/Articles"
 import { useEffect } from "react";
+import Scrollup from "../components/common/Scrollup";
 
 function Cities() {
     useEffect(() => {
@@ -17,6 +18,7 @@ function Cities() {
                 {breadcrumbs}
             </Breadcrumbs>
             <Articles />
+            <Scrollup />
         </div>
     )
 }
