@@ -1,6 +1,7 @@
 import { Breadcrumbs, Link, Typography } from "@mui/material"
 import Articles from "../components/nature/Articles"
 import { useEffect } from "react";
+import Scrollup from "../components/common/Scrollup";
 
 function Nature() {
     useEffect(() => {
@@ -17,6 +18,7 @@ function Nature() {
                 {breadcrumbs}
             </Breadcrumbs>
             <Articles />
+            <Scrollup />
         </div>
     )
 }

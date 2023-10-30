@@ -2,6 +2,7 @@ import { LinkedIn } from "@mui/icons-material"
 import { Breadcrumbs, IconButton, Link, Stack, Typography } from "@mui/material"
 import Articles from "../components/blogs/Articles"
 import { useEffect } from "react";
+import Scrollup from "../components/common/Scrollup"
 
 function Blogs() {
     useEffect(() => {
@@ -23,6 +24,7 @@ function Blogs() {
                 </Stack>
             </Breadcrumbs>
             <Articles />
+            <Scrollup />
         </div>
     )
 }
