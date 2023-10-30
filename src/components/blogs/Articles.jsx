@@ -44,7 +44,7 @@ function Articles() {
                 shape="rounded" hideFirstButton hideLastButton size="small"
                 style={{margin: "20px auto"}}
             />}
-            <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
+            <ImageList variant="masonry" style={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
                         <ImageListItem style={{width: "100%", position: "relative"}}>
@@ -52,6 +52,7 @@ function Articles() {
                                 src={item.img}
                                 alt={item.title}
                                 width={"100%"}
+                                style={{minHeight: "150px"}}
                             />
                             <Stack direction="row" alignItems="center" spacing={1} style={{position: "absolute", top: 0, right: 0, margin: "2px"}}>
                                 {item.tags.map((tag) => (
