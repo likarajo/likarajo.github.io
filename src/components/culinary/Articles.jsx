@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Backdrop, Chip, Dialog, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, Pagination, Stack, TextField, Typography } from "@mui/material";
+import { Backdrop, Chip, Dialog, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, Link, Pagination, Stack, TextField, Typography } from "@mui/material";
 import { Close, Info, LinkRounded, LocationOn, RemoveRedEye } from "@mui/icons-material";
 import articles from "./articles.json";
 
@@ -104,14 +104,14 @@ function Articles() {
                 <DialogTitle>{selectedItem?.title?selectedItem?.title:null}</DialogTitle>
                 <DialogContent>
                     {selectedItem?.location?
-                        <IconButton href={selectedItem?.location} target={selectedItem?.location?.includes("http")?"_blank":"_self"}>
-                            <LocationOn/>
-                        </IconButton>
+                        <Link href={selectedItem?.location} target={selectedItem?.location?.includes("http")?"_blank":"_self"} style={{display: "flex", alignItems: "center"}}>
+                            <LocationOn/><span> Location</span>
+                        </Link>
                     :null}
                     {selectedItem?.link?
-                        <IconButton href={selectedItem?.link} target={selectedItem?.link?.includes("http")?"_blank":"_self"}>
-                            <LinkRounded/>
-                        </IconButton>
+                        <Link href={selectedItem?.link} target={selectedItem?.link?.includes("http")?"_blank":"_self"} style={{display: "flex", alignItems: "center"}}>
+                            <LinkRounded/><span> Read More</span>
+                        </Link>
                     :null}
                 </DialogContent>
                 <IconButton onClick={() => handleCloseInfo()} style={{position: 'absolute', top:0, right: 0, margin: '10px'}}>
