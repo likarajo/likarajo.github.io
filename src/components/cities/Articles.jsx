@@ -54,6 +54,7 @@ function Articles() {
                                 src={item.img}
                                 alt={item.title}
                                 width={"100%"}
+                                style={{minHeight: "150px"}}
                             />
                             <Stack direction="row" spacing={1} style={{position: 'absolute', top: 0, right: 0, margin: "2px"}}>
                                 {item.tags?.map((tag) => (

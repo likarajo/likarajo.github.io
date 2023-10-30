@@ -66,16 +66,17 @@ function Nature() {
                 shape="rounded" hideFirstButton hideLastButton size="small"
                 style={{margin: "20px auto"}}
             />}
-            <ImageList sx={{ width: "100%", minWidth: "280px", margin: "0 auto"}} cols={isDesktop?2:1}>
+            <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto"}} cols={isDesktop?2:1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <ImageListItem key={item.img} style={{width: "100%", position: 'relative'}}>
                         <LazyLoadImage
                             src={item.img}
                             alt={item.title}
                             width={"100%"}
+                            style={{minHeight: "150px"}}
                         />
                         <RemoveRedEye style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', top: 0, left: 0, margin: '2px'}} onClick={() => handleOpen(item)} fontSize="small"/>
-                        <Info style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', bottom:0, right: 0, margin: '2px'}} onClick={() => handleOpenInfo(item)} fontSize="small"/>
+                        <Info style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', bottom:0, right: 0, margin: '8px 2px'}} onClick={() => handleOpenInfo(item)} fontSize="small"/>
                         {/* <Stack direction="row" spacing={1} style={{position: 'absolute', top: 0, right: 0, margin: '2px'}}>
                             {item.tags?.map((tag) => (
                                 <Chip key={tag} label={tag} size="small" style={{backgroundColor: "white", opacity: "80%"}}/>
