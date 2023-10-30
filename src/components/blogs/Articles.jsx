@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Chip, ImageList, ImageListItem, ImageListItemBar, Stack, TextField, Typography } from "@mui/material";
+import { Chip, ImageList, ImageListItem, ImageListItemBar, Pagination, Stack, TextField, Typography } from "@mui/material";
 import articles from "./articles.json";
 
 function Articles() {
@@ -20,6 +20,14 @@ function Articles() {
         }));
     }
 
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 6;
+    const count = Math.ceil(filtered?.length / itemsPerPage);
+    const handlePage = (event, value) => {
+        setPage(value);
+        window.scrollTo(0,0);
+    };
+
     return (
         <div style={{width: "60%", minWidth: "280px", paddingBottom: "20px", margin: "10px auto"}}>
             <Stack direction="row" alignItems="center"><Typography variant="h5">Blogs</Typography>&nbsp;({filtered.length})</Stack>
@@ -29,16 +37,20 @@ function Articles() {
                 onChange={(e) => handleSearch(e)}
                 onBlur={(e) => handleSearch(e)}
             />
+            {filtered.length >= itemsPerPage &&
+            <Pagination count={count} page={page} onChange={handlePage} 
+                shape="rounded" hideFirstButton hideLastButton size="small"
+                style={{margin: "20px auto"}}
+            />}
             <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
-                {filtered?.map((item) => (
+                {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
                         <ImageListItem style={{width: "100%", aspectRatio: "4/3", position: "relative"}}>
                             <img 
-                                srcSet={`${item.img}?fit=crop&auto=format&dpr=2 2x`}
-                                src={`${item.img}?fit=crop&auto=format`}
+                                srcSet={item.img}
+                                src={item.img}
                                 alt={item.title}
                                 loading="lazy"
-                                width={"100%"}
                             />
                             <Stack direction="row" alignItems="center" spacing={1} style={{position: "absolute", top: 0, right: 0, margin: "2px"}}>
                                 {item.tags.map((tag) => (
@@ -53,6 +65,11 @@ function Articles() {
                     </a>
                 ))}
             </ImageList>
+            {filtered.length >= itemsPerPage &&
+            <Pagination count={count} page={page} onChange={handlePage} 
+                shape="rounded" hideFirstButton hideLastButton size="small"
+                style={{margin: "20px auto"}}
+            />}
         </div>
     )
 }

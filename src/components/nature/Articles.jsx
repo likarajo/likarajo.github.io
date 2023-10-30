@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Backdrop, Button, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, ImageList, ImageListItem, Stack, TextField, Typography } from "@mui/material";
+import { Backdrop, Chip, Dialog, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, Pagination, Stack, TextField, Typography } from "@mui/material";
 import articles from "./articles.json";
-import { Close, Info, LinkOffRounded, LinkRounded, LocationCity, LocationOn, RemoveRedEye } from "@mui/icons-material";
+import { Close, Info, LinkRounded, LocationOn, RemoveRedEye } from "@mui/icons-material";
 
 function Nature() {
     
@@ -21,6 +21,14 @@ function Nature() {
             || article.tags?.some((tag) => tag?.toLowerCase().indexOf(searchTerm) !== -1)
         }));
     }
+
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 6;
+    const count = Math.ceil(filtered?.length / itemsPerPage);
+    const handlePage = (event, value) => {
+        setPage(value);
+        window.scrollTo(0,0);
+    };
 
     const [open, setOpen] = useState(false);
     const [openInfo, setOpenInfo] = useState(false);
@@ -51,14 +59,18 @@ function Nature() {
                 onChange={(e) => handleSearch(e)}
                 onBlur={(e) => handleSearch(e)}
             />
+            {filtered.length >= itemsPerPage &&
+            <Pagination count={count} page={page} onChange={handlePage} 
+                shape="rounded" hideFirstButton hideLastButton size="small"
+                style={{margin: "20px auto"}}
+            />}
             <ImageList sx={{ width: "100%", minWidth: "280px", margin: "0 auto"}} cols={isDesktop?2:1}>
-                {filtered?.map((item) => (
+                {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <ImageListItem key={item.img} style={{width: "100%", aspectRatio: "4/3", position: 'relative'}}>
                         <img 
-                            srcSet={`${item.img}?fit=crop&auto=format&dpr=2 2x`}
-                            src={`${item.img}?fit=crop&auto=format`}
+                            srcSet={item.img}
+                            src={item.img}
                             alt={item.title}
-                            width={"100%"}
                             loading="lazy"
                         />
                         <RemoveRedEye style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', top: 0, left: 0, margin: '2px'}} onClick={() => handleOpen(item)} fontSize="small"/>
@@ -71,12 +83,16 @@ function Nature() {
                     </ImageListItem>
                 ))}
             </ImageList>
-            <Dialog open={open} onClose={() => handleClose()} style={{maxWidth: "85vw", minWidth: "280px", margin: "0 auto"}}>
+            {filtered.length >= itemsPerPage &&
+            <Pagination count={count} page={page} onChange={handlePage} 
+                shape="rounded" hideFirstButton hideLastButton size="small"
+                style={{margin: "20px auto"}}
+            />}
+            <Dialog open={open} onClose={() => handleClose()} maxWidth={'xl'}>
                 <img 
                     srcSet={selectedItem?.img}
                     src={selectedItem?.img}
                     alt={selectedItem?.title}
-                    width={"100%"}
                     style={{position: "relative"}}
                 />
                 <IconButton onClick={() => handleClose()} style={{position: 'absolute', top:0, right: 0, margin: '2px'}}>
@@ -86,19 +102,20 @@ function Nature() {
             <Dialog open={openInfo} onClose={() => handleCloseInfo()} fullWidth>
                 <DialogTitle>{selectedItem?.title?selectedItem?.title:null}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        {selectedItem?.location?
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                <LocationOn fontSize="small"/><Typography>{selectedItem?.location}</Typography>
-                            </div>
-                        :null}
-                        {selectedItem?.link?
-                            <IconButton href={selectedItem?.link} target={selectedItem?.link?.includes("http")?"_blank":"_self"}>
-                                <LinkRounded/>
-                            </IconButton>
-                        :null}
-                    </DialogContentText>
+                    {selectedItem?.location?
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <LocationOn fontSize="small"/><Typography>{selectedItem?.location}</Typography>
+                        </div>
+                    :null}
+                    {selectedItem?.link?
+                        <IconButton href={selectedItem?.link} target={selectedItem?.link?.includes("http")?"_blank":"_self"}>
+                            <LinkRounded/>
+                        </IconButton>
+                    :null}
                 </DialogContent>
+                <IconButton onClick={() => handleCloseInfo()} style={{position: 'absolute', top:0, right: 0, margin: '10px'}}>
+                    <Close/>
+                </IconButton>
             </Dialog>
             <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open || openInfo} onClick={() => {handleClose(); handleCloseInfo();}}></Backdrop>
         </div>
