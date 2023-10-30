@@ -24,9 +24,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/travel" element={<Travel />} />
+          <Route path="/cities" element={<Cities />} />
+          <Route path="/nature" element={<Nature />} />
           <Route path="/travel/cities" element={<Cities />} />
           <Route path="/travel/nature" element={<Nature />} />
           <Route path="/leisure" element={<Leisure />} />
+          <Route path="/culinary" element={<Culinary />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/leisure/culinary" element={<Culinary />} />
           <Route path="/leisure/blogs" element={<Blogs />} />
           <Route path="/profession" element={<Profession />} />
