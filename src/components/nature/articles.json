@@ -1,16 +1,8 @@
 [
     {
-        "title": "Sample Item1",
-        "location": "Netherlands",
-        "tags": ["Hiking"],
-        "img": "images/nature/nature.jpg",
-        "link": "/#/travel/nature/sample"
-    },
-    {
-        "title": "Sample Item2",
-        "location": "Dubai, UAE",
-        "tags": ["Beach"],
-        "img": "images/nature/nature.jpg",
-        "link": "/#/travel/nature/sample"
+        "title": "Kanchenjunga",
+        "img": "images/nature/kanchenjunga.jpg",
+        "location": "Sikkim, India",
+        "tags": ["Mountains"]
     }
 ]
