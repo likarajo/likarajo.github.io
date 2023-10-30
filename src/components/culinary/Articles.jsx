@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Chip, IconButton, ImageList, ImageListItem, ImageListItemBar, Stack, TextField, Typography } from "@mui/material";
+import { Backdrop, Chip, Dialog, IconButton, ImageList, ImageListItem, Stack, TextField, Typography } from "@mui/material";
 import articles from "./articles.json";
-import { LinkOffRounded, LinkRounded, LocationCity, LocationOn } from "@mui/icons-material";
+import { LinkOffRounded, LinkRounded, LocationCity, LocationOn, RemoveRedEye } from "@mui/icons-material";
 
 function Articles() {
     
@@ -22,11 +22,22 @@ function Articles() {
             || article.tags?.some((tag) => tag?.toLowerCase().indexOf(searchTerm) !== -1)
         }));
     }
+
+    const [open, setOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const handleOpen = (item) => {
+        setSelectedItem(item);
+        setOpen(true);
+    }
+    const handleClose = () => {
+        setSelectedItem(null);
+        setOpen(false);
+    }
     
     return (
         <div style={{width: "70%", minWidth: "280px", paddingBottom: "20px", margin: "10px auto"}}>
-            {/* <Stack direction="row" alignItems="center"><Typography variant="h5">Culinary Delights</Typography>&nbsp;({filtered.length})</Stack>
-            <TextField style={{width: "280px", backgroundColor: "white", margin: "10px 0"}}
+            <Stack direction="row" alignItems="center"><Typography variant="h5" gutterBottom>Culinary Delights</Typography>&nbsp;({filtered.length})</Stack>
+            {/* <TextField style={{width: "280px", backgroundColor: "white", margin: "10px 0"}}
                 label="Search by Title/Location/City/Tag"
                 type="search" size="small"
                 onChange={(e) => handleSearch(e)}
@@ -47,18 +58,34 @@ function Articles() {
                                     <Chip key={tag} label={tag} size="small" style={{backgroundColor: "white", opacity: "80%"}}/>
                                 ))}
                             </Stack> */}
-                            <ImageListItemBar
-                                subtitle={
-                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin:'5px 0'}}>
-                                        <Typography style={{float: "left"}}>{item.title}</Typography>
-                                        {item.location?<a href={item.location} target={item.location.includes("http")?"_blank":"_self"}><IconButton style={{color: 'white', float: "right"}}><LocationOn/></IconButton></a>:null}
-                                        {item.link?<a href={item.link} target={item.link.includes("http")?"_blank":"_self"}><IconButton style={{color: 'white', float: "right"}}><LinkRounded/></IconButton></a>:null}
-                                    </div>
-                                }
-                            />
+                            {item.title?
+                                <Chip size="small" 
+                                    style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', top: 0, left: 0, margin: '2px'}}
+                                    onClick={() => handleOpen(item)}
+                                    label={
+                                        <Stack direction="row" alignItems="center" spacing={1}>
+                                            <RemoveRedEye fontSize="small"/>
+                                            <span>{item.title}</span>
+                                        </Stack>
+                                    }
+                                />
+                            :null}
+                            <Stack direction="row" style={{position: 'absolute', bottom: 0, right: 0, margin: '2px'}}>
+                                {item.location?<IconButton size="small" style={{backgroundColor: "white", opacity: "80%"}} href={item.location} target={item.location.includes("http")?"_blank":"_self"}><LocationOn/></IconButton>:null}
+                                {item.link?<IconButton style={{backgroundColor: "white", opacity: "80%"}} href={item.link} target={item.link.includes("http")?"_blank":"_self"}><LinkRounded/></IconButton>:null}
+                            </Stack>
                         </ImageListItem>
                 ))}
             </ImageList>
+            <Dialog open={open} onClose={() => handleClose()}>
+                <img 
+                    srcSet={selectedItem?.img}
+                    src={selectedItem?.img}
+                    alt={selectedItem?.title}
+                    width={"100%"}
+                />
+            </Dialog>
+            <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open} onClick={() => handleClose()}></Backdrop>
         </div>
     )
 }
