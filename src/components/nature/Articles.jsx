@@ -25,7 +25,7 @@ function Nature() {
     }
 
     const [page, setPage] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 10;
     const count = Math.ceil(filtered?.length / itemsPerPage);
     const handlePage = (event, value) => {
         setPage(value);
