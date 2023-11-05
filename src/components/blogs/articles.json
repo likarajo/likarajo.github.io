@@ -1,5 +1,11 @@
 [
     {
+        "title": "my First year in the USA",
+        "img": "images/blogs/usa.jpg",
+        "link": "https://www.linkedin.com/pulse/my-first-year-usa-rajarshi-c-zmsec/",
+        "tags": ["Personal", "Social"]
+    },
+    {
         "title": "COVID-19 Quarantining",
         "img": "https://likarajoblogs.files.wordpress.com/2020/03/3.jpg",
         "link": "https://likarajoblogs.wordpress.com/2020/03/23/covid-19-quarantine-assorted/",
