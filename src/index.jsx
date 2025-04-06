@@ -20,10 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={THEME}>
       <Header/>
-      <br/>
       <App/>
       <Footer/>
-      <br/><br/>
     </ThemeProvider>
   </React.StrictMode>,
 )
