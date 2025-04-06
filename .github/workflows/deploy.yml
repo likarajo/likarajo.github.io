@@ -41,11 +41,6 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload dummy artifact (workaround)
-        uses: https://github.com/actions/upload-artifact@v2
-        with:
-          name: dummy
-          path: README.md
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
