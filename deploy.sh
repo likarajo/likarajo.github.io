@@ -9,6 +9,6 @@ npm run build  # Adjust this if you use a different build command
 
 # Deploy to GitHub Pages
 echo "Deploying to GitHub Pages..."
-npx gh-pages -d dist --force
+npx gh-pages -d dist
 
 echo "Deployment successful! Your site is live at https://likarajo.github.io"
