@@ -7,12 +7,7 @@ import articles from "./articles.json";
 
 
 function Nature() {
-    
-    const desktopSize = useMediaQuery({query: '(min-width: 1025px)'});
-    const [isDesktop, setIsDesktop] = useState(desktopSize);
-    window.addEventListener('resize', () => {
-        setIsDesktop(desktopSize);
-    });
+    const twoColumns = useMediaQuery({query: '(min-width: 768px)'});
 
     const [filtered, setFiltered] = useState(articles);
     const handleSearch = (e) => {
@@ -53,20 +48,19 @@ function Nature() {
     }
     
     return (
-        <div style={{width: "70%", minWidth: "280px", paddingBottom: "20px", margin: "10px auto"}}>
-            <Stack direction="row" alignItems="center"><Typography variant="h5" gutterBottom>Nature</Typography>&nbsp;({filtered.length})</Stack>
-            <TextField style={{width: "280px", backgroundColor: "white", margin: "10px 0"}}
+        <div className="gallery">
+            <Typography variant="h5" component="h2" gutterBottom>Nature ({filtered.length})</Typography>
+            <TextField
                 label="Search"
-                type="search" size="small"
+                type="search"
                 onChange={(e) => handleSearch(e)}
                 onBlur={(e) => handleSearch(e)}
             />
             {filtered.length >= itemsPerPage &&
-            <Pagination count={count} page={page} onChange={handlePage} 
-                shape="rounded" hideFirstButton hideLastButton size="small"
-                style={{margin: "20px auto"}}
+            <Pagination count={count} page={page} onChange={handlePage}
+                shape="rounded" hideFirstButton hideLastButton
             />}
-            <ImageList variant="masonry" sx={{ width: "100%", minWidth: "280px", margin: "0 auto"}} cols={isDesktop?2:1}>
+            <ImageList variant="masonry" cols={twoColumns ? 2 : 1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <ImageListItem key={item.img} style={{width: "100%", position: 'relative'}}>
                         <LazyLoadImage
@@ -75,8 +69,12 @@ function Nature() {
                             width={"100%"}
                             style={{minHeight: "150px"}}
                         />
-                        <RemoveRedEye style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', top: 0, left: 0, margin: '2px'}} onClick={() => handleOpen(item)} fontSize="small"/>
-                        <Info style={{cursor: "pointer", backgroundColor: "white", opacity: "80%", position: 'absolute', bottom:0, right: 0, margin: '8px 2px'}} onClick={() => handleOpenInfo(item)} fontSize="small"/>
+                        <IconButton className="media-action" aria-label={`View ${item.title || "photo"}`} onClick={() => handleOpen(item)} style={{position: "absolute", top: 4, left: 4, backgroundColor: "rgba(255,255,255,0.9)"}}>
+                            <RemoveRedEye />
+                        </IconButton>
+                        <IconButton className="media-action" aria-label={`Details for ${item.title || "photo"}`} onClick={() => handleOpenInfo(item)} style={{position: "absolute", bottom: 4, right: 4, backgroundColor: "rgba(255,255,255,0.9)"}}>
+                            <Info />
+                        </IconButton>
                         {/* <Stack direction="row" spacing={1} style={{position: 'absolute', top: 0, right: 0, margin: '2px'}}>
                             {item.tags?.map((tag) => (
                                 <Chip key={tag} label={tag} size="small" style={{backgroundColor: "white", opacity: "80%"}}/>
@@ -87,15 +85,12 @@ function Nature() {
             </ImageList>
             {filtered.length >= itemsPerPage &&
             <Pagination count={count} page={page} onChange={handlePage} 
-                shape="rounded" hideFirstButton hideLastButton size="small"
-                style={{margin: "20px auto"}}
+                shape="rounded" hideFirstButton hideLastButton
             />}
-            <Dialog open={open} onClose={() => handleClose()} maxWidth={'xl'}>
-                <img 
-                    srcSet={selectedItem?.img}
+            <Dialog open={open} onClose={() => handleClose()} maxWidth="xl">
+                <img
                     src={selectedItem?.img}
-                    alt={selectedItem?.title}
-                    style={{position: "relative"}}
+                    alt={selectedItem?.title || ""}
                 />
                 <IconButton onClick={() => handleClose()} style={{position: 'absolute', top:0, right: 0, margin: '2px'}}>
                     <Close/>

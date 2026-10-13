@@ -12,7 +12,7 @@ function Contact() {
     ]
     return (
         <div id="contact">
-            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs className="crumbs" separator="›">
                 {breadcrumbs}
             </Breadcrumbs>
             <Form />

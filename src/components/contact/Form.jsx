@@ -13,7 +13,7 @@ function Form() {
     } = useFormControls();
 
     return(
-        <div style={{justifyContent: "center", width: "50%", minWidth: "280px", maxWidth: "600px", margin: "0 auto", padding: "20px"}}>
+        <div className="contact-form">
             <Paper style={{padding: "20px"}}>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                     <Typography variant="h6" style={{display: "flex", margin: "10px 0", alignItems: "center"}}><ContactPage/>&nbsp;Contact Form</Typography>

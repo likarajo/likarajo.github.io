@@ -20,7 +20,7 @@ function Navbar() {
 
     return (
         <>
-            <div id="nav" style={{float:'right'}}>
+            <nav id="nav" aria-label="Site">
                 {isWide ?
                     <Stack direction="row">
                         <ListItemButton id="nav-writing" onClick={() => window.open("/#/blogs", "_self")}>Writing</ListItemButton>
@@ -33,7 +33,7 @@ function Navbar() {
                         <MenuIcon/>
                     </IconButton>
                 }
-            </div>
+            </nav>
 
             <Menu
                 anchorEl={anch1}
@@ -57,8 +57,8 @@ function Navbar() {
                 onClose={() => setOpenDrawer(false)}
                 onClick={() => setOpenDrawer(false)}
             >
-                <List dense>
-                    <ListItem key="item-0"><ListItemButton href="/" alignItems="center"><ListItemIcon><HomeIcon/></ListItemIcon></ListItemButton></ListItem>
+                <List>
+                    <ListItem key="item-0"><ListItemButton href="/"><ListItemIcon><HomeIcon/></ListItemIcon><Typography>Home</Typography></ListItemButton></ListItem>
                     <Divider/>
                     <ListItem key="item-writing"><ListItemButton href="/#/blogs"><Typography>Writing</Typography></ListItemButton></ListItem>
                     <ListItem key="item-contact"><ListItemButton href="/#/contact"><Typography>Contact</Typography></ListItemButton></ListItem>

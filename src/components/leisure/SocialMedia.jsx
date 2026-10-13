@@ -4,7 +4,7 @@ import { Instagram, Facebook, Twitter, Pinterest } from "@mui/icons-material";
 function SocialMedia() {
     return (
         <>
-            <DialogTitle>Social Media</DialogTitle>
+            <DialogTitle id="social-media-title">Social Media</DialogTitle>
             <DialogContent>
                 <List>
                     <ListItem><ListItemButton href="https://instagram.com/likarajo/" target="_blank"><Instagram fontSize="large"/>&nbsp;Instagram</ListItemButton></ListItem>

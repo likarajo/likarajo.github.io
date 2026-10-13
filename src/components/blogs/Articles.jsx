@@ -6,12 +6,7 @@ import articles from "./articles.json";
 
 
 function Articles() {
-    
-    const desktopSize = useMediaQuery({query: '(min-width: 1025px)'});
-    const [isDesktop, setIsDesktop] = useState(desktopSize);
-    window.addEventListener('resize', () => {
-        setIsDesktop(desktopSize);
-    });
+    const twoColumns = useMediaQuery({query: '(min-width: 768px)'});
 
     const [filtered, setFiltered] = useState(articles);
     const handleSearch = (e) => {
@@ -31,20 +26,19 @@ function Articles() {
     };
 
     return (
-        <div style={{width: "60%", minWidth: "280px", paddingBottom: "20px", margin: "10px auto"}}>
-            <Stack direction="row" alignItems="center"><Typography variant="h5">Blogs</Typography>&nbsp;({filtered.length})</Stack>
-            <TextField style={{width: "280px", backgroundColor: "white", margin: "10px 0"}}
+        <div className="gallery">
+            <Typography variant="h5" component="h2">Blogs ({filtered.length})</Typography>
+            <TextField
                 label="Search by Title/Tag"
-                type="search" size="small"
+                type="search"
                 onChange={(e) => handleSearch(e)}
                 onBlur={(e) => handleSearch(e)}
             />
             {filtered.length >= itemsPerPage &&
             <Pagination count={count} page={page} onChange={handlePage}
-                shape="rounded" size="small"
-                style={{margin: "20px auto"}}
+                shape="rounded"
             />}
-            <ImageList variant="masonry" style={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
+            <ImageList variant="masonry" cols={twoColumns ? 2 : 1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <a key={item.title} href={item.link} target={item.link.includes("http")?"_blank":"_self"}>
                         <ImageListItem style={{width: "100%", position: "relative"}}>
@@ -60,7 +54,7 @@ function Articles() {
                                 ))}
                             </Stack>
                             <ImageListItemBar
-                                title={<Typography variant={isDesktop?"h6":"span"}><b>{item.title}</b></Typography>}
+                                title={<Typography variant="body1"><b>{item.title}</b></Typography>}
                                 subtitle={<Chip></Chip>}
                             />
                         </ImageListItem>
@@ -69,8 +63,7 @@ function Articles() {
             </ImageList>
             {filtered.length >= itemsPerPage &&
             <Pagination count={count} page={page} onChange={handlePage}
-                shape="rounded" size="small"
-                style={{margin: "20px auto"}}
+                shape="rounded"
             />}
         </div>
     )

@@ -14,7 +14,7 @@ function Cities() {
     ]
     return (
         <div id="cities">
-            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
+            <Breadcrumbs className="crumbs" separator="›">
                 {breadcrumbs}
             </Breadcrumbs>
             <Articles />

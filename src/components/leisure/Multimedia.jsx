@@ -4,7 +4,7 @@ import { YouTube } from "@mui/icons-material";
 function Multimedia() {
     return (
         <>
-            <DialogTitle>Multimedia</DialogTitle>
+            <DialogTitle id="multimedia-title">Multimedia</DialogTitle>
             <DialogContent>
                 <List>
                     <ListItem><ListItemButton href="https://open.spotify.com/user/31upmukqrx4zlcsmsjjv5tnh4ofq" target="_blank"><img src="images/site/spotify.png" width="28px" style={{padding: '2px'}}/>&nbsp;Spotify</ListItemButton></ListItem>

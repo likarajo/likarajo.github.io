@@ -14,14 +14,16 @@ function Blogs() {
     ]
     return (
         <div id="blogs">
-            <Breadcrumbs separator="›" style={{maxWidth: "280px", padding: "10px"}}>
-                {breadcrumbs}
+            <div className="crumbs crumbs-row">
+                <Breadcrumbs separator="›">
+                    {breadcrumbs}
+                    <Typography>Articles</Typography>
+                </Breadcrumbs>
                 <Stack direction="row" alignItems="center">
-                    <Typography>Articles</Typography> 
-                    <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank"><img src="images/site/wordpress.png" width="30px"/></IconButton>
-                    <IconButton href={"https://linkedin.com/in/likarajo/recent-activity/articles/"} target="_blank" style={{color: "black"}}><LinkedIn/></IconButton>
+                    <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank" rel="noreferrer" aria-label="WordPress"><img src="images/site/wordpress.png" width="28" height="28" alt="" /></IconButton>
+                    <IconButton href={"https://linkedin.com/in/likarajo/recent-activity/articles/"} target="_blank" rel="noreferrer" aria-label="LinkedIn articles" style={{color: "black"}}><LinkedIn/></IconButton>
                 </Stack>
-            </Breadcrumbs>
+            </div>
             <Articles />
             <Scrollup />
         </div>

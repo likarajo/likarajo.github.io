@@ -5,12 +5,10 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div style={{justifyContent:'center', height:'100px', width:'100%', bottom:0}}>
+    <footer className="site-footer">
       <Links/>
-      <div style={{textAlign:'center', padding: "15px 0"}}>
-        <span>&copy; {year} Rajarshi Chattopadhyay | <a href="/#/contact" style={{fontWeight:500, textDecoration:null}}>Contact</a></span>
-      </div>
-    </div>
+      <p className="footer-note">&copy; {year} Rajarshi Chattopadhyay | <a href="/#/contact">Contact</a></p>
+    </footer>
   )
 }
 
