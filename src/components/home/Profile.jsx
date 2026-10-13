@@ -37,6 +37,10 @@ function Profile() {
                 <h2>Public work</h2>
                 <ul>
                     <li>
+                        <a className="text-link" href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer">ai-agent-chatbot</a>
+                        {" "}— a safe natural-language-to-SQL agent over public U.S. electricity generation data. It checks the query, blocks injection, and limits a state reader to one state.
+                    </li>
+                    <li>
                         <a className="text-link" href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer">language_translation</a>
                         {" "}— a sequence-to-sequence LSTM translation model. This is the public project other people have forked.
                     </li>
