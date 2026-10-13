@@ -9,7 +9,7 @@
 
 .profile .eyebrow {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #5c584f;
@@ -44,6 +44,21 @@
 .profile .text-link {
   color: #1c1a16;
   text-underline-offset: 0.18em;
+}
+
+.profile .text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 4px;
+}
+
+.profile-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .profile h2 {

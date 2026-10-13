@@ -18,7 +18,7 @@ function Scrollup() {
 
     return (
         show &&
-        <Card variant="outlined" style={{position:'fixed', right:'28px', bottom: '120px'}}>
+        <Card className="scroll-up" variant="outlined">
             <IconButton style={{zIndex:5}} onClick={() => window.scrollTo({top:0, behavior:'smooth'})}>
                 <ArrowUpwardIcon fontSize="large" />
             </IconButton>

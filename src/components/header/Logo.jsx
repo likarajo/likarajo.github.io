@@ -1,8 +1,8 @@
 function Logo() {
     return (
-        <div id="logo" style={{float:'left'}}>
-            <a href="/"><img src="images/site/favicon.png" alt="Logo" height={50}/></a>
-        </div>
+        <a id="logo" className="logo-link" href="/" aria-label="Home">
+            <img src="images/site/favicon.png" alt="" width="44" height="44" />
+        </a>
     )
 }
 
