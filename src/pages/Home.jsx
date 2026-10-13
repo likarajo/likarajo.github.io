@@ -1,19 +1,17 @@
-import About from "../components/home/About";
-import Cards from "../components/home/Cards";
+import Profile from "../components/home/Profile";
 import Scrollup from "../components/common/Scrollup";
 import { useEffect } from "react";
 
 function Home() {
     useEffect(() => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, []);
     return (
         <div id="home">
-            <About />
-            <Cards />
+            <Profile />
             <Scrollup />
         </div>
-    )
+    );
 }
-  
-export default Home
+
+export default Home;

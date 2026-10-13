@@ -40,8 +40,8 @@ function Articles() {
                 onBlur={(e) => handleSearch(e)}
             />
             {filtered.length >= itemsPerPage &&
-            <Pagination count={count} page={page} onChange={handlePage} 
-                shape="rounded" hideFirstButton hideLastButton size="small"
+            <Pagination count={count} page={page} onChange={handlePage}
+                shape="rounded" size="small"
                 style={{margin: "20px auto"}}
             />}
             <ImageList variant="masonry" style={{ width: "100%", minWidth: "280px", margin: "0 auto" }} cols={isDesktop?2:1}>
@@ -68,8 +68,8 @@ function Articles() {
                 ))}
             </ImageList>
             {filtered.length >= itemsPerPage &&
-            <Pagination count={count} page={page} onChange={handlePage} 
-                shape="rounded" hideFirstButton hideLastButton size="small"
+            <Pagination count={count} page={page} onChange={handlePage}
+                shape="rounded" size="small"
                 style={{margin: "20px auto"}}
             />}
         </div>
