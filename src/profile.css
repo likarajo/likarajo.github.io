@@ -1,0 +1,80 @@
+.profile {
+  max-width: 42rem;
+  margin: 1.25rem auto 2.5rem;
+  padding: 2rem 1.5rem 2.25rem;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(36, 36, 36, 0.08);
+  border-radius: 16px;
+}
+
+.profile .eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5c584f;
+}
+
+.profile h1 {
+  margin: 0.35rem 0 0.25rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.profile .role {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.profile .lead {
+  margin: 1.1rem 0 0;
+  font-size: 1.05rem;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  margin-top: 1.25rem;
+}
+
+.profile-links a,
+.profile .text-link {
+  color: #1c1a16;
+  text-underline-offset: 0.18em;
+}
+
+.profile h2 {
+  margin: 2rem 0 0.45rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.profile .section-copy {
+  margin: 0;
+}
+
+.profile ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.profile li {
+  margin: 0.45rem 0;
+}
+
+.profile .aside {
+  margin: 2rem 0 0;
+  color: #5c584f;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding: 1.35rem 1rem 1.6rem;
+    margin-top: 0.75rem;
+  }
+}
