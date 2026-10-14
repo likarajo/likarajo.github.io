@@ -1,19 +1,19 @@
 import { Breadcrumbs, Link, Typography } from "@mui/material"
-import Articles from "../components/nature/Articles"
+import Articles from "../components/culinary/Articles"
 import { useEffect } from "react";
 import Scrollup from "../components/common/Scrollup";
 
-function Nature() {
+function Culinary() {
     useEffect(() => {
         window.scrollTo(0,0);
     }, []);
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
-        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/travel"><b>Travel</b></Link>,
-        <Typography key="3">Nature</Typography>
+        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/leisure/"><b>Leisure</b></Link>,
+        <Typography key="3">Culinary</Typography>
     ]
     return (
-        <div id="nature">
+        <div id="culinary">
             <Breadcrumbs className="crumbs" separator="›">
                 {breadcrumbs}
             </Breadcrumbs>
@@ -23,4 +23,4 @@ function Nature() {
     )
 }
   
-export default Nature
+export default Culinary
