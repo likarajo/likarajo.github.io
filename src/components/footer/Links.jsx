@@ -1,5 +1,6 @@
 import { IconButton, Stack } from "@mui/material"
-import { GitHub, LinkedIn } from "@mui/icons-material";
+import GitHub from "@mui/icons-material/GitHub";
+import LinkedIn from "@mui/icons-material/LinkedIn";
 
 function Links() {
     return (

@@ -1,7 +1,8 @@
 import { Paper, TextField, Typography } from "@mui/material"
 import AppButton from "../common/AppButton"
 import { useFormControls } from "./FormValidation"
-import { ContactPage, Send } from "@mui/icons-material";
+import ContactPage from "@mui/icons-material/ContactPage";
+import Send from "@mui/icons-material/Send";
 
 function Form() {
 
