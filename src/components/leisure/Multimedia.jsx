@@ -1,5 +1,5 @@
 import { DialogTitle, DialogContent, List, ListItem, ListItemButton } from "@mui/material";
-import { YouTube } from "@mui/icons-material";
+import YouTube from "@mui/icons-material/YouTube";
 
 function Multimedia() {
     return (
