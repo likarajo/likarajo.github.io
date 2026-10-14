@@ -1,5 +1,7 @@
 import { DialogTitle, DialogContent, List, ListItem, ListItemButton } from "@mui/material";
-import { Instagram, Facebook, Twitter, Pinterest } from "@mui/icons-material";
+import Instagram from "@mui/icons-material/Instagram";
+import Twitter from "@mui/icons-material/Twitter";
+import Pinterest from "@mui/icons-material/Pinterest";
 
 function SocialMedia() {
     return (

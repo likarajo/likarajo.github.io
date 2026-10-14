@@ -1,4 +1,4 @@
-import { LinkedIn } from "@mui/icons-material"
+import LinkedIn from "@mui/icons-material/LinkedIn"
 import { Breadcrumbs, IconButton, Link, Stack, Typography } from "@mui/material"
 import Articles from "../components/blogs/Articles"
 import { useEffect } from "react";
