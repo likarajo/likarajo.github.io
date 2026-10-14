@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import useMediaQuery from "../common/useMediaQuery";
 import { Card, CardMedia, Typography } from "@mui/material";
 
 function Cards() {

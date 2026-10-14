@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import useMediaQuery from "../common/useMediaQuery";
 import { Card, CardMedia, Dialog, DialogContent, DialogTitle, IconButton, Stack, Typography } from "@mui/material";
 import AppButton from "../common/AppButton";
-import { Description, InfoRounded, LinkedIn, Star } from "@mui/icons-material";
+import Description from "@mui/icons-material/Description";
+import InfoRounded from "@mui/icons-material/InfoRounded";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import Star from "@mui/icons-material/Star";
 
 function Cards() {
 

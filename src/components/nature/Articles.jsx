@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import useMediaQuery from "../common/useMediaQuery";
 import { Backdrop, Chip, Dialog, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, Link, Pagination, Stack, TextField, Typography } from "@mui/material";
-import { Close, Info, LinkRounded, LocationOn, RemoveRedEye } from "@mui/icons-material";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import Close from "@mui/icons-material/Close";
+import Info from "@mui/icons-material/Info";
+import LinkRounded from "@mui/icons-material/LinkRounded";
+import LocationOn from "@mui/icons-material/LocationOn";
+import RemoveRedEye from "@mui/icons-material/RemoveRedEye";
 import articles from "./articles.json";
 
 
@@ -63,10 +66,11 @@ function Nature() {
             <ImageList variant="masonry" cols={twoColumns ? 2 : 1}>
                 {filtered?.slice((page - 1) * itemsPerPage, page * itemsPerPage).map((item) => (
                     <ImageListItem key={item.img} style={{width: "100%", position: 'relative'}}>
-                        <LazyLoadImage
+                        <img
                             src={item.img}
                             alt={item.title}
-                            width={"100%"}
+                            width="100%"
+                            loading="lazy"
                             style={{minHeight: "150px"}}
                         />
                         <IconButton className="media-action" aria-label={`View ${item.title || "photo"}`} onClick={() => handleOpen(item)} style={{position: "absolute", top: 4, left: 4, backgroundColor: "rgba(255,255,255,0.9)"}}>
