@@ -1,20 +1,20 @@
 import { Card, IconButton } from "@mui/material"
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Scrollup() {
 
     const [show, setShow] = useState(false)
 
-    window.addEventListener('scroll', handleScroll);
-
-    function handleScroll(){
-        let scrollPosition = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
-        if(scrollPosition > 200)
-            setShow(true)
-        else
-            setShow(false)
-    }
+    // Subscribe after render so the page can be rendered to static HTML.
+    useEffect(() => {
+        function handleScroll(){
+            let scrollPosition = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
+            setShow(scrollPosition > 200)
+        }
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         show &&

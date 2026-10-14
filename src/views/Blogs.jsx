@@ -10,7 +10,7 @@ function Blogs() {
     }, []);
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
-        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/notes"><b>Notes</b></Link>,
+        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/notes/"><b>Notes</b></Link>,
         <Typography key="3">Photo essays</Typography>
     ]
     return (

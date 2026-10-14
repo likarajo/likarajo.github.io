@@ -14,7 +14,7 @@ function Cards() {
                     and immersing in the sights and sounds of each city,
                     let me take you on a journey to find the best spots that create unforgettable memories.
                 </Typography>
-                <AppButton variant="contained" href="/#/travel/cities">Read More</AppButton>
+                <AppButton variant="contained" href="/travel/cities/">Read More</AppButton>
             </article>
             <article>
                 <Typography variant="h5" component="h2" gutterBottom>Unforgettable Nature</Typography>
@@ -26,7 +26,7 @@ function Cards() {
                     join me as I capture nature&apos;s beauty in various parts of the world.
                     Experience the awe-inspiring landscapes and let them inspire your own adventures.
                 </Typography>
-                <AppButton variant="contained" href="/#/travel/nature">Read More</AppButton>
+                <AppButton variant="contained" href="/travel/nature/">Read More</AppButton>
             </article>
         </div>
     )

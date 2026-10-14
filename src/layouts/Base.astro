@@ -1,0 +1,120 @@
+---
+import '../index.css';
+import '../profile.css';
+import Logo from '../components/header/Logo.jsx';
+import Navbar from '../components/Navbar.astro';
+import Links from '../components/footer/Links.jsx';
+import Themed from '../components/Theme.jsx';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+}
+
+const NAME = 'Rajarshi Chattopadhyay';
+const DEFAULT_DESCRIPTION =
+  'Rajarshi Chattopadhyay, Staff Software Engineer at Tesla. Trustworthy AI systems for asking questions of operational, financial, and energy data in plain language.';
+
+const {
+  title,
+  description = DEFAULT_DESCRIPTION,
+  canonicalPath = Astro.url.pathname,
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} | ${NAME}` : NAME;
+const site = Astro.site ?? new URL('https://likarajo.github.io');
+const canonical = new URL(canonicalPath, site).href;
+const ogImage = new URL('/images/site/profile.jpg', site).href;
+const year = new Date().getFullYear();
+
+// Public facts already shown on the homepage.
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: NAME,
+  url: site.href,
+  image: ogImage,
+  jobTitle: 'Staff Software Engineer',
+  worksFor: { '@type': 'Organization', name: 'Tesla' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Dallas', addressRegion: 'TX', addressCountry: 'US' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'The University of Texas at Dallas' },
+    { '@type': 'CollegeOrUniversity', name: 'West Bengal University of Technology' },
+  ],
+  award: ['IBM Best Emerging Techie, 2016', 'First runner-up, IETE Technical Paper Contest, 2014'],
+  knowsAbout: ['Natural-language interfaces to data', 'Text-to-SQL', 'Data infrastructure', 'Machine learning'],
+  sameAs: [
+    'https://github.com/likarajo',
+    'https://www.linkedin.com/in/likarajo/',
+    'https://www.credly.com/users/likarajo/',
+  ],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Old links used hash routes (/#/contact). Send them to the real page. -->
+    <script is:inline>
+      (function () {
+        var h = window.location.hash;
+        if (h && h.indexOf('#/') === 0) {
+          var p = h.slice(2).replace(/^\/+|\/+$/g, '');
+          window.location.replace('/' + (p ? p + '/' : ''));
+        }
+      })();
+    </script>
+    <base href="/" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="author" content={NAME} />
+    <meta name="google-site-verification" content="u9_JcggcR-SFxiwtd_McOsm1FEIrfXhIKZOvANZflnY" />
+    <link rel="icon" type="image/png" href="/images/site/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="profile:first_name" content="Rajarshi" />
+    <meta property="profile:last_name" content="Chattopadhyay" />
+    <meta property="profile:username" content="likarajo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@likarajo" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+
+    <!-- Google tag (gtag.js), unchanged from the previous site -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-THJQJ2XBVE"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-THJQJ2XBVE');
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <Logo />
+      <Navbar />
+    </header>
+    <div id="app">
+      <slot />
+    </div>
+    <footer class="site-footer">
+      <Themed><Links /></Themed>
+      <p class="footer-note">&copy; {year} {NAME} | <a href="/contact/">Contact</a></p>
+    </footer>
+  </body>
+</html>

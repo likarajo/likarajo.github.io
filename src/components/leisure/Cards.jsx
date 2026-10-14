@@ -14,7 +14,7 @@ function Cards() {
                     indulging in culinary experiences awaken various senses.
                     Join me as I explore different cuisines and share the essence of each culture through its food.
                 </Typography>
-                <AppButton variant="contained" href="/#/leisure/culinary">Read More</AppButton>
+                <AppButton variant="contained" href="/leisure/culinary/">Read More</AppButton>
             </article>
             <article>
                 <Typography variant="h5" component="h2" gutterBottom>Blogs</Typography>
@@ -26,7 +26,7 @@ function Cards() {
                     and expertise as I believe that it is a powerful tool for building a community
                     and connecting with like-minded individuals who share similar interests.
                 </Typography>
-                <AppButton variant="contained" href="/#/leisure/blogs">Read More</AppButton>
+                <AppButton variant="contained" href="/leisure/blogs/">Read More</AppButton>
             </article>
         </div>
     )
