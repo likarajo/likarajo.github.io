@@ -1,0 +1,8 @@
+---
+// Old /#/blogs route showed the Writing page; keep it, canonical to /writing/.
+import Base from '../layouts/Base.astro';
+import WritingList from '../components/WritingList.astro';
+---
+<Base title="Writing" description="Articles and write-ups by Rajarshi Chattopadhyay." canonicalPath="/writing/">
+  <WritingList />
+</Base>

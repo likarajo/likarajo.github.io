@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Crumbs from './Crumbs.astro';
+
+const pieces = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => (a.data.order ?? Number(a.data.year)) - (b.data.order ?? Number(b.data.year)),
+);
+---
+<main class="profile" id="writing">
+  <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Writing' }]} />
+  <h1>Writing</h1>
+  <ul class="piece-list">
+    {pieces.map((piece) => {
+      const external = Boolean(piece.data.href);
+      const href = piece.data.href ?? `/writing/${piece.id}/`;
+      return (
+        <li>
+          <a class="text-link" href={href} {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}>{piece.data.title}</a>
+          <p class="piece-year">{piece.data.year}</p>
+          <p>{piece.data.summary}</p>
+        </li>
+      );
+    })}
+  </ul>
+</main>

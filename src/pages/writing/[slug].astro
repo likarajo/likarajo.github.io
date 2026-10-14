@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+
+// Only pieces without an external link get a page on this site.
+export async function getStaticPaths() {
+  const pieces = await getCollection('writing', ({ data }) => !data.draft && !data.href);
+  return pieces.map((piece) => ({ params: { slug: piece.id }, props: { piece } }));
+}
+
+const { piece } = Astro.props;
+const { Content } = await render(piece);
+---
+<Base title={piece.data.title} description={piece.data.summary}>
+  <main class="profile article">
+    <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Writing', href: '/writing/' }, { label: piece.data.title }]} />
+    <h1>{piece.data.title}</h1>
+    <p class="piece-year">{piece.data.year}</p>
+    <Content />
+  </main>
+</Base>
