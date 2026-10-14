@@ -3,12 +3,13 @@
 # Exit on any error
 set -e
 
-# Build the project (this depends on your project setup, e.g., React, Vue)
+# Build the static Astro site into dist/
 echo "Building the project..."
-npm run build  # Adjust this if you use a different build command
+npm run build
 
-# Deploy to GitHub Pages
+# Deploy dist/ to the gh-pages branch (GitHub Pages user site, served at the root).
+# --dotfiles keeps dist/.nojekyll so GitHub Pages serves the _astro/ folder.
 echo "Deploying to GitHub Pages..."
-npx gh-pages -d dist
+npx gh-pages -d dist --dotfiles
 
 echo "Deployment successful! Your site is live at https://likarajo.github.io"
