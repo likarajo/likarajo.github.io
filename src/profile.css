@@ -1,10 +1,9 @@
 .profile {
   max-width: 42rem;
   margin: 1.25rem auto 2.5rem;
-  padding: 2rem 1.5rem 2.25rem;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(36, 36, 36, 0.08);
-  border-radius: 16px;
+  padding: 0.25rem 0 2rem;
+  background: transparent;
+  border: 0;
 }
 
 .profile .eyebrow {
@@ -47,12 +46,20 @@
 }
 
 .profile .text-link {
-  display: inline-flex;
+  display: inline;
+  padding: 14px 2px;
+  box-decoration-break: clone;
+}
+
+.profile .piece-list > li > .text-link {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 100%;
   min-height: 44px;
   min-width: 44px;
-  padding: 0 4px;
+  padding: 8px 4px;
+  line-height: 1.4;
 }
 
 .profile-links a {
@@ -81,10 +88,28 @@
   margin: 0.45rem 0;
 }
 
-.profile .aside {
-  margin: 2rem 0 0;
-  color: #5c584f;
-  font-size: 0.95rem;
+.profile .example dt {
+  margin: 1rem 0 0.15rem;
+  font-weight: 600;
+}
+
+.profile .example dd {
+  margin: 0;
+}
+
+.profile .piece-list {
+  list-style: none;
+  padding: 0;
+}
+
+.profile .piece-year {
+  margin: 0;
+  font-weight: 600;
+}
+
+.profile .contact-note {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 480px) {

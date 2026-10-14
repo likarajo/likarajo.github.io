@@ -8,6 +8,8 @@ import Nature from '../pages/Nature'
 import Leisure from '../pages/Leisure'
 import Culinary from '../pages/Culinary'
 import Blogs from "../pages/Blogs";
+import Writing from "../pages/Writing";
+import Notes from "../pages/Notes";
 import Profession from '../pages/Profession'
 import NotFound from "../pages/NotFound";
 
@@ -27,7 +29,9 @@ function App() {
           <Route path="/travel/nature" element={<Nature />} />
           <Route path="/leisure" element={<Leisure />} />
           <Route path="/culinary" element={<Culinary />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<Writing />} />
+          <Route path="/writing" element={<Writing />} />
+          <Route path="/notes" element={<Notes />} />
           <Route path="/leisure/culinary" element={<Culinary />} />
           <Route path="/leisure/blogs" element={<Blogs />} />
           <Route path="/profession" element={<Profession />} />
