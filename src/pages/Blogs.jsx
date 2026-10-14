@@ -10,14 +10,14 @@ function Blogs() {
     }, []);
     const breadcrumbs = [
         <Link key="1" color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>,
-        <Typography key="2">Writing</Typography>
+        <Link key="2" color="inherit" style={{textDecoration: "none"}} href="/#/notes"><b>Notes</b></Link>,
+        <Typography key="3">Photo essays</Typography>
     ]
     return (
         <div id="blogs">
             <div className="crumbs crumbs-row">
                 <Breadcrumbs separator="›">
                     {breadcrumbs}
-                    <Typography>Articles</Typography>
                 </Breadcrumbs>
                 <Stack direction="row" alignItems="center">
                     <IconButton href={"https://likarajoblogs.wordpress.com/"} target="_blank" rel="noreferrer" aria-label="WordPress"><img src="images/site/wordpress.png" width="28" height="28" alt="" /></IconButton>
