@@ -3,9 +3,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
-// MUI v5 deep imports resolve to CommonJS files that call require().
-// Vite then executes those files as ESM. Redirect them to the ESM build,
-// including after they have been resolved to an absolute path.
+// MUI v5 ships CommonJS deep imports. Astro 7 prerenders with Vite 8's
+// environment API, which only copies `ssr.noExternal` onto the `ssr`
+// environment. Static generation runs in `prerender`, so the same packages
+// have to be listed there or Node tries to load them as ESM.
+const muiPackages = [/^@mui\//];
+
+// Those CommonJS files interop as `{ default: Component }` under Rolldown.
+// Redirect deep imports to the ESM build, including after they resolve to
+// an absolute path. Bundling (noExternal) resolves the extensionless
+// relative imports inside that build.
 function muiEsmAlias() {
   return {
     name: 'mui-esm-alias',
@@ -39,11 +46,15 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
-  // noExternal bundles these .js ESM files, because their packages are not marked "type": "module".
   vite: {
     plugins: [muiEsmAlias()],
     resolve: { dedupe: ['react', 'react-dom'] },
-    ssr: { noExternal: [/^@mui\//] },
+    ssr: { noExternal: muiPackages },
+    environments: {
+      prerender: {
+        resolve: { noExternal: muiPackages },
+      },
+    },
     build: {
       cssMinify: true,
     },
