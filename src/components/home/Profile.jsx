@@ -57,7 +57,7 @@ function Profile() {
                         <a className="text-link" href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Write-up</a>.
                     </li>
                     <li>
-                        <a className="text-link" href="https://likarajoblogs.wordpress.com/2018/06/08/risc-using-harvard/" target="_blank" rel="noreferrer">A 16-bit RISC processor on an FPGA</a>
+                        <a className="text-link" href="/writing/risc-fpga/">A 16-bit RISC processor on an FPGA</a>
                         {" "}— first runner-up, IETE Technical Paper Contest, 2014.
                     </li>
                 </ul>
