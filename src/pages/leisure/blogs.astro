@@ -1,7 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Island from '../../islands/Blogs.jsx';
+// Old Blogs page retired; send visitors to Writing.
 ---
-<Base title="Photo essays" description="Older posts, kept as a photo gallery." noindex={true}>
-  <Island client:load />
-</Base>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<title>Writing</title>
+<link rel="canonical" href="https://likarajo.github.io/writing/" />
+<meta name="robots" content="noindex" />
+<meta http-equiv="refresh" content="0; url=/writing/" />
+</head><body><p><a href="/writing/">Go to Writing</a></p></body></html>

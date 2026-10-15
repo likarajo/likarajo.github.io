@@ -9,6 +9,8 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     year: z.string(),
+    // Optional full publish date (YYYY-MM-DD); used to sort newest first.
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     summary: z.string(),
     href: z.string().url().optional(),
     order: z.number().optional(),
