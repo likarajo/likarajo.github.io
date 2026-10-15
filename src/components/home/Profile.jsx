@@ -1,4 +1,4 @@
-﻿import "../../profile.css";
+import "../../profile.css";
 
 function Profile() {
     return (
@@ -34,7 +34,7 @@ function Profile() {
                     <dd>119,855,132 megawatthours, the EIA wind row for Texas in 2023.</dd>
                     <dt>Refusal</dt>
                     <dd>
-                        â€œWhat was customer revenue in Texas in 2023?â€ is refused.
+                        “What was customer revenue in Texas in 2023?” is refused.
                         The table has no revenue column, so no query runs.
                     </dd>
                 </dl>
@@ -45,20 +45,20 @@ function Profile() {
                 <ul>
                     <li>
                         <a className="text-link" href="/work/ai-agent-chatbot/">AI agent for energy data</a>
-                        {" "}â€” the example above, written up as a case study.
+                        {" "}— the example above, written up as a case study.
                     </li>
                     <li>
                         <a className="text-link" href="/work/language-translation/">Neural machine translation</a>
-                        {" "}â€” a sequence-to-sequence model that translates a sentence from one language into another.
+                        {" "}— a sequence-to-sequence model that translates a sentence from one language into another.
                     </li>
                     <li>
                         <a className="text-link" href="/work/covid19-sentiments/">COVID-19 sentiment</a>
-                        {" "}â€” classifies the sentiment of COVID-19 tweets.{" "}
+                        {" "}— classifies the sentiment of COVID-19 tweets.{" "}
                         <a className="text-link" href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Write-up</a>.
                     </li>
                     <li>
                         <a className="text-link" href="/writing/risc-fpga/">A 16-bit RISC processor on an FPGA</a>
-                        {" "}â€” first runner-up, IETE Technical Paper Contest, 2014.
+                        {" "}— first runner-up, IETE Technical Paper Contest, 2014.
                     </li>
                 </ul>
                 <p>
@@ -71,7 +71,7 @@ function Profile() {
                 <ul>
                     <li>Staff Software Engineer at Tesla since 2026. Software engineer at Tesla since 2020.</li>
                     <li>M.S. Computer Science, Intelligent Systems, The University of Texas at Dallas, 2020.</li>
-                    <li>IBM, 2014â€“2018. Enterprise systems for a global shipping operation, and lead of a support team. IBM Best Emerging Techie, 2016.</li>
+                    <li>IBM, 2014–2018. Enterprise systems for a global shipping operation, and lead of a support team. IBM Best Emerging Techie, 2016.</li>
                     <li>B.Tech. Electronics and Communication Engineering, West Bengal University of Technology, 2014.</li>
                 </ul>
             </section>

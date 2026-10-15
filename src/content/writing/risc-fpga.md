@@ -1,4 +1,4 @@
-﻿---
+---
 title: "A 16-bit RISC processor on an FPGA"
 year: "2014"
 order: 1
