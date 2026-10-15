@@ -1,4 +1,4 @@
-﻿import { Card, CardMedia, Typography } from "@mui/material";
+import { Card, CardMedia, Typography } from "@mui/material";
 import AppButton from "../common/AppButton";
 
 function Cards() {
