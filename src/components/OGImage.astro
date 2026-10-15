@@ -1,0 +1,74 @@
+---
+/**
+ * Open Graph Image Component
+ *
+ * Generates social media preview images for pages.
+ * Place custom OG images in /public/images/og/
+ *
+ * Usage:
+ * import OGImage from '../components/OGImage.astro';
+ * const ogImageUrl = OGImage.getUrl('page-name');
+ *
+ * Then use in <meta property="og:image" content={ogImageUrl} />
+ */
+
+interface Props {
+  title: string;
+  description?: string;
+  imagePath?: string; // Custom image path in /public/images/og/
+}
+
+const { title, description, imagePath } = Astro.props;
+const site = Astro.site ?? new URL('https://likarajo.github.io');
+
+// Use custom image if provided, otherwise fall back to default profile image
+const ogImage = imagePath
+  ? new URL(`/images/og/${imagePath}`, site).href
+  : new URL('/images/site/profile.jpg', site).href;
+
+/**
+ * Helper function to get OG image URL
+ * Call this from pages to get the full URL for meta tags
+ */
+export function getOGImageUrl(imageName?: string): string {
+  const site = new URL('https://likarajo.github.io');
+  return imageName
+    ? new URL(`/images/og/${imageName}`, site).href
+    : new URL('/images/site/profile.jpg', site).href;
+}
+---
+
+<!-- This component doesn't render anything, it's just for generating URLs -->
+<!-- The actual OG meta tags are in Base.astro -->
+
+<!--
+CREATING CUSTOM OG IMAGES:
+
+1. Create images at 1200x630px (Facebook/LinkedIn recommended size)
+2. Save as JPG or PNG in /public/images/og/
+3. Use descriptive filenames: work-ai-chatbot.jpg, blog-trustworthy-ai.jpg
+
+Example image content:
+- Site name/logo in corner
+- Page title (large, readable)
+- Brief description or key visual
+- Your photo (for personal branding)
+- Consistent color scheme
+
+Tools for creating OG images:
+- Figma (design custom images)
+- Canva (templates available)
+- https://www.opengraph.xyz/ (online generator)
+- https://ogimage.gallery/ (inspiration)
+
+Recommended OG images to create:
+- /images/og/work.jpg - For /work/ page
+- /images/og/ai-agent-chatbot.jpg - For AI chatbot case study
+- /images/og/writing.jpg - For writing/blog page
+- /images/og/trustworthy-ai.jpg - For trustworthy AI blog series
+
+Test your OG images:
+- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
+- LinkedIn Post Inspector: https://www.linkedin.com/post-inspector/
+- Twitter Card Validator: https://cards-dev.twitter.com/validator
+-->

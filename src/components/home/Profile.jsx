@@ -13,10 +13,16 @@ function Profile() {
                 controls in place, and run the systems on data infrastructure other
                 people can use.
             </p>
+            <p className="professional-summary">
+                My focus is on building AI systems for critical infrastructure—energy grids,
+                operational data, and financial reporting—where accuracy, security, and
+                reliability are essential.
+            </p>
             <nav className="profile-links" aria-label="Professional links">
                 <a href="https://github.com/likarajo" target="_blank" rel="noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/likarajo/" target="_blank" rel="noreferrer">LinkedIn</a>
                 <a href="docs/resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+                <a href="mailto:likarajo@gmail.com">Email</a>
             </nav>
 
             <section className="example" aria-label="Worked example">
@@ -47,17 +53,21 @@ function Profile() {
 
             <section>
                 <h2>Public work</h2>
+                <p>
+                    Projects in trustworthy AI, natural language interfaces to data, and machine learning.{" "}
+                    <a className="text-link" href="/work/">View all projects →</a>
+                </p>
                 <ul>
                     <li>
-                        <a className="text-link" href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer">ai-agent-chatbot</a>
+                        <a className="text-link" href="/work/ai-agent-chatbot/">ai-agent-chatbot</a>
                         {" "}— answers a plain-language question about U.S. electricity generation with a checked query, and refuses a question the table cannot support.
                     </li>
                     <li>
-                        <a className="text-link" href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer">language_translation</a>
+                        <a className="text-link" href="/work/language-translation/">language_translation</a>
                         {" "}— a sequence-to-sequence model that translates a sentence from one language into another.
                     </li>
                     <li>
-                        <a className="text-link" href="https://github.com/likarajo/covid19Sentiments" target="_blank" rel="noreferrer">covid19Sentiments</a>
+                        <a className="text-link" href="/work/covid19-sentiments/">covid19Sentiments</a>
                         {" "}— classifies the sentiment of COVID-19 tweets. Write-up:{" "}
                         <a className="text-link" href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">COVID-19 sentiment analysis</a>.
                     </li>
@@ -75,10 +85,6 @@ function Profile() {
                     <li>M.S. Computer Science, Intelligent Systems, The University of Texas at Dallas, 2020.</li>
                     <li>IBM, 2014–2018. Enterprise systems for a global shipping operation, including leading a support team. IBM Best Emerging Techie, 2016.</li>
                     <li>B.Tech. Electronics and Communication Engineering, West Bengal University of Technology, 2014.</li>
-                    <li>
-                        Oracle Java SE 8 (OCA) and Oracle SQL.{" "}
-                        <a className="text-link" href="https://www.credly.com/users/likarajo/" target="_blank" rel="noreferrer">The full set is on Credly</a>.
-                    </li>
                 </ul>
             </section>
         </main>

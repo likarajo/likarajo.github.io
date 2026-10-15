@@ -1,0 +1,305 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Work', url: '/work/' },
+];
+---
+<Base
+  title="Work"
+  description="Public projects in trustworthy AI, natural language interfaces to data, and machine learning applications for energy infrastructure and public benefit."
+  breadcrumbs={breadcrumbs}
+>
+  <main class="content-page">
+    <h1>Work</h1>
+    <p class="lead">
+      Public projects in trustworthy AI systems, natural language interfaces to data,
+      and machine learning applications with focus on accuracy, security, and accessibility.
+    </p>
+
+    <section class="work-section">
+      <h2>Featured Projects</h2>
+
+      <article class="project-card featured">
+        <div class="project-header">
+          <h3>
+            <a href="/work/ai-agent-chatbot/">AI Agent Chatbot for Energy Data</a>
+          </h3>
+          <span class="project-category">Trustworthy AI · Natural Language</span>
+        </div>
+        <p class="project-description">
+          A natural language question-answering system over U.S. electricity generation data.
+          Demonstrates checked query translation, parameter binding to prevent injection,
+          and refusal when questions cannot be answered from available data.
+        </p>
+        <div class="project-highlights">
+          <h4>Key Features</h4>
+          <ul>
+            <li>Plain-language questions mapped to parameterized SQL queries</li>
+            <li>Query validation and safety checks before execution</li>
+            <li>Refusal mechanism for unanswerable or unsafe questions</li>
+            <li>Public EIA electricity generation data (50+ years)</li>
+          </ul>
+        </div>
+        <div class="project-links">
+          <a href="/work/ai-agent-chatbot/" class="btn-primary">View case study →</a>
+          <a href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer" class="btn-secondary">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-header">
+          <h3>
+            <a href="/work/language-translation/">Neural Machine Translation</a>
+          </h3>
+          <span class="project-category">Deep Learning · NLP</span>
+        </div>
+        <p class="project-description">
+          Sequence-to-sequence model for translating sentences between languages using
+          encoder-decoder architecture with attention mechanism.
+        </p>
+        <div class="project-links">
+          <a href="/work/language-translation/" class="btn-primary">View case study →</a>
+          <a href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer" class="btn-secondary">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-header">
+          <h3>
+            <a href="/work/covid19-sentiments/">COVID-19 Sentiment Analysis</a>
+          </h3>
+          <span class="project-category">Machine Learning · NLP</span>
+        </div>
+        <p class="project-description">
+          Sentiment classification of COVID-19 related tweets during the pandemic.
+          Analysis of public sentiment trends and patterns from social media data.
+        </p>
+        <div class="project-links">
+          <a href="/work/covid19-sentiments/" class="btn-primary">View case study →</a>
+          <a href="https://github.com/likarajo/covid19Sentiments" target="_blank" rel="noreferrer" class="btn-secondary">GitHub</a>
+          <a href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer" class="btn-secondary">Article</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="work-section">
+      <h2>Additional Projects</h2>
+
+      <ul class="project-list">
+        <li>
+          <strong>
+            <a href="https://likarajoblogs.wordpress.com/2018/06/08/risc-using-harvard/" target="_blank" rel="noreferrer">
+              16-bit RISC Processor on FPGA
+            </a>
+          </strong>
+          — Hardware implementation using Harvard architecture. First runner-up, IETE Technical Paper Contest, 2014.
+        </li>
+        <li>
+          <strong>
+            <a href="https://github.com/likarajo" target="_blank" rel="noreferrer">
+              Open Source Contributions
+            </a>
+          </strong>
+          — Various machine learning, data analysis, and infrastructure projects on GitHub.
+        </li>
+      </ul>
+    </section>
+
+    <section class="work-section cta-section">
+      <h2>Interested in collaboration?</h2>
+      <p>
+        I'm open to discussing trustworthy AI systems, natural language interfaces to data,
+        and projects with public benefit focus.
+      </p>
+      <a href="/contact/" class="btn-primary">Get in touch →</a>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+
+  .work-section {
+    margin-bottom: 4rem;
+  }
+
+  .work-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  .project-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-card.featured {
+    background: #f5f9ff;
+    border-color: #4a90e2;
+    border-width: 2px;
+  }
+
+  .project-header {
+    margin-bottom: 1rem;
+  }
+
+  .project-header h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .project-header h3 a {
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  .project-header h3 a:hover {
+    color: #4a90e2;
+    text-decoration: underline;
+  }
+
+  .project-category {
+    font-size: 0.875rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .project-description {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-highlights {
+    background: white;
+    border-left: 3px solid #4a90e2;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-highlights h4 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .project-highlights ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .project-highlights li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.625rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #4a90e2;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #357abd;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+  }
+
+  .btn-secondary:hover {
+    background: #f0f7ff;
+  }
+
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    line-height: 1.6;
+  }
+
+  .project-list li:last-child {
+    border-bottom: none;
+  }
+
+  .project-list a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  .project-list a:hover {
+    text-decoration: underline;
+  }
+
+  .cta-section {
+    background: #f0f7ff;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    border: none;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
