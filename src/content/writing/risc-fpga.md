@@ -5,7 +5,7 @@ order: 1
 summary: "A 16-bit RISC design on an FPGA, first runner-up in the IETE Technical Paper Contest."
 ---
 
-**Project:** 2014. First written up online on June 8, 2018.
+*Undergraduate research project, 2014. Written up on my blog on June 8, 2018.*
 
 ## Abstract
 
