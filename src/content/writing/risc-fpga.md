@@ -1,12 +1,11 @@
 ﻿---
 title: "A 16-bit RISC processor on an FPGA"
-year: "2018"
-date: "2018-06-08"
+year: "2014"
 order: 1
 summary: "A 16-bit RISC design on an FPGA, first runner-up in the IETE Technical Paper Contest."
 ---
 
-**Published:** June 8, 2018
+**Project:** 2014. First written up online on June 8, 2018.
 
 ## Abstract
 
