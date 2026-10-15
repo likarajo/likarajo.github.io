@@ -5,85 +5,73 @@ function Profile() {
         <main className="profile">
             <p className="eyebrow">Dallas, Texas</p>
             <h1>Rajarshi Chattopadhyay</h1>
-            <p className="role">Staff Software Engineer at Tesla</p>
+            <p className="role">Software Architect | AI Systems &amp; Business Applications</p>
             <p className="lead">
-                I design trustworthy AI systems that let people ask questions of large
-                operational, financial, and energy datasets in plain language. The work
-                is to turn those questions into checked analytical queries, keep access
-                controls in place, and run the systems on data infrastructure other
-                people can use.
+                I design and build scalable, production-grade intelligent systems that power
+                analytics platforms and business-critical applications. My work focuses on
+                architecting distributed systems, data pipelines, and AI-driven solutions
+                that improve reliability, performance, and decision-making at scale.
             </p>
-            <p className="professional-summary">
-                My focus is on building AI systems for critical infrastructure—energy grids,
-                operational data, and financial reporting—where accuracy, security, and
-                reliability are essential.
-            </p>
-            <nav className="profile-links" aria-label="Professional links">
-                <a href="https://github.com/likarajo" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/likarajo/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <p className="profile-links">
                 <a href="docs/resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-                <a href="mailto:likarajo@gmail.com">Email</a>
-            </nav>
+            </p>
 
-            <section className="example" aria-label="Worked example">
-                <h2>A worked example</h2>
+            <section className="example" aria-label="One example">
                 <p>
-                    This is the public agent in{" "}
-                    <a className="text-link" href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer">ai-agent-chatbot</a>
-                    , over U.S. electricity generation published by the Energy Information Administration.
+                    <a className="text-link" href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer">AI agent for energy data</a>
+                    {" "}answers questions about U.S. electricity generation published by the Energy Information Administration.
                 </p>
                 <dl>
                     <dt>Question</dt>
                     <dd>How much wind generation did Texas produce in 2023?</dd>
                     <dt>Check</dt>
                     <dd>
-                        The question maps to one aggregate: year 2023, Texas, wind.
-                        The statement is a single SELECT with those values bound as parameters.
-                        The sentence itself is not copied into SQL.
+                        The question is one aggregate: 2023, Texas, wind.
+                        The query is a single SELECT with those values as parameters.
+                        The sentence is not copied into SQL.
                     </dd>
                     <dt>Answer</dt>
-                    <dd>119,855,132 megawatthours. That is the EIA wind row for Texas in 2023.</dd>
+                    <dd>119,855,132 megawatthours, the EIA wind row for Texas in 2023.</dd>
                     <dt>Refusal</dt>
                     <dd>
                         “What was customer revenue in Texas in 2023?” is refused.
-                        The table has no revenue column, so the agent explains that and does not run a query.
+                        The table has no revenue column, so no query runs.
                     </dd>
                 </dl>
             </section>
 
             <section>
                 <h2>Public work</h2>
-                <p>
-                    Projects in trustworthy AI, natural language interfaces to data, and machine learning.{" "}
-                    <a className="text-link" href="/work/">View all projects →</a>
-                </p>
                 <ul>
                     <li>
-                        <a className="text-link" href="/work/ai-agent-chatbot/">ai-agent-chatbot</a>
-                        {" "}— answers a plain-language question about U.S. electricity generation with a checked query, and refuses a question the table cannot support.
+                        <a className="text-link" href="/work/ai-agent-chatbot/">AI agent for energy data</a>
+                        {" "}— the example above, written up as a case study.
                     </li>
                     <li>
-                        <a className="text-link" href="/work/language-translation/">language_translation</a>
+                        <a className="text-link" href="/work/language-translation/">Neural machine translation</a>
                         {" "}— a sequence-to-sequence model that translates a sentence from one language into another.
                     </li>
                     <li>
-                        <a className="text-link" href="/work/covid19-sentiments/">covid19Sentiments</a>
-                        {" "}— classifies the sentiment of COVID-19 tweets. Write-up:{" "}
-                        <a className="text-link" href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">COVID-19 sentiment analysis</a>.
+                        <a className="text-link" href="/work/covid19-sentiments/">COVID-19 sentiment</a>
+                        {" "}— classifies the sentiment of COVID-19 tweets.{" "}
+                        <a className="text-link" href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Write-up</a>.
                     </li>
                     <li>
                         <a className="text-link" href="https://likarajoblogs.wordpress.com/2018/06/08/risc-using-harvard/" target="_blank" rel="noreferrer">A 16-bit RISC processor on an FPGA</a>
-                        {" "}— a small processor built on an FPGA. First runner-up, IETE Technical Paper Contest, 2014.
+                        {" "}— first runner-up, IETE Technical Paper Contest, 2014.
                     </li>
                 </ul>
+                <p>
+                    <a className="text-link" href="/work/">All projects</a>
+                </p>
             </section>
 
             <section>
                 <h2>Background</h2>
                 <ul>
-                    <li>Staff Software Engineer, Tesla, since 2026. Software engineer at Tesla since 2020, in Dallas.</li>
+                    <li>Staff Software Engineer at Tesla since 2026. Software engineer at Tesla since 2020.</li>
                     <li>M.S. Computer Science, Intelligent Systems, The University of Texas at Dallas, 2020.</li>
-                    <li>IBM, 2014–2018. Enterprise systems for a global shipping operation, including leading a support team. IBM Best Emerging Techie, 2016.</li>
+                    <li>IBM, 2014–2018. Enterprise systems for a global shipping operation, and lead of a support team. IBM Best Emerging Techie, 2016.</li>
                     <li>B.Tech. Electronics and Communication Engineering, West Bengal University of Technology, 2014.</li>
                 </ul>
             </section>

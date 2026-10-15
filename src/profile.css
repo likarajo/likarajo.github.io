@@ -11,7 +11,7 @@
   font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #5c584f;
+  color: var(--text-secondary);
 }
 
 .profile h1 {
@@ -39,9 +39,11 @@
   margin-top: 1.25rem;
 }
 
+.profile a,
+.profile a:hover,
 .profile-links a,
 .profile .text-link {
-  color: #1c1a16;
+  color: var(--text-primary);
   text-underline-offset: 0.18em;
 }
 
@@ -88,13 +90,25 @@
   margin: 0.45rem 0;
 }
 
+.profile .example {
+  margin-top: 2rem;
+  padding: 0.15rem 0 0.35rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile .example h2 {
+  margin-top: 0.85rem;
+}
+
 .profile .example dt {
   margin: 1rem 0 0.15rem;
-  font-weight: 600;
+  font-size: 14px;
 }
 
 .profile .example dd {
   margin: 0;
+  font-size: 12px;
 }
 
 .profile .piece-list {
@@ -110,6 +124,12 @@
 .profile .contact-note {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.profile .page-end {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
 }
 
 @media (max-width: 480px) {

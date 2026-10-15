@@ -76,13 +76,15 @@ video {
   padding-left: 8px;
 }
 
-.logo-link {
+.logo-link,
+.logo-link:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
   flex: 0 0 44px;
+  color: var(--text-primary);
 }
 
 .site-header img {
@@ -204,9 +206,9 @@ video {
   position: sticky;
   bottom: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--footer-bg);
   backdrop-filter: blur(10px);
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-color);
   padding: 12px 0;
   z-index: 100;
 }
@@ -214,6 +216,15 @@ video {
 .footer-links {
   justify-content: center;
   min-height: 44px;
+}
+
+.credly-mark {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-color: currentColor;
+  -webkit-mask: url("/images/site/credly.png") center / contain no-repeat;
+  mask: url("/images/site/credly.png") center / contain no-repeat;
 }
 
 .scroll-up {
@@ -323,7 +334,7 @@ video {
   width: 44px;
   height: 44px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--text-secondary);
 }
 
 #nav .nav-narrow summary::-webkit-details-marker {
@@ -337,8 +348,9 @@ video {
   z-index: 10;
   min-width: 10rem;
   padding: 8px 0;
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
   border-radius: 4px;
 }
 
@@ -364,7 +376,7 @@ video {
   list-style: none;
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-secondary);
 }
 
 .crumbs-list li {

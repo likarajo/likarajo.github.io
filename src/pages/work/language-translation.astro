@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CaseStudy from '../../components/CaseStudy.astro';
+import Crumbs from '../../components/Crumbs.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -23,7 +24,8 @@ const technologies = [
   breadcrumbs={breadcrumbs}
   articleDate="2023-06-20"
 >
-  <main class="content-page">
+  <main class="profile">
+    <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Work', href: '/work/' }, { label: 'Neural machine translation' }]} />
     <CaseStudy
       title="Neural Machine Translation"
       category="Deep Learning · NLP"
@@ -207,33 +209,11 @@ const technologies = [
         </ul>
       </section>
 
-      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
-        <p>
-          <a href="/work/">← Back to all projects</a> |
-          <a href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer">View on GitHub →</a>
-        </p>
-      </div>
+      <p class="page-end">
+        <a href="/work/">Back to all projects</a>
+        {" · "}
+        <a href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer">GitHub</a>
+      </p>
     </CaseStudy>
   </main>
 </Base>
-
-<style>
-  .content-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
-  section {
-    margin-bottom: 2.5rem;
-  }
-
-  a {
-    color: #4a90e2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-</style>

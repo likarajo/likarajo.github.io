@@ -16,32 +16,17 @@ const { title, category, description, githubUrl, externalUrl, technologies = [] 
   <h1>{title}</h1>
   <p class="case-study-description">{description}</p>
 
-  {technologies.length > 0 && (
-    <div class="technologies">
-      <h3>Technologies</h3>
-      <ul class="tech-list">
-        {technologies.map((tech) => (
-          <li class="tech-tag">{tech}</li>
-        ))}
-      </ul>
-    </div>
-  )}
+  {technologies.length > 0 && <p>{technologies.join(', ')}</p>}
 
-  <div class="case-study-links">
+  <p class="case-study-links">
     {githubUrl && (
-      <a href={githubUrl} target="_blank" rel="noreferrer" class="btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        View on GitHub
-      </a>
+      <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
     )}
+    {githubUrl && externalUrl && ' · '}
     {externalUrl && (
-      <a href={externalUrl} target="_blank" rel="noreferrer" class="btn-secondary">
-        View Article
-      </a>
+      <a href={externalUrl} target="_blank" rel="noreferrer">Article</a>
     )}
-  </div>
+  </p>
 </div>
 
 <div class="case-study-content">
@@ -50,176 +35,78 @@ const { title, category, description, githubUrl, externalUrl, technologies = [] 
 
 <style>
   .case-study-header {
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .case-study-category {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #4a90e2;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
   }
 
+  .case-study-category {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
   h1 {
-    font-size: 2.5rem;
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
+    margin: 0.35rem 0 0.25rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .case-study-description {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 2rem;
-  }
-
-  .technologies {
-    margin-bottom: 2rem;
-  }
-
-  .technologies h3 {
-    font-size: 1rem;
-    margin: 0 0 0.75rem 0;
-    color: #666;
-  }
-
-  .tech-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tech-tag {
-    background: #f0f7ff;
-    color: #1a5490;
-    padding: 0.375rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
+    margin: 1.1rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
   }
 
   .case-study-links {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: white;
-    color: #4a90e2;
-    border: 1px solid #4a90e2;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-
-  .btn-secondary:hover {
-    background: #f0f7ff;
-  }
-
-  .btn-secondary svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .case-study-content {
-    line-height: 1.7;
+    gap: 0.35rem 0.65rem;
   }
 
   .case-study-content :global(h2) {
-    font-size: 1.75rem;
-    margin: 2.5rem 0 1rem 0;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 0.5rem;
-  }
-
-  .case-study-content :global(h3) {
-    font-size: 1.375rem;
-    margin: 2rem 0 1rem 0;
-  }
-
-  .case-study-content :global(p) {
-    margin-bottom: 1rem;
-  }
-
-  .case-study-content :global(ul),
-  .case-study-content :global(ol) {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-  }
-
-  .case-study-content :global(li) {
-    margin-bottom: 0.5rem;
-  }
-
-  .case-study-content :global(code) {
-    background: #f5f5f5;
-    padding: 0.125rem 0.375rem;
-    border-radius: 3px;
-    font-family: 'Monaco', 'Courier New', monospace;
-    font-size: 0.875em;
-  }
-
-  .case-study-content :global(pre) {
-    background: #f5f5f5;
-    padding: 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin-bottom: 1rem;
-  }
-
-  .case-study-content :global(pre code) {
-    background: none;
+    margin: 2rem 0 0.45rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: 0;
     padding: 0;
   }
 
+  .case-study-content :global(h3) {
+    margin: 1.25rem 0 0.35rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .case-study-content :global(code),
+  .case-study-content :global(pre) {
+    background: var(--code-bg);
+    color: var(--text-primary);
+  }
+
+  .case-study-content :global(pre) {
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+  }
+
   .case-study-content :global(blockquote) {
-    border-left: 4px solid #4a90e2;
-    padding-left: 1.5rem;
-    margin: 1.5rem 0;
-    color: #555;
-    font-style: italic;
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-color);
   }
 
   .case-study-content :global(.highlight-box) {
-    background: #f0f7ff;
-    border: 1px solid #4a90e2;
-    border-radius: 6px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
+    margin: 1.25rem 0;
+    padding: 0.15rem 0 0.35rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: transparent;
   }
 
   .case-study-content :global(.highlight-box h3) {
-    margin-top: 0;
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .case-study-description {
-      font-size: 1.125rem;
-    }
-
-    .case-study-content :global(h2) {
-      font-size: 1.5rem;
-    }
-
-    .case-study-content :global(h3) {
-      font-size: 1.25rem;
-    }
+    margin-top: 0.85rem;
   }
 </style>

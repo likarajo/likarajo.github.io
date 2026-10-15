@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CaseStudy from '../../components/CaseStudy.astro';
+import Crumbs from '../../components/Crumbs.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -23,7 +24,8 @@ const technologies = [
   breadcrumbs={breadcrumbs}
   articleDate="2021-04-15"
 >
-  <main class="content-page">
+  <main class="profile">
+    <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Work', href: '/work/' }, { label: 'COVID-19 sentiment' }]} />
     <CaseStudy
       title="COVID-19 Sentiment Analysis"
       category="Machine Learning · NLP"
@@ -241,34 +243,13 @@ const technologies = [
         </ul>
       </section>
 
-      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
-        <p>
-          <a href="/work/">← Back to all projects</a> |
-          <a href="https://github.com/likarajo/covid19Sentiments" target="_blank" rel="noreferrer">View on GitHub →</a> |
-          <a href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Read the article →</a>
-        </p>
-      </div>
+      <p class="page-end">
+        <a href="/work/">Back to all projects</a>
+        {" · "}
+        <a href="https://github.com/likarajo/covid19Sentiments" target="_blank" rel="noreferrer">GitHub</a>
+        {" · "}
+        <a href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Article</a>
+      </p>
     </CaseStudy>
   </main>
 </Base>
-
-<style>
-  .content-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-  }
-
-  section {
-    margin-bottom: 2.5rem;
-  }
-
-  a {
-    color: #4a90e2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
