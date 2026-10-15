@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import Crumbs from './Crumbs.astro';
 
 const pieces = (await getCollection('writing', ({ data }) => !data.draft)).sort(
-  (a, b) => (a.data.order ?? Number(a.data.year)) - (b.data.order ?? Number(b.data.year)),
+  // Newest first: full date when set, otherwise the year.
+  (a, b) => (b.data.date ?? b.data.year).localeCompare(a.data.date ?? a.data.year),
 );
 ---
 <main class="profile" id="writing">
