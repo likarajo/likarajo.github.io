@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Publications & Speaking', url: '/publications/' },
+];
+
+// TODO: Add your publications, talks, and presentations here
+const publications = [
+  // Example structure - uncomment and fill in when ready:
+  // {
+  //   title: "Building Trustworthy Text-to-SQL Systems",
+  //   type: "Conference Paper",
+  //   venue: "Conference Name",
+  //   date: "2024-03-15",
+  //   url: "https://example.com/paper.pdf",
+  //   description: "Paper description here",
+  // },
+];
+
+const talks = [
+  // Example structure - uncomment and fill in when ready:
+  // {
+  //   title: "Natural Language Interfaces to Critical Infrastructure Data",
+  //   event: "Tech Conference 2024",
+  //   date: "2024-06-10",
+  //   location: "Dallas, TX",
+  //   slides: "https://example.com/slides.pdf",
+  //   video: "https://youtube.com/watch?v=...",
+  //   description: "Talk description here",
+  // },
+];
+---
+<Base
+  title="Publications & Speaking"
+  description="Research publications, technical presentations, and speaking engagements on trustworthy AI, natural language interfaces, and data infrastructure."
+  breadcrumbs={breadcrumbs}
+  noindex={true}
+>
+  <main class="content-page">
+    <h1>Publications & Speaking</h1>
+    <p class="lead">
+      Research, presentations, and technical writing on trustworthy AI systems,
+      natural language interfaces to data, and infrastructure for critical applications.
+    </p>
+
+    <section class="publications-section">
+      <h2>Publications</h2>
+      {publications.length === 0 ? (
+        <div class="placeholder">
+          <p>Publications coming soon. Check back later or <a href="/contact/">get in touch</a> for collaboration opportunities.</p>
+        </div>
+      ) : (
+        <div class="publications-list">
+          {publications.map((pub) => (
+            <article class="publication-card">
+              <div class="publication-header">
+                <h3>{pub.title}</h3>
+                <span class="publication-type">{pub.type}</span>
+              </div>
+              <div class="publication-meta">
+                <span class="venue">{pub.venue}</span>
+                <span class="date">{new Date(pub.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
+              </div>
+              <p>{pub.description}</p>
+              {pub.url && (
+                <a href={pub.url} target="_blank" rel="noreferrer" class="btn-secondary">
+                  Read paper →
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <section class="talks-section">
+      <h2>Speaking & Presentations</h2>
+      {talks.length === 0 ? (
+        <div class="placeholder">
+          <p>Speaking engagements will be listed here. Interested in having me speak at your event? <a href="/contact/">Let's talk</a>.</p>
+        </div>
+      ) : (
+        <div class="talks-list">
+          {talks.map((talk) => (
+            <article class="talk-card">
+              <h3>{talk.title}</h3>
+              <div class="talk-meta">
+                <span class="event">{talk.event}</span>
+                <span class="location">{talk.location}</span>
+                <span class="date">{new Date(talk.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </div>
+              <p>{talk.description}</p>
+              <div class="talk-links">
+                {talk.slides && (
+                  <a href={talk.slides} target="_blank" rel="noreferrer" class="btn-secondary">Slides</a>
+                )}
+                {talk.video && (
+                  <a href={talk.video} target="_blank" rel="noreferrer" class="btn-secondary">Video</a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <section class="topics-section">
+      <h2>Speaking Topics</h2>
+      <p>Available to speak on:</p>
+      <ul class="topics-list">
+        <li>Building trustworthy AI systems for critical infrastructure</li>
+        <li>Natural language interfaces to structured data</li>
+        <li>Text-to-SQL security and validation</li>
+        <li>Data governance in AI applications</li>
+        <li>Machine learning for energy and operational data</li>
+      </ul>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+
+  .publications-section,
+  .talks-section,
+  .topics-section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  .placeholder {
+    background: #f9f9f9;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+  }
+
+  .placeholder a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  .placeholder a:hover {
+    text-decoration: underline;
+  }
+
+  .publication-card,
+  .talk-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .publication-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .publication-header h3 {
+    margin: 0;
+    font-size: 1.375rem;
+  }
+
+  .publication-type {
+    background: #4a90e2;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .publication-meta,
+  .talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  .venue,
+  .event {
+    font-weight: 600;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.625rem 1.25rem;
+    background: white;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: #f0f7ff;
+  }
+
+  .talk-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .topics-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .topics-list li {
+    padding: 0.75rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .topics-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #4a90e2;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.125rem;
+    }
+
+    .publication-header {
+      flex-direction: column;
+    }
+
+    .publication-type {
+      align-self: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,267 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Work', url: '/work/' },
+  { name: 'AI Agent Chatbot', url: '/work/ai-agent-chatbot/' },
+];
+
+const technologies = [
+  'Python',
+  'Claude API',
+  'Text-to-SQL',
+  'SQLite',
+  'Natural Language Processing',
+  'Prompt Engineering',
+];
+---
+<Base
+  title="AI Agent Chatbot for Energy Data"
+  description="A trustworthy natural language question-answering system over U.S. electricity generation data with checked query translation and refusal mechanisms."
+  breadcrumbs={breadcrumbs}
+  articleDate="2024-01-15"
+>
+  <main class="content-page">
+    <CaseStudy
+      title="AI Agent Chatbot for Energy Data"
+      category="Trustworthy AI · Natural Language"
+      description="A natural language question-answering system that demonstrates how to build trustworthy AI for data queries—with safety checks, parameter binding, and refusal when questions can't be answered."
+      githubUrl="https://github.com/likarajo/ai-agent-chatbot"
+      technologies={technologies}
+    >
+      <section>
+        <h2>Overview</h2>
+        <p>
+          This project demonstrates a trustworthy approach to natural language question-answering
+          over structured data. The system converts plain-language questions about U.S. electricity
+          generation into safe, parameterized SQL queries while refusing questions that cannot be
+          answered from the available data.
+        </p>
+        <p>
+          The chatbot uses public data from the U.S. Energy Information Administration (EIA),
+          covering over 50 years of electricity generation broken down by state and energy source
+          (coal, natural gas, nuclear, wind, solar, etc.).
+        </p>
+      </section>
+
+      <section>
+        <h2>The Challenge</h2>
+        <p>
+          Natural language interfaces to databases face several critical challenges:
+        </p>
+        <ul>
+          <li>
+            <strong>SQL Injection Risk:</strong> Naively inserting user text into SQL queries
+            creates severe security vulnerabilities
+          </li>
+          <li>
+            <strong>Schema Misalignment:</strong> Users may ask questions the database cannot answer,
+            leading to incorrect results or hallucinated data
+          </li>
+          <li>
+            <strong>Access Control:</strong> Query systems must respect data permissions and not
+            leak restricted information
+          </li>
+          <li>
+            <strong>Accuracy Verification:</strong> Generated queries must be checked before
+            execution to ensure they match the question's intent
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Solution Approach</h2>
+
+        <h3>1. Checked Query Translation</h3>
+        <p>
+          Instead of directly converting questions to SQL, the system uses a two-step process:
+        </p>
+        <ol>
+          <li>
+            Extract the semantic intent: What aggregations, filters, and dimensions does the
+            question require?
+          </li>
+          <li>
+            Map that intent to a predefined query template with parameters—never insert user
+            text directly into SQL
+          </li>
+        </ol>
+
+        <div class="highlight-box">
+          <h3>Example: Wind Generation in Texas</h3>
+          <p><strong>Question:</strong> "How much wind generation did Texas produce in 2023?"</p>
+          <p><strong>Intent Extracted:</strong></p>
+          <ul>
+            <li>Year: 2023</li>
+            <li>State: Texas</li>
+            <li>Energy Source: Wind</li>
+            <li>Metric: Total generation (megawatthours)</li>
+          </ul>
+          <p><strong>Query:</strong> A parameterized SELECT with these values bound safely</p>
+          <p><strong>Result:</strong> 119,855,132 megawatthours (verified against EIA data)</p>
+        </div>
+
+        <h3>2. Refusal Mechanism</h3>
+        <p>
+          When a question asks for data that doesn't exist in the schema, the system refuses
+          and explains why:
+        </p>
+        <div class="highlight-box">
+          <p><strong>Question:</strong> "What was customer revenue in Texas in 2023?"</p>
+          <p><strong>Response:</strong> The system explains that the electricity generation table
+          has no revenue column and cannot answer this question. No query is executed.</p>
+        </div>
+
+        <h3>3. Schema Awareness</h3>
+        <p>
+          The agent has access to the complete database schema, allowing it to:
+        </p>
+        <ul>
+          <li>Validate that requested columns and tables exist</li>
+          <li>Check that filters and aggregations are appropriate for the data types</li>
+          <li>Identify when questions require joins or calculations the schema doesn't support</li>
+        </ul>
+
+        <h3>4. Security by Design</h3>
+        <p>Key security principles implemented:</p>
+        <ul>
+          <li>
+            <strong>Parameter Binding:</strong> All user inputs are bound as query parameters,
+            never concatenated into SQL strings
+          </li>
+          <li>
+            <strong>Query Validation:</strong> Every generated query is checked against allowed
+            patterns before execution
+          </li>
+          <li>
+            <strong>Read-Only Access:</strong> The system operates with read-only database
+            permissions
+          </li>
+          <li>
+            <strong>No Direct SQL:</strong> Users cannot provide raw SQL—only natural language
+            questions
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Technical Implementation</h2>
+
+        <h3>Architecture</h3>
+        <p>The system consists of several components:</p>
+        <ul>
+          <li>
+            <strong>Language Model (Claude):</strong> Interprets questions and maps them to
+            database operations
+          </li>
+          <li>
+            <strong>Query Builder:</strong> Constructs parameterized SQL from semantic intent
+          </li>
+          <li>
+            <strong>Schema Validator:</strong> Checks that requested operations are valid for
+            the schema
+          </li>
+          <li>
+            <strong>Execution Engine:</strong> Runs validated queries with bound parameters
+          </li>
+        </ul>
+
+        <h3>Data Source</h3>
+        <p>
+          The chatbot uses the EIA's Electric Power Annual dataset, which provides:
+        </p>
+        <ul>
+          <li>Historical electricity generation data from 1970–present</li>
+          <li>Breakdown by U.S. state and energy source</li>
+          <li>Generation measured in megawatthours</li>
+          <li>Public domain data suitable for demonstration purposes</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Key Takeaways</h2>
+
+        <div class="highlight-box">
+          <h3>Principles for Trustworthy Text-to-SQL</h3>
+          <ol>
+            <li>
+              <strong>Never inject user text into SQL:</strong> Use parameterized queries
+              exclusively
+            </li>
+            <li>
+              <strong>Make refusal explicit:</strong> When the system can't answer, it should
+              say why, not guess
+            </li>
+            <li>
+              <strong>Validate before execution:</strong> Check that generated queries match
+              the question's intent
+            </li>
+            <li>
+              <strong>Expose schema constraints:</strong> The AI needs to know what data exists
+              and what doesn't
+            </li>
+            <li>
+              <strong>Design for auditability:</strong> Query translation steps should be
+              inspectable and logged
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Use Cases</h2>
+        <p>
+          This approach is applicable to domains where data accuracy and security are critical:
+        </p>
+        <ul>
+          <li>Energy infrastructure and grid operations data</li>
+          <li>Financial reporting and compliance queries</li>
+          <li>Healthcare data analysis with privacy requirements</li>
+          <li>Government and public sector data transparency</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Future Directions</h2>
+        <p>Potential extensions to explore:</p>
+        <ul>
+          <li>Multi-table queries with join safety checks</li>
+          <li>Time-series analysis and forecasting questions</li>
+          <li>Row-level access control based on user permissions</li>
+          <li>Query result explanation and provenance tracking</li>
+          <li>Integration with data governance frameworks</li>
+        </ul>
+      </section>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
+        <p>
+          <a href="/work/">← Back to all projects</a> |
+          <a href="https://github.com/likarajo/ai-agent-chatbot" target="_blank" rel="noreferrer">View on GitHub →</a>
+        </p>
+      </div>
+    </CaseStudy>
+  </main>
+</Base>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

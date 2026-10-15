@@ -1,0 +1,208 @@
+---
+/**
+ * Impact Metrics Component
+ *
+ * Displays quantifiable impact metrics for projects.
+ * Only use PUBLIC, NON-CONFIDENTIAL metrics.
+ *
+ * Usage:
+ * import ImpactMetrics from '../components/ImpactMetrics.astro';
+ *
+ * <ImpactMetrics
+ *   metrics={[
+ *     { value: "50+", label: "Years of public energy data", description: "EIA electricity generation database" },
+ *     { value: "100%", label: "Query safety validation", description: "Parameter binding prevents SQL injection" },
+ *   ]}
+ * />
+ */
+
+interface Metric {
+  value: string;
+  label: string;
+  description?: string;
+  icon?: string; // Optional icon/emoji
+}
+
+interface Props {
+  metrics: Metric[];
+  title?: string;
+  variant?: 'default' | 'compact' | 'featured';
+}
+
+const {
+  metrics,
+  title = "Impact",
+  variant = 'default',
+} = Astro.props;
+---
+
+<section class={`impact-metrics variant-${variant}`}>
+  {title && <h3 class="impact-title">{title}</h3>}
+  <div class="metrics-grid">
+    {metrics.map((metric) => (
+      <div class="metric-card">
+        {metric.icon && <span class="metric-icon">{metric.icon}</span>}
+        <div class="metric-value">{metric.value}</div>
+        <div class="metric-label">{metric.label}</div>
+        {metric.description && (
+          <p class="metric-description">{metric.description}</p>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .impact-metrics {
+    margin: 2rem 0;
+  }
+
+  .impact-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .metric-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .metric-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4a90e2;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-description {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Compact variant - smaller cards in a row */
+  .variant-compact .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .variant-compact .metric-card {
+    padding: 1rem;
+  }
+
+  .variant-compact .metric-value {
+    font-size: 2rem;
+  }
+
+  .variant-compact .metric-label {
+    font-size: 0.875rem;
+  }
+
+  /* Featured variant - larger, more prominent */
+  .variant-featured .metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .variant-featured .metric-card {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    border: 2px solid #4a90e2;
+  }
+
+  .variant-featured .metric-value {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+    }
+
+    .variant-featured .metric-value {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<!--
+EXAMPLE USAGE:
+
+<ImpactMetrics
+  title="Public Project Impact"
+  metrics={[
+    {
+      value: "50+",
+      label: "Years of Data",
+      description: "Public EIA electricity generation records",
+      icon: "📊"
+    },
+    {
+      value: "100%",
+      label: "Safety Validation",
+      description: "All queries checked before execution",
+      icon: "🛡️"
+    },
+    {
+      value: "0",
+      label: "SQL Injections",
+      description: "Parameter binding prevents attacks",
+      icon: "🔒"
+    },
+  ]}
+  variant="featured"
+/>
+
+GUIDELINES:
+- Only use publicly available, non-confidential metrics
+- Be specific and quantifiable when possible
+- Explain what the metric means
+- Keep metrics relevant to the project or page
+- Use icons/emojis sparingly for visual interest
+
+GOOD EXAMPLES:
+✓ "50+ years of public energy data"
+✓ "100% query validation rate"
+✓ "3-layer security checks"
+✓ "Public EIA database (500K+ records)"
+
+BAD EXAMPLES (too generic or potentially confidential):
+✗ "Millions of queries processed"
+✗ "99.9% uptime"
+✗ "Enterprise-scale deployment"
+-->

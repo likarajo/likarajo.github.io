@@ -1,0 +1,237 @@
+---
+/**
+ * Testimonials Component
+ *
+ * Displays testimonials, recommendations, or project outcomes.
+ * Only include PUBLIC testimonials with explicit permission.
+ *
+ * Usage:
+ * import Testimonials from '../components/Testimonials.astro';
+ *
+ * <Testimonials
+ *   testimonials={[
+ *     {
+ *       quote: "Excellent work on...",
+ *       author: "Name",
+ *       role: "Title, Organization",
+ *       link: "https://linkedin.com/in/profile"
+ *     }
+ *   ]}
+ * />
+ */
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+  organization?: string;
+  link?: string; // LinkedIn profile, website, etc.
+  date?: string;
+  type?: 'recommendation' | 'feedback' | 'award' | 'outcome';
+}
+
+interface Props {
+  testimonials: Testimonial[];
+  title?: string;
+  variant?: 'default' | 'compact';
+}
+
+const {
+  testimonials,
+  title = "Testimonials",
+  variant = 'default',
+} = Astro.props;
+---
+
+{testimonials.length > 0 && (
+  <section class={`testimonials variant-${variant}`}>
+    {title && <h3 class="testimonials-title">{title}</h3>}
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <article class="testimonial-card">
+          <blockquote class="testimonial-quote">
+            "{testimonial.quote}"
+          </blockquote>
+          <footer class="testimonial-footer">
+            {testimonial.link ? (
+              <a href={testimonial.link} target="_blank" rel="noreferrer" class="testimonial-author">
+                <strong>{testimonial.author}</strong>
+              </a>
+            ) : (
+              <strong class="testimonial-author">{testimonial.author}</strong>
+            )}
+            {(testimonial.role || testimonial.organization) && (
+              <div class="testimonial-role">
+                {testimonial.role}
+                {testimonial.role && testimonial.organization && ", "}
+                {testimonial.organization}
+              </div>
+            )}
+            {testimonial.date && (
+              <time class="testimonial-date">{testimonial.date}</time>
+            )}
+          </footer>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{testimonials.length === 0 && (
+  <div class="testimonials-placeholder">
+    <p>
+      <!-- Placeholder when no testimonials are added yet -->
+      <!-- This component is ready to use when you have public testimonials to display -->
+    </p>
+  </div>
+)}
+
+<style>
+  .testimonials {
+    margin: 3rem 0;
+  }
+
+  .testimonials-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: #f9f9f9;
+    border-left: 4px solid #4a90e2;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .testimonial-quote {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0 0 1rem 0;
+    font-style: italic;
+  }
+
+  .testimonial-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .testimonial-author {
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .testimonial-author:hover {
+    text-decoration: underline;
+  }
+
+  .testimonial-role {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+
+  .testimonial-date {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+
+  /* Compact variant */
+  .variant-compact .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .variant-compact .testimonial-card {
+    padding: 1rem;
+  }
+
+  .variant-compact .testimonial-quote {
+    font-size: 1rem;
+  }
+
+  .testimonials-placeholder {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!--
+EXAMPLE USAGE:
+
+<Testimonials
+  title="Recommendations"
+  testimonials={[
+    {
+      quote: "Rajarshi demonstrated excellent skills in building trustworthy AI systems...",
+      author: "Colleague Name",
+      role: "Senior Engineer",
+      organization: "Company Name",
+      link: "https://www.linkedin.com/in/profile/",
+      date: "January 2024",
+      type: "recommendation"
+    },
+    {
+      quote: "First runner-up for innovative RISC processor implementation on FPGA",
+      author: "IETE Technical Paper Contest",
+      organization: "Institution of Electronics and Telecommunication Engineers",
+      date: "2014",
+      type: "award"
+    }
+  ]}
+/>
+
+IMPORTANT GUIDELINES:
+1. ONLY include testimonials you have explicit permission to publish
+2. LinkedIn recommendations can be included if they're public
+3. Awards and recognitions are safe to include
+4. Project outcomes (not testimonials about people) are good alternatives
+5. Always verify with the person before publishing their name/quote
+
+GOOD ALTERNATIVES TO TESTIMONIALS:
+- Public awards and recognitions
+- Published paper citations/reviews
+- Open source project stars/forks
+- Public conference talk feedback
+- Quantifiable project outcomes
+
+EXAMPLE PROJECT OUTCOMES (instead of testimonials):
+
+<Testimonials
+  title="Recognition & Outcomes"
+  testimonials={[
+    {
+      quote: "First runner-up, IETE Technical Paper Contest, for 16-bit RISC processor implementation on FPGA",
+      author: "IETE",
+      organization: "Institution of Electronics and Telecommunication Engineers",
+      date: "2014",
+      type: "award"
+    },
+    {
+      quote: "IBM Best Emerging Techie award for contributions to enterprise system development",
+      author: "IBM",
+      date: "2016",
+      type: "award"
+    }
+  ]}
+/>
+
+Remember: When in doubt, use Impact Metrics or Awards instead of testimonials!
+-->

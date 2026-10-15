@@ -1,0 +1,239 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Work', url: '/work/' },
+  { name: 'Language Translation', url: '/work/language-translation/' },
+];
+
+const technologies = [
+  'Python',
+  'TensorFlow',
+  'Neural Networks',
+  'Seq2Seq',
+  'Attention Mechanism',
+  'NLP',
+];
+---
+<Base
+  title="Neural Machine Translation"
+  description="Sequence-to-sequence model for translating sentences between languages using encoder-decoder architecture with attention mechanism."
+  breadcrumbs={breadcrumbs}
+  articleDate="2023-06-20"
+>
+  <main class="content-page">
+    <CaseStudy
+      title="Neural Machine Translation"
+      category="Deep Learning · NLP"
+      description="A sequence-to-sequence neural network model that translates sentences from one language to another using encoder-decoder architecture with attention mechanism."
+      githubUrl="https://github.com/likarajo/language_translation"
+      technologies={technologies}
+    >
+      <section>
+        <h2>Overview</h2>
+        <p>
+          This project implements a neural machine translation system using sequence-to-sequence
+          (seq2seq) architecture with attention mechanism. The model learns to translate sentences
+          from one language to another by training on parallel text corpora.
+        </p>
+        <p>
+          Neural machine translation has transformed how we approach language translation, moving
+          from rule-based and statistical methods to end-to-end learned models that can capture
+          complex linguistic patterns and context.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Challenge</h2>
+        <p>
+          Machine translation presents several fundamental challenges:
+        </p>
+        <ul>
+          <li>
+            <strong>Variable Length Sequences:</strong> Input and output sentences have different
+            lengths and word orders
+          </li>
+          <li>
+            <strong>Long-Range Dependencies:</strong> Translation requires understanding context
+            from distant parts of the sentence
+          </li>
+          <li>
+            <strong>Vocabulary Coverage:</strong> Handling rare words and out-of-vocabulary terms
+          </li>
+          <li>
+            <strong>Semantic Preservation:</strong> Maintaining meaning while adapting to
+            different grammatical structures
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Solution Approach</h2>
+
+        <h3>Encoder-Decoder Architecture</h3>
+        <p>
+          The model uses a two-part architecture:
+        </p>
+        <ul>
+          <li>
+            <strong>Encoder:</strong> Processes the input sentence and creates a context vector
+            representing its meaning
+          </li>
+          <li>
+            <strong>Decoder:</strong> Generates the translated sentence one word at a time,
+            conditioned on the context vector and previously generated words
+          </li>
+        </ul>
+
+        <h3>Attention Mechanism</h3>
+        <p>
+          The attention mechanism addresses the bottleneck of encoding an entire sentence into
+          a single fixed-length vector:
+        </p>
+        <ul>
+          <li>
+            At each decoding step, the model can "attend" to different parts of the input sequence
+          </li>
+          <li>
+            This allows the model to focus on relevant source words when generating each target word
+          </li>
+          <li>
+            Attention weights provide interpretability, showing which input words influenced each
+            translation
+          </li>
+        </ul>
+
+        <h3>Training Process</h3>
+        <p>
+          The model is trained on parallel sentence pairs:
+        </p>
+        <ol>
+          <li>Tokenize and encode input and target sentences</li>
+          <li>Feed source sentence through encoder</li>
+          <li>Use decoder to predict target sentence word-by-word</li>
+          <li>Calculate loss between predicted and actual translations</li>
+          <li>Update model parameters via backpropagation</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Technical Implementation</h2>
+
+        <h3>Model Components</h3>
+        <ul>
+          <li>
+            <strong>Embedding Layer:</strong> Converts words to dense vector representations
+          </li>
+          <li>
+            <strong>Recurrent Layers:</strong> LSTM or GRU cells for processing sequences
+          </li>
+          <li>
+            <strong>Attention Layer:</strong> Computes alignment scores between encoder and
+            decoder states
+          </li>
+          <li>
+            <strong>Output Layer:</strong> Softmax over target vocabulary to predict next word
+          </li>
+        </ul>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>Bidirectional encoder for better context understanding</li>
+          <li>Attention visualization to interpret translation decisions</li>
+          <li>Beam search for generating higher-quality translations</li>
+          <li>Teacher forcing during training for faster convergence</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Results and Insights</h2>
+        <p>
+          The attention mechanism proved crucial for handling long sentences and maintaining
+          translation quality:
+        </p>
+        <ul>
+          <li>
+            Attention weights often align with intuitive word correspondences between languages
+          </li>
+          <li>
+            The model learns to handle different word orders automatically
+          </li>
+          <li>
+            Performance improves significantly with larger parallel corpora
+          </li>
+        </ul>
+
+        <div class="highlight-box">
+          <h3>Learning from Translation Patterns</h3>
+          <p>
+            The attention weights reveal how the model handles linguistic differences like
+            adjective placement, verb conjugation, and idiomatic expressions—providing insight
+            into what the neural network learned about language structure.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Applications</h2>
+        <p>
+          Neural machine translation techniques extend beyond language translation:
+        </p>
+        <ul>
+          <li>Text summarization (long text → short summary)</li>
+          <li>Question answering (question + context → answer)</li>
+          <li>Code generation (natural language → code)</li>
+          <li>Speech recognition (audio → text)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>
+            Seq2seq architecture provides a flexible framework for mapping variable-length
+            sequences
+          </li>
+          <li>
+            Attention mechanism is essential for handling long-range dependencies in translation
+          </li>
+          <li>
+            End-to-end training allows the model to learn both alignment and translation jointly
+          </li>
+          <li>
+            Quality of parallel training data significantly impacts translation accuracy
+          </li>
+        </ul>
+      </section>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
+        <p>
+          <a href="/work/">← Back to all projects</a> |
+          <a href="https://github.com/likarajo/language_translation" target="_blank" rel="noreferrer">View on GitHub →</a>
+        </p>
+      </div>
+    </CaseStudy>
+  </main>
+</Base>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
