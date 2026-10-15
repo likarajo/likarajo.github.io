@@ -1,16 +1,21 @@
 ---
 import '../index.css';
 import '../profile.css';
+import '../styles/theme.css';
 import Logo from '../components/header/Logo.jsx';
 import Navbar from '../components/Navbar.astro';
 import Links from '../components/footer/Links.jsx';
 import Themed from '../components/Theme.jsx';
+import ThemeToggle from '../components/ThemeToggle.jsx';
 
 interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
   noindex?: boolean;
+  articleDate?: string;
+  articleModified?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const NAME = 'Rajarshi Chattopadhyay';
@@ -22,6 +27,9 @@ const {
   description = DEFAULT_DESCRIPTION,
   canonicalPath = Astro.url.pathname,
   noindex = false,
+  articleDate,
+  articleModified,
+  breadcrumbs,
 } = Astro.props;
 
 const fullTitle = title ? `${title} | ${NAME}` : NAME;
@@ -52,6 +60,31 @@ const person = {
     'https://www.credly.com/users/likarajo/',
   ],
 };
+
+// Article schema for blog posts and case studies
+const article = articleDate ? {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  author: { '@type': 'Person', name: NAME, url: site.href },
+  datePublished: articleDate,
+  dateModified: articleModified || articleDate,
+  description: description,
+  image: ogImage,
+  publisher: { '@type': 'Person', name: NAME },
+} : null;
+
+// Breadcrumb navigation schema
+const breadcrumbList = breadcrumbs ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.name,
+    item: new URL(crumb.url, site).href,
+  })),
+} : null;
 ---
 <!doctype html>
 <html lang="en">
@@ -94,6 +127,8 @@ const person = {
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    {article && <script type="application/ld+json" set:html={JSON.stringify(article)} />}
+    {breadcrumbList && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />}
 
     <!-- Google tag (gtag.js), unchanged from the previous site -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-THJQJ2XBVE"></script>
@@ -108,13 +143,15 @@ const person = {
     <header class="site-header">
       <Logo />
       <Navbar />
+      <div class="header-actions">
+        <Themed><ThemeToggle client:load /></Themed>
+      </div>
     </header>
     <div id="app">
       <slot />
     </div>
     <footer class="site-footer">
       <Themed><Links /></Themed>
-      <p class="footer-note">&copy; {year} {NAME} | <a href="/contact/">Contact</a></p>
     </footer>
   </body>
 </html>

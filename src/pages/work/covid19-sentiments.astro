@@ -1,0 +1,274 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Work', url: '/work/' },
+  { name: 'COVID-19 Sentiments', url: '/work/covid19-sentiments/' },
+];
+
+const technologies = [
+  'Python',
+  'Natural Language Processing',
+  'Sentiment Analysis',
+  'Machine Learning',
+  'Data Visualization',
+  'Social Media Analytics',
+];
+---
+<Base
+  title="COVID-19 Sentiment Analysis"
+  description="Machine learning system for classifying sentiment in COVID-19 related tweets, analyzing public sentiment trends during the pandemic."
+  breadcrumbs={breadcrumbs}
+  articleDate="2021-04-15"
+>
+  <main class="content-page">
+    <CaseStudy
+      title="COVID-19 Sentiment Analysis"
+      category="Machine Learning · NLP"
+      description="A sentiment classification system analyzing COVID-19 related tweets to understand public sentiment patterns and trends during the pandemic."
+      githubUrl="https://github.com/likarajo/covid19Sentiments"
+      externalUrl="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/"
+      technologies={technologies}
+    >
+      <section>
+        <h2>Overview</h2>
+        <p>
+          This project analyzes sentiment in COVID-19 related tweets to understand public emotional
+          responses during the pandemic. Using natural language processing and machine learning,
+          the system classifies tweets as positive, negative, or neutral, revealing patterns in
+          how people expressed concerns, fears, and hopes during this unprecedented global event.
+        </p>
+        <p>
+          Understanding public sentiment during a public health crisis provides valuable insights
+          for policymakers, health organizations, and researchers tracking the social and
+          psychological impacts of the pandemic.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Challenge</h2>
+        <p>
+          Sentiment analysis on social media data presents unique challenges:
+        </p>
+        <ul>
+          <li>
+            <strong>Informal Language:</strong> Tweets contain slang, abbreviations, emojis,
+            and non-standard grammar
+          </li>
+          <li>
+            <strong>Context Sensitivity:</strong> Same words can have different sentiment in
+            different contexts (e.g., "sick" as slang vs. illness)
+          </li>
+          <li>
+            <strong>Sarcasm and Irony:</strong> Difficult to detect without understanding context
+            and tone
+          </li>
+          <li>
+            <strong>Evolving Vocabulary:</strong> New terms and hashtags emerge rapidly during
+            major events
+          </li>
+          <li>
+            <strong>Class Imbalance:</strong> Negative tweets may dominate during crisis periods
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Solution Approach</h2>
+
+        <h3>Data Collection and Preprocessing</h3>
+        <p>
+          The project processes tweet data through several stages:
+        </p>
+        <ol>
+          <li>
+            <strong>Collection:</strong> Gather COVID-19 related tweets using pandemic-related
+            keywords and hashtags
+          </li>
+          <li>
+            <strong>Cleaning:</strong> Remove URLs, mentions, special characters, and normalize text
+          </li>
+          <li>
+            <strong>Tokenization:</strong> Break text into individual tokens while preserving
+            relevant emojis
+          </li>
+          <li>
+            <strong>Feature Extraction:</strong> Convert text to numerical representations for
+            machine learning
+          </li>
+        </ol>
+
+        <h3>Sentiment Classification</h3>
+        <p>
+          The system employs machine learning models to classify sentiment:
+        </p>
+        <ul>
+          <li>Text vectorization using TF-IDF or word embeddings</li>
+          <li>Classification models (e.g., Naive Bayes, Logistic Regression, or Neural Networks)</li>
+          <li>Multi-class classification: Positive, Negative, Neutral</li>
+          <li>Model evaluation using accuracy, precision, recall, and F1-score</li>
+        </ul>
+
+        <h3>Trend Analysis</h3>
+        <p>
+          Beyond individual tweet classification, the project analyzes sentiment trends:
+        </p>
+        <ul>
+          <li>Temporal patterns: How sentiment changed over time</li>
+          <li>Topic-based sentiment: Different attitudes toward vaccines, lockdowns, cases, etc.</li>
+          <li>Geographic patterns: Regional differences in sentiment (when location data available)</li>
+          <li>Correlation with events: Spikes in negative/positive sentiment around major announcements</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Technical Implementation</h2>
+
+        <h3>Feature Engineering</h3>
+        <ul>
+          <li>
+            <strong>Text Features:</strong> TF-IDF vectors, n-grams, word embeddings
+          </li>
+          <li>
+            <strong>Metadata Features:</strong> Tweet length, hashtag count, mention count
+          </li>
+          <li>
+            <strong>Emoji Analysis:</strong> Sentiment signals from emoji usage
+          </li>
+          <li>
+            <strong>Domain-Specific Terms:</strong> COVID-related vocabulary (vaccine, mask,
+            quarantine, etc.)
+          </li>
+        </ul>
+
+        <h3>Model Pipeline</h3>
+        <ol>
+          <li>Data preprocessing and cleaning</li>
+          <li>Feature extraction and vectorization</li>
+          <li>Train-test split with stratification</li>
+          <li>Model training and hyperparameter tuning</li>
+          <li>Evaluation and error analysis</li>
+          <li>Deployment for batch or real-time classification</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Insights and Findings</h2>
+
+        <div class="highlight-box">
+          <h3>Key Observations</h3>
+          <ul>
+            <li>
+              <strong>Emotional Trajectory:</strong> Sentiment patterns reflected the stages of
+              the pandemic—initial fear, adaptation, vaccine hope, and fatigue
+            </li>
+            <li>
+              <strong>Topic Variation:</strong> Different aspects of COVID-19 (health measures,
+              economic impact, vaccines) elicited distinct sentiment patterns
+            </li>
+            <li>
+              <strong>Information Spread:</strong> Sentiment often correlated with major news
+              events and policy announcements
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          The analysis revealed how public discourse evolved as the pandemic progressed, with
+          sentiment shifting from uncertainty and concern toward more nuanced discussions of
+          policy, science, and long-term impacts.
+        </p>
+      </section>
+
+      <section>
+        <h2>Applications</h2>
+        <p>
+          This sentiment analysis approach is applicable to various domains:
+        </p>
+        <ul>
+          <li>
+            <strong>Public Health:</strong> Monitor public response to health campaigns and policies
+          </li>
+          <li>
+            <strong>Crisis Communication:</strong> Track sentiment during emergencies and disasters
+          </li>
+          <li>
+            <strong>Social Research:</strong> Study collective emotional responses to major events
+          </li>
+          <li>
+            <strong>Misinformation Detection:</strong> Identify patterns in sentiment around
+            false information
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>
+            Social media sentiment analysis provides real-time insights into public opinion
+            during crises
+          </li>
+          <li>
+            Preprocessing and feature engineering are critical for handling informal social
+            media text
+          </li>
+          <li>
+            Temporal analysis reveals how sentiment evolves in response to events and policies
+          </li>
+          <li>
+            Context matters: Same words carry different sentiment depending on the situation
+          </li>
+          <li>
+            Combining automated sentiment classification with human validation improves
+            accuracy and insights
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Future Directions</h2>
+        <p>
+          Potential extensions to this work:
+        </p>
+        <ul>
+          <li>Multi-lingual sentiment analysis for global pandemic response tracking</li>
+          <li>Fine-grained emotion classification beyond positive/negative/neutral</li>
+          <li>Integration with epidemiological data to correlate sentiment with case trends</li>
+          <li>Real-time dashboard for monitoring ongoing sentiment patterns</li>
+        </ul>
+      </section>
+
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
+        <p>
+          <a href="/work/">← Back to all projects</a> |
+          <a href="https://github.com/likarajo/covid19Sentiments" target="_blank" rel="noreferrer">View on GitHub →</a> |
+          <a href="https://www.linkedin.com/pulse/covid-19-sentiment-analysis-rajarshi-chattopadhyay/" target="_blank" rel="noreferrer">Read the article →</a>
+        </p>
+      </div>
+    </CaseStudy>
+  </main>
+</Base>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -34,11 +34,19 @@ export default defineConfig({
         !['/profession/', '/blogs/', '/cities/', '/nature/', '/culinary/'].includes(new URL(page).pathname),
     }),
   ],
+  // Performance optimizations
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto',
+  },
   // noExternal bundles these .js ESM files, because their packages are not marked "type": "module".
   vite: {
     plugins: [muiEsmAlias()],
     resolve: { dedupe: ['react', 'react-dom'] },
     ssr: { noExternal: [/^@mui\//] },
+    build: {
+      cssMinify: true,
+    },
   },
   redirects: {
     '/profession': '/',

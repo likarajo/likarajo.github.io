@@ -3,34 +3,72 @@ import { useEffect } from "react";
 import "../profile.css";
 
 const galleries = [
-    { title: "Travel", href: "/travel/", sentence: "Cities and landscapes, with a short note on each." },
-    { title: "Cities", href: "/travel/cities/", sentence: "Streets, landmarks, and places worth going back to." },
-    { title: "Nature", href: "/travel/nature/", sentence: "Mountains, water, and other photographs from the road." },
-    { title: "Culinary", href: "/leisure/culinary/", sentence: "Dishes cooked and eaten along the way." },
-    { title: "Photo essays", href: "/leisure/blogs/", sentence: "Older posts, kept as a photo gallery." },
-    { title: "Leisure", href: "/leisure/", sentence: "Social accounts and music, plus the culinary notes." },
+    {
+        title: "Travel Photography",
+        href: "/travel/",
+        sentence: "Cities and landscapes from around the world.",
+        category: "Photography"
+    },
+    {
+        title: "Urban Exploration",
+        href: "/travel/cities/",
+        sentence: "Architecture, streets, and city life.",
+        category: "Photography"
+    },
+    {
+        title: "Nature & Landscapes",
+        href: "/travel/nature/",
+        sentence: "Mountains, water, and natural scenery.",
+        category: "Photography"
+    },
+    {
+        title: "Food & Culinary",
+        href: "/leisure/culinary/",
+        sentence: "Recipes and culinary experiments.",
+        category: "Lifestyle"
+    },
 ]
 
 function Notes() {
     useEffect(() => {
         window.scrollTo(0,0);
     }, []);
+
+    const photoGalleries = galleries.filter(g => g.category === "Photography");
+    const lifestyleGalleries = galleries.filter(g => g.category === "Lifestyle");
+
     return (
         <main className="profile" id="notes">
             <Breadcrumbs className="crumbs" separator="›">
                 <Link color="inherit" style={{textDecoration: "none"}} href="/"><b>Home</b></Link>
-                <Typography>Notes</Typography>
+                <Typography>Gallery</Typography>
             </Breadcrumbs>
-            <h1>Notes</h1>
-            <p>Photographs and older posts.</p>
-            <ul className="piece-list">
-                {galleries.map((item) => (
-                    <li key={item.href}>
-                        <a className="text-link" href={item.href}>{item.title}</a>
-                        <p>{item.sentence}</p>
-                    </li>
-                ))}
-            </ul>
+            <h1>Gallery</h1>
+            <p className="lead">Photography, travel, and personal projects.</p>
+
+            <section>
+                <h2>Photography</h2>
+                <ul className="piece-list">
+                    {photoGalleries.map((item) => (
+                        <li key={item.href}>
+                            <a className="text-link" href={item.href}>{item.title}</a>
+                            <p>{item.sentence}</p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lifestyle</h2>
+                <ul className="piece-list">
+                    {lifestyleGalleries.map((item) => (
+                        <li key={item.href}>
+                            <a className="text-link" href={item.href}>{item.title}</a>
+                            <p>{item.sentence}</p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </main>
     )
 }

@@ -68,6 +68,14 @@ video {
   padding-top: env(safe-area-inset-top);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding-left: 8px;
+}
+
 .logo-link {
   display: inline-flex;
   align-items: center;
@@ -193,24 +201,19 @@ video {
 }
 
 .site-footer {
+  position: sticky;
+  bottom: 0;
   width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #e0e0e0;
+  padding: 12px 0;
+  z-index: 100;
 }
 
 .footer-links {
   justify-content: center;
   min-height: 44px;
-}
-
-.footer-note {
-  text-align: center;
-  margin: 0;
-  padding: 4px 0 16px;
-}
-
-.footer-note a {
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
 }
 
 .scroll-up {
