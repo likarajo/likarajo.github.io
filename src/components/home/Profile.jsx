@@ -5,7 +5,7 @@ function Profile() {
         <main className="profile">
             <p className="eyebrow">Dallas, Texas</p>
             <h1>Rajarshi Chattopadhyay</h1>
-            <p className="role">Software Architect | AI Systems &amp; Business Applications</p>
+            <p className="role">Staff Software Engineer | AI systems and data</p>
             <p className="lead">
                 I design and build scalable, production-grade intelligent systems that power
                 analytics platforms and business-critical applications. My work focuses on
