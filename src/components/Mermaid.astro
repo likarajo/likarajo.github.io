@@ -1,0 +1,46 @@
+<script is:inline>
+  function mermaidTheme() {
+    var explicit = document.documentElement.getAttribute('data-theme');
+    var dark = explicit ? explicit === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return dark ? 'dark' : 'neutral';
+  }
+
+  var request = 0;
+
+  async function renderMermaid() {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('.mermaid'));
+    if (!nodes.length) return;
+    var mine = ++request;
+    var theme = mermaidTheme();
+    var mermaid = (await import('https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs')).default;
+    if (mine !== request) return;
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: theme,
+      fontFamily: 'Georgia, serif',
+    });
+    for (var index = 0; index < nodes.length; index += 1) {
+      var node = nodes[index];
+      if (!node.dataset.source) node.dataset.source = (node.textContent || '').trim();
+      if (node.dataset.renderedTheme === theme && node.querySelector('svg')) continue;
+      try {
+        var rendered = await mermaid.render('mermaid-' + index + '-' + mine, node.dataset.source || '');
+        if (mine !== request) return;
+        node.innerHTML = rendered.svg;
+        node.dataset.processed = 'true';
+        node.dataset.renderedTheme = theme;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  renderMermaid();
+  new MutationObserver(function () {
+    renderMermaid();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+    if (!document.documentElement.getAttribute('data-theme')) renderMermaid();
+  });
+</script>
