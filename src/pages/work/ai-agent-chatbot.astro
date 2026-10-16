@@ -33,6 +33,19 @@ const technologies = [
       githubUrl="https://github.com/likarajo/ai-agent-chatbot"
       technologies={technologies}
     >
+      <figure class="case-study-figure">
+        <img
+          src="/images/work/ai-agent-chatbot.png"
+          alt="Safe generation questions interface answering how much wind generation Texas produced in 2023"
+          width="960"
+          height="720"
+          loading="eager"
+        />
+        <figcaption>
+          Texas or California state-reader demo: row access is assigned separately from the question.
+        </figcaption>
+      </figure>
+
       <section>
         <h2>Overview</h2>
         <p>
@@ -92,28 +105,41 @@ const technologies = [
         </ol>
 
         <div class="highlight-box">
-          <h3>Example: Wind Generation in Texas</h3>
+          <h3>Example: Texas reader asks about Texas</h3>
+          <p><strong>Role:</strong> State reader assigned to Texas</p>
           <p><strong>Question:</strong> "How much wind generation did Texas produce in 2023?"</p>
-          <p><strong>Intent Extracted:</strong></p>
-          <ul>
-            <li>Year: 2023</li>
-            <li>State: Texas</li>
-            <li>Energy Source: Wind</li>
-            <li>Metric: Total generation (megawatthours)</li>
-          </ul>
-          <p><strong>Query:</strong> A parameterized SELECT with these values bound safely</p>
-          <p><strong>Result:</strong> 119,855,132 megawatthours (verified against EIA data)</p>
+          <p><strong>Result:</strong> 119,855,132 megawatthours — the assigned-state filter matches the question.</p>
+          <figure class="case-study-figure">
+            <img
+              src="/images/work/ai-agent-chatbot-success.png"
+              alt="Texas state reader successfully reading Texas wind generation"
+              width="960"
+              height="720"
+              loading="lazy"
+            />
+          </figure>
         </div>
 
-        <h3>2. Refusal Mechanism</h3>
+        <h3>2. Row-level access between Texas and California</h3>
         <p>
-          When a question asks for data that doesn't exist in the schema, the system refuses
-          and explains why:
+          The demo only issues state-reader roles for Texas and California. The assigned state is
+          applied as a bound filter after the query check, so the question cannot widen it.
         </p>
         <div class="highlight-box">
-          <p><strong>Question:</strong> "What was customer revenue in Texas in 2023?"</p>
-          <p><strong>Response:</strong> The system explains that the electricity generation table
-          has no revenue column and cannot answer this question. No query is executed.</p>
+          <h3>Example: Texas reader asks about California</h3>
+          <p><strong>Role:</strong> State reader assigned to Texas</p>
+          <p><strong>Question:</strong> "How much wind generation did California produce in 2023?"</p>
+          <p><strong>Response:</strong> Zero rows. The wrapper already limited the table to Texas,
+          so California is left out. The first bound parameter remains <code>TX</code>.</p>
+          <figure class="case-study-figure">
+            <img
+              src="/images/work/ai-agent-chatbot-refusal.png"
+              alt="Texas state reader blocked from California wind generation"
+              width="960"
+              height="720"
+              loading="lazy"
+            />
+          </figure>
         </div>
 
         <h3>3. Schema Awareness</h3>
