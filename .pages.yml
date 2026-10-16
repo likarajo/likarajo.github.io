@@ -1,0 +1,215 @@
+# Pages CMS (https://app.pagescms.org). Free, GitHub-backed editor for this repo.
+# Images are stored under src/assets so Astro can optimize them at build time.
+# The output path is relative to the Markdown file (src/content/writing or src/content/studies).
+
+media:
+  - name: writing
+    label: Writing images
+    input: src/assets/writing
+    output: ../../assets/writing
+    categories: [image]
+    extensions: [png, jpg, jpeg, webp, gif]
+    rename: safe
+  - name: research
+    label: Research images
+    input: src/assets/research
+    output: ../../assets/research
+    categories: [image]
+    extensions: [png, jpg, jpeg, webp, gif]
+    rename: safe
+
+content:
+  - name: writing
+    label: Writing
+    type: collection
+    path: src/content/writing
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, year, draft]
+      primary: title
+      sort: [date, title]
+      search: [title, summary, description]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+        description: Shown on the Writing page, and used as the meta description when SEO description is empty.
+      - name: description
+        label: SEO description
+        type: text
+        description: Meta description, Open Graph, Twitter, JSON-LD, and RSS. Falls back to the summary.
+      - name: date
+        label: Publish date
+        type: date
+        description: Full date (YYYY-MM-DD). Used for sorting, the RSS feed, and datePublished.
+        options:
+          format: yyyy-MM-dd
+      - name: updated
+        label: Updated
+        type: date
+        description: Optional dateModified. Leave empty to reuse the publish date.
+        options:
+          format: yyyy-MM-dd
+      - name: year
+        label: Year
+        type: string
+        description: Shown beside the title. Leave empty to use the year of the publish date.
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+        description: Drafts are omitted from the site, the sitemap, and the RSS feed. Turn this off to publish.
+      - name: href
+        label: External URL
+        type: string
+        description: Set this to link out instead of publishing a page on this site. Leave empty to publish at /writing/<filename>/.
+      - name: canonical
+        label: Canonical URL
+        type: string
+        description: Optional. Set when another URL should be the canonical version of this page.
+      - name: image
+        label: Social and hero image
+        type: image
+        description: Optimized at build time. The profile photo is the Open Graph fallback when this is empty.
+        options:
+          media: writing
+          path: src/assets/writing
+          extensions: [png, jpg, jpeg, webp, gif]
+          rename: safe
+      - name: imageAlt
+        label: Image alt text
+        type: string
+      - name: crossPosts
+        label: Cross-posts
+        type: object
+        list: true
+        description: Same piece on LinkedIn, Medium, dev.to, or elsewhere. Shown at the bottom of the post.
+        fields:
+          - name: title
+            label: Site
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+      - name: order
+        label: Order
+        type: number
+        description: Legacy sort hint. The public list is sorted by date, then year.
+      - name: body
+        label: Body
+        type: rich-text
+        description: Markdown. Use source mode for Mermaid fences (```mermaid).
+        options:
+          format: markdown
+          media: writing
+          path: src/assets/writing
+          extensions: [png, jpg, jpeg, webp, gif]
+          rename: safe
+
+  - name: studies
+    label: Studies
+    type: collection
+    path: src/content/studies
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, date, status, draft]
+      primary: title
+      sort: [date, title]
+      search: [title, abstract]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: abstract
+        label: Abstract
+        type: text
+        required: true
+      - name: description
+        label: SEO description
+        type: text
+        description: Meta description. Falls back to the abstract.
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: updated
+        label: Updated
+        type: date
+        description: Optional dateModified.
+        options:
+          format: yyyy-MM-dd
+      - name: status
+        label: Status
+        type: select
+        required: true
+        options:
+          values:
+            - name: preprint
+              label: Preprint
+            - name: in-progress
+              label: In progress
+            - name: published
+              label: Published
+      - name: authors
+        label: Authors
+        type: string
+        list: true
+        description: Citation order. Leave empty to credit Rajarshi Chattopadhyay.
+      - name: arxiv
+        label: arXiv link
+        type: string
+        description: Full URL, for example https://arxiv.org/abs/1234.56789
+      - name: code
+        label: Code link
+        type: string
+      - name: canonical
+        label: Canonical URL
+        type: string
+        description: Optional override. Defaults to the page on this site.
+      - name: draft
+        label: Draft
+        type: boolean
+        default: true
+        description: Drafts are omitted from /research/, the sitemap, and the RSS feed.
+      - name: image
+        label: Social and hero image
+        type: image
+        options:
+          media: research
+          path: src/assets/research
+          extensions: [png, jpg, jpeg, webp, gif]
+          rename: safe
+      - name: imageAlt
+        label: Image alt text
+        type: string
+      - name: body
+        label: Notes
+        type: rich-text
+        options:
+          format: markdown
+          media: research
+          path: src/assets/research
+          extensions: [png, jpg, jpeg, webp, gif]
+          rename: safe

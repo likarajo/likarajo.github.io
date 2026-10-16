@@ -1,0 +1,19 @@
+---
+interface Props {
+  posts?: Array<{ title: string; url: string }>;
+}
+
+const { posts = [] } = Astro.props;
+---
+{posts.length > 0 && (
+  <aside class="cross-posts">
+    <h2>Also published on</h2>
+    <ul>
+      {posts.map((post) => (
+        <li>
+          <a class="text-link" href={post.url} target="_blank" rel="noopener noreferrer">{post.title}</a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}

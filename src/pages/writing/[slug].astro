@@ -1,7 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
+import CrossPosts from '../../components/CrossPosts.astro';
+import { AUTHOR, displayYear, isImageMetadata, publishedDate } from '../../lib/publishing';
+import { socialImageUrl } from '../../lib/social-image';
 
 // Only pieces without an external link get a page on this site.
 export async function getStaticPaths() {
@@ -11,12 +15,43 @@ export async function getStaticPaths() {
 
 const { piece } = Astro.props;
 const { Content } = await render(piece);
+const site = Astro.site ?? new URL('https://likarajo.github.io');
+const description = piece.data.description || piece.data.summary;
+const published = publishedDate(piece.data);
+const modified = piece.data.updated || published;
+const socialImage = await socialImageUrl(piece.data.image, site);
+const hero = isImageMetadata(piece.data.image) ? piece.data.image : undefined;
+const heroAlt = piece.data.imageAlt || piece.data.title;
+const hasDiagram = piece.body?.includes('```mermaid') ?? false;
+const Mermaid = hasDiagram ? (await import('../../components/Mermaid.astro')).default : null;
 ---
-<Base title={piece.data.title} description={piece.data.summary}>
+<Base
+  title={piece.data.title}
+  description={description}
+  canonical={piece.data.canonical}
+  ogImage={socialImage}
+  ogImageAlt={socialImage ? heroAlt : undefined}
+  ogType="article"
+  twitterCard={socialImage ? 'summary_large_image' : 'summary'}
+  articleDate={published}
+  articleModified={modified}
+  articleAuthors={[AUTHOR]}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Writing', url: '/writing/' },
+    { name: piece.data.title, url: `/writing/${piece.id}/` },
+  ]}
+>
   <main class="profile article">
     <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Writing', href: '/writing/' }, { label: piece.data.title }]} />
     <h1>{piece.data.title}</h1>
-    <p class="piece-year">{piece.data.year}</p>
+    <p class="piece-year">{displayYear(piece.data)}</p>
+    {hero && <Image src={hero} alt={heroAlt} />}
+    {!hero && typeof piece.data.image === 'string' && piece.data.image && (
+      <img src={piece.data.image} alt={heroAlt} />
+    )}
     <Content />
+    <CrossPosts posts={piece.data.crossPosts} />
   </main>
+  {Mermaid && <Mermaid />}
 </Base>

@@ -16,7 +16,9 @@
         "deploy": "bash deploy.sh"
     },
     "dependencies": {
+        "@astrojs/markdown-satteri": "^0.4.4",
         "@astrojs/react": "^7.1.0",
+        "@astrojs/rss": "^4.0.19",
         "@astrojs/sitemap": "^3.7.4",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",

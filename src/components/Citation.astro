@@ -1,0 +1,23 @@
+---
+import { bibtexEntry, citationLine } from '../lib/publishing';
+
+interface Props {
+  slug: string;
+  title: string;
+  authors: string[];
+  year: string;
+  url: string;
+  status: string;
+  arxiv?: string;
+}
+
+const { slug, title, authors, year, url, status, arxiv } = Astro.props;
+const line = citationLine({ authors, year, title, url, arxiv });
+const bibtex = bibtexEntry({ slug, authors, year, title, url, status, arxiv });
+---
+<section class="citation" aria-labelledby="citation-heading">
+  <h2 id="citation-heading">Cite</h2>
+  <p>{line}</p>
+  <h3>BibTeX</h3>
+  <pre><code>{bibtex}</code></pre>
+</section>

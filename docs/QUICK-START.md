@@ -4,6 +4,8 @@
 
 ## Adding a New Blog Post
 
+See [WRITING.md](../WRITING.md) for the browser editor, images, diagrams, and SEO fields.
+
 1. Create a file: `src/content/writing/my-new-post.md`
 2. Add frontmatter:
    ```markdown
