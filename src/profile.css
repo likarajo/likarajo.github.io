@@ -111,6 +111,14 @@
   font-size: 12px;
 }
 
+.profile .work-preview {
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  border: 1px solid var(--border-color);
+}
+
 .profile .piece-list {
   list-style: none;
   padding: 0;
