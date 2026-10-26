@@ -140,6 +140,71 @@
   border-top: 1px solid var(--border-color);
 }
 
+.profile.article img,
+.profile .mermaid svg {
+  height: auto;
+}
+
+.profile .mermaid {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+
+.profile .mermaid:not([data-processed='true']) {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  background: var(--code-bg);
+  padding: 0.75rem 1rem;
+}
+
+.profile .cross-posts,
+.profile .citation {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.profile .citation pre,
+.profile.article pre {
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  background: var(--code-bg);
+  font-size: 0.85rem;
+}
+
+.profile .study-links {
+  padding-left: 1.15rem;
+}
+
+.profile.article table {
+  display: block;
+  width: 100%;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.profile.article th,
+.profile.article td {
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.profile.article :not(pre) > code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--code-bg);
+  padding: 0.1em 0.3em;
+}
+
+.profile.article .katex {
+  font-size: 1.05em;
+}
+
 @media (max-width: 480px) {
   .profile {
     padding: 1.35rem 1rem 1.6rem;

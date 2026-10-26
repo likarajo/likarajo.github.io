@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
+import { mermaidPlugin } from './src/plugins/mermaid.mjs';
+import { katexPlugin } from './src/plugins/katex.mjs';
 
 // MUI v5 ships CommonJS deep imports. Astro 7 prerenders with Vite 8's
 // environment API, which only copies `ssr.noExternal` onto the `ssr`
@@ -38,9 +41,25 @@ export default defineConfig({
     sitemap({
       // Leave out the redirect and the duplicate routes whose canonical URL lives elsewhere.
       filter: (page) =>
-        !['/profession/', '/blogs/', '/cities/', '/nature/', '/culinary/'].includes(new URL(page).pathname),
+        !['/profession/', '/blogs/', '/cities/', '/nature/', '/culinary/', '/rss.xml'].includes(new URL(page).pathname),
     }),
   ],
+  image: {
+    // Markdown figures in src/ and <Image> covers get a responsive srcset.
+    layout: 'constrained',
+    responsiveStyles: true,
+  },
+  markdown: {
+    processor: satteri({
+      mdastPlugins: [mermaidPlugin],
+      hastPlugins: [katexPlugin],
+      features: { math: true },
+    }),
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid', 'math'],
+    },
+  },
   // Performance optimizations
   compressHTML: true,
   build: {

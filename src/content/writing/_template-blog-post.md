@@ -3,6 +3,15 @@ title: "Your Blog Post Title Here"
 year: "2026"
 order: 100
 summary: "A one-sentence summary of what this post covers. This appears on the Writing page."
+# description: "Optional meta description. The summary is used when this is omitted."
+# date: "2026-01-01"
+# updated: "2026-01-02"
+# canonical: "https://example.com/original"
+# image: ../../assets/writing/cover.jpg
+# imageAlt: "Description of the image"
+# crossPosts:
+#   - title: LinkedIn
+#     url: https://www.linkedin.com/pulse/example
 draft: true
 # href: "https://external-site.com/article" # Use this to link to external article instead of hosting here
 ---
@@ -51,6 +60,13 @@ Summarize the main points in a bulleted list:
 - First key point
 - Second key point
 - Third key point
+
+## Diagram
+
+```mermaid
+flowchart LR
+  A[Note] --> B[Diagram]
+```
 
 ## Further Reading
 

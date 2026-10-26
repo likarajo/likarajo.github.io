@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Citation from '../../components/Citation.astro';
+import { DEFAULT_AUTHORS, arxivId, displayYear, isImageMetadata, publishedDate, statusLabel } from '../../lib/publishing';
+import { socialImageUrl } from '../../lib/social-image';
+import 'katex/dist/katex.min.css';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('studies', ({ data }) => !data.draft);
+  return studies.map((study) => ({ params: { slug: study.id }, props: { study } }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+const site = Astro.site ?? new URL('https://likarajo.github.io');
+const pageUrl = new URL(`/research/${study.id}/`, site).href;
+const authors = study.data.authors?.length ? study.data.authors : DEFAULT_AUTHORS;
+const published = publishedDate(study.data) ?? study.data.date;
+const modified = study.data.updated || published;
+const description = study.data.description || study.data.abstract;
+const socialImage = await socialImageUrl(study.data.image, site);
+const hero = isImageMetadata(study.data.image) ? study.data.image : undefined;
+const heroAlt = study.data.imageAlt || study.data.title;
+const arxiv = arxivId(study.data.arxiv);
+const hasDiagram = study.body?.includes('```mermaid') ?? false;
+const Mermaid = hasDiagram ? (await import('../../components/Mermaid.astro')).default : null;
+---
+<Base
+  title={study.data.title}
+  description={description}
+  canonical={study.data.canonical}
+  canonicalPath={`/research/${study.id}/`}
+  ogImage={socialImage}
+  ogImageAlt={socialImage ? heroAlt : undefined}
+  ogType="article"
+  twitterCard={socialImage ? 'summary_large_image' : 'summary'}
+  articleDate={published}
+  articleModified={modified}
+  articleType="ScholarlyArticle"
+  articleAuthors={authors}
+  articleSameAs={study.data.arxiv ? [study.data.arxiv] : undefined}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Research', url: '/research/' },
+    { name: study.data.title, url: `/research/${study.id}/` },
+  ]}
+>
+  <main class="profile article">
+    <Crumbs items={[{ label: 'Home', href: '/' }, { label: 'Research', href: '/research/' }, { label: study.data.title }]} />
+    <h1>{study.data.title}</h1>
+    <p class="piece-year">{displayYear(study.data)} · {statusLabel(study.data.status)}</p>
+    <p>{authors.join(', ')}</p>
+    {hero && <Image src={hero} alt={heroAlt} />}
+    {!hero && typeof study.data.image === 'string' && study.data.image && (
+      <img src={study.data.image} alt={heroAlt} />
+    )}
+    <p>{study.data.abstract}</p>
+    {(study.data.arxiv || study.data.code) && (
+      <ul class="study-links">
+        {study.data.arxiv && (
+          <li><a class="text-link" href={study.data.arxiv}>{arxiv ? `arXiv:${arxiv}` : 'arXiv'}</a></li>
+        )}
+        {study.data.code && <li><a class="text-link" href={study.data.code}>Code</a></li>}
+      </ul>
+    )}
+    <Content />
+    <Citation
+      slug={study.id}
+      title={study.data.title}
+      authors={authors}
+      year={displayYear(study.data)}
+      url={study.data.canonical || pageUrl}
+      status={study.data.status}
+      arxiv={study.data.arxiv}
+    />
+  </main>
+  {Mermaid && <Mermaid />}
+</Base>
