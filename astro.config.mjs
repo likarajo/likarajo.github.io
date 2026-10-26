@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { mermaidPlugin } from './src/plugins/mermaid.mjs';
+import { katexPlugin } from './src/plugins/katex.mjs';
 
 // MUI v5 ships CommonJS deep imports. Astro 7 prerenders with Vite 8's
 // environment API, which only copies `ssr.noExternal` onto the `ssr`
@@ -49,10 +50,14 @@ export default defineConfig({
     responsiveStyles: true,
   },
   markdown: {
-    processor: satteri({ mdastPlugins: [mermaidPlugin] }),
+    processor: satteri({
+      mdastPlugins: [mermaidPlugin],
+      hastPlugins: [katexPlugin],
+      features: { math: true },
+    }),
     syntaxHighlight: {
       type: 'shiki',
-      excludeLangs: ['mermaid'],
+      excludeLangs: ['mermaid', 'math'],
     },
   },
   // Performance optimizations

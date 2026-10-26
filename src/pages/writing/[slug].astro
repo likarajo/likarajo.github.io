@@ -6,6 +6,7 @@ import Crumbs from '../../components/Crumbs.astro';
 import CrossPosts from '../../components/CrossPosts.astro';
 import { AUTHOR, displayYear, isImageMetadata, publishedDate } from '../../lib/publishing';
 import { socialImageUrl } from '../../lib/social-image';
+import 'katex/dist/katex.min.css';
 
 // Only pieces without an external link get a page on this site.
 export async function getStaticPaths() {
