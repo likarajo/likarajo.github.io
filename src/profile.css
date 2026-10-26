@@ -177,6 +177,34 @@
   padding-left: 1.15rem;
 }
 
+.profile.article table {
+  display: block;
+  width: 100%;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.profile.article th,
+.profile.article td {
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.profile.article :not(pre) > code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--code-bg);
+  padding: 0.1em 0.3em;
+}
+
+.profile.article .katex {
+  font-size: 1.05em;
+}
+
 @media (max-width: 480px) {
   .profile {
     padding: 1.35rem 1rem 1.6rem;

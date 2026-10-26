@@ -6,6 +6,7 @@ import Crumbs from '../../components/Crumbs.astro';
 import Citation from '../../components/Citation.astro';
 import { DEFAULT_AUTHORS, arxivId, displayYear, isImageMetadata, publishedDate, statusLabel } from '../../lib/publishing';
 import { socialImageUrl } from '../../lib/social-image';
+import 'katex/dist/katex.min.css';
 
 export async function getStaticPaths() {
   const studies = await getCollection('studies', ({ data }) => !data.draft);
