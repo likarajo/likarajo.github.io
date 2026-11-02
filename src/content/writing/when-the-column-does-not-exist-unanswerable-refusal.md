@@ -5,6 +5,8 @@ description: "How to design and evaluate unanswerable-question refusal in a natu
 date: "2026-10-27"
 year: "2026"
 draft: false
+image: ../../assets/writing/when-the-column-does-not-exist-unanswerable-refusal/cover.png
+imageAlt: "Violet cover banner titled When the Column Does Not Exist, with subtitle Engineering unanswerable-question refusal"
 ---
 
 Ask a natural-language data agent *"What was customer revenue in Texas in 2023?"* when the database only holds megawatthours of electricity generation, and a surprising number of pipelines will still try to run a query. Worse, ask *"How many dollars of wind generation did Texas produce in 2023?"*, and an agent that sees a valid state (`Texas`), a valid fuel (`Wind`), and a valid year (`2023`) can happily return **119,855,132**—a real number from the database that is in megawatthours, not dollars.
