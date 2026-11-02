@@ -5,6 +5,8 @@ description: "A practical walkthrough of semantic-layer guardrails, unanswerable
 date: "2026-10-26"
 year: "2026"
 draft: false
+image: ../../assets/writing/semantic-guardrails-and-row-level-access/cover.png
+imageAlt: "Teal cover banner titled Stop Executing Raw Model SQL, with subtitle Semantic guardrails and row-level access for text-to-SQL agents"
 ---
 
 Ask a data chatbot a question its table cannot answer, and many will answer anyway. Ask it a question about a metric you have already defined, and a free-form text-to-SQL generator can still return a plausible number computed over the wrong filter, the wrong grain, or rows the caller was never meant to see.
