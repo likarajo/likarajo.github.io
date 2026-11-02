@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Rajarshi Chattopadhyay" />
+  <meta name="description" content="Resume of Rajarshi Chattopadhyay — Software Architect | AI Systems & Business Applications." />
+  <title>Rajarshi Chattopadhyay’s Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --sidebar-width: 14rem;
+      --sidebar-background-color: #F9F2FF;
+      --accent: #7F20FC;
+      --decorator: #47086B;
+      --decorator-border: 2px solid #D5BAF9;
+      --text: #474747;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text);
+      background: #fff;
+    }
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      color: #000;
+      font-weight: 700;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .aside {
+      background: var(--sidebar-background-color);
+      padding: 2rem 0.85rem 2rem 1rem;
+      font-size: 0.78rem;
+      line-height: 1.25;
+    }
+    .aside h2 {
+      font-size: 1rem;
+      margin: 1.4rem 0 0.55rem;
+      border-bottom: 1px solid #e4d4f7;
+      padding-bottom: 0.2rem;
+    }
+    .aside h2:first-child { margin-top: 0; }
+    .aside p, .aside li { margin: 0.45rem 0; }
+    .aside ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.4rem 0;
+    }
+    .aside li i { width: 1.1rem; text-align: center; margin-right: 0.25rem; }
+    .aside .skill-label { font-style: italic; font-weight: 500; }
+    .main {
+      padding: 1.5rem 1.75rem 2.5rem 1.5rem;
+      position: relative;
+    }
+    .main::before {
+      content: "";
+      position: absolute;
+      left: 0.55rem;
+      top: 4.2rem;
+      bottom: 2rem;
+      width: 0;
+      border-left: var(--decorator-border);
+    }
+    #title h1 {
+      font-size: 2rem;
+      margin: 0 0 0.15rem;
+    }
+    .tagline {
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.95rem;
+      color: #555;
+      margin: 0 0 1.25rem;
+      font-weight: 500;
+    }
+    .main h2 {
+      font-size: 1.15rem;
+      margin: 1.35rem 0 0.65rem 1.1rem;
+      position: relative;
+    }
+    .main h2::before {
+      content: "";
+      position: absolute;
+      left: -1.35rem;
+      top: 0.35rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--decorator);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #D5BAF9;
+    }
+    .job, .edu, .project, .award-block {
+      margin: 0 0 0.95rem 1.1rem;
+    }
+    .job-header, .edu-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.25rem 1rem;
+      align-items: baseline;
+    }
+    .job-header h3, .edu-header h3, .project h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.95rem;
+      margin: 0;
+      font-weight: 600;
+    }
+    .meta {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    .dates { font-size: 0.8rem; color: #666; white-space: nowrap; }
+    ul.bullets {
+      margin: 0.25rem 0 0;
+      padding-left: 1.1rem;
+    }
+    ul.bullets li { margin: 0.2rem 0; font-size: 0.88rem; }
+    .employer {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.9rem 0 0.35rem 1.1rem;
+      font-family: "Montserrat", sans-serif;
+    }
+    .employer .loc { font-weight: 400; color: #666; font-size: 0.85rem; }
+    .earlier, .more {
+      margin: 0.5rem 0 0 1.1rem;
+      font-size: 0.85rem;
+    }
+    .disclaimer {
+      margin-top: 1.75rem;
+      font-size: 0.7rem;
+      color: #777;
+    }
+    @media (max-width: 800px) {
+      .page { grid-template-columns: 1fr; }
+      .main::before { display: none; }
+      .main h2 { margin-left: 0; }
+      .main h2::before { display: none; }
+      .job, .edu, .project, .award-block, .employer, .earlier, .more { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="aside">
+      <h2>Summary</h2>
+      <p>
+        Software architect and Staff Software Engineer with about 10 years of experience
+        (IBM 2014–2018; Tesla 2020–present) designing and building production-grade intelligent
+        systems for analytics platforms and business-critical applications.
+      </p>
+      <p>
+        Focus on trustworthy AI agents that turn natural-language questions into verified SQL/DAX
+        queries, secure data access (row-level security, injection-safe query generation),
+        self-service data-engineering platforms, and full-stack finance and analytics applications.
+      </p>
+      <p>M.S. in Computer Science (Intelligent Systems), UT Dallas.</p>
+
+      <h2>More Info</h2>
+      <p>
+        <a href="/docs/resume_2026.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download a PDF of this Resume</a>
+      </p>
+      <p>
+        <a href="https://likarajo.github.io/"><i class="fa fa-external-link-alt" aria-hidden="true"></i> likarajo.github.io</a>
+      </p>
+
+      <h2>Contact</h2>
+      <ul>
+        <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:likarajo@gmail.com">likarajo@gmail.com</a></li>
+        <li><i class="fa fa-linkedin" aria-hidden="true"></i> <a href="https://www.linkedin.com/in/likarajo">linkedin.com/in/likarajo</a></li>
+        <li><i class="fa fa-link" aria-hidden="true"></i> <a href="https://likarajo.github.io">likarajo.github.io</a></li>
+        <li><i class="fa fa-github" aria-hidden="true"></i> <a href="https://github.com/likarajo">github.com/likarajo</a></li>
+        <li><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Dallas, TX</li>
+      </ul>
+
+      <h2>Technical Skills</h2>
+      <p><span class="skill-label">Architecture &amp; Design</span>: System design, distributed systems, data modeling, semantic layers, API design, OOP, security architecture</p>
+      <p><span class="skill-label">AI &amp; Data</span>: LLM agents, natural-language-to-SQL/DAX, prompt engineering, semantic search (vector + BM25), NLP, machine learning, deep learning (Keras, TensorFlow, PyTorch, scikit-learn)</p>
+      <p><span class="skill-label">Data Engineering</span>: Apache Airflow, ETL/data pipelines, data warehouse/lakehouse, Spark, Hadoop, Kafka, Elastic stack</p>
+      <p><span class="skill-label">Languages &amp; Web</span>: Python, SQL, DAX, JavaScript/TypeScript, React, Java, Scala, Spring Boot, RESTful microservices</p>
+      <p><span class="skill-label">Data Stores</span>: SQL, NoSQL, Elasticsearch, graph databases</p>
+      <p><span class="skill-label">DevOps &amp; Cloud</span>: Git, CI/CD (Jenkins), Docker, Kubernetes, UNIX/Linux, AWS (S3, EC2, EMR)</p>
+
+      <h2>Links</h2>
+      <p>Digital badges:<br /><i class="fa fa-certificate" aria-hidden="true"></i> <a href="https://www.credly.com/users/likarajo">credly.com/users/likarajo</a></p>
+      <p>Projects:<br /><i class="fab fa-github-alt" aria-hidden="true"></i> <a href="https://likarajo.github.io/Projects">likarajo.github.io/Projects</a></p>
+      <p>Writing:<br /><i class="fa fa-wordpress" aria-hidden="true"></i> <a href="https://likarajoblogs.wordpress.com">likarajoblogs.wordpress.com</a></p>
+
+      <h2>Disclaimer</h2>
+      <p class="disclaimer">Source kept in <a href="https://github.com/likarajo/likarajo.github.io/tree/master/resume">likarajo.github.io/resume</a>. Last updated 2026.</p>
+    </aside>
+
+    <main class="main">
+      <div id="title">
+        <h1>Rajarshi Chattopadhyay</h1>
+        <p class="tagline">Software Architect | AI Systems &amp; Business Applications</p>
+      </div>
+
+      <h2>Education</h2>
+      <div class="edu">
+        <div class="edu-header">
+          <h3>M.S., Computer Science (Intelligent Systems) — The University of Texas at Dallas</h3>
+          <span class="dates">2018 – 2020</span>
+        </div>
+        <p class="meta">CGPA 3.64. Coursework: Data Structures, Big Data, Machine Learning.</p>
+      </div>
+      <div class="edu">
+        <div class="edu-header">
+          <h3>B.Tech., Electronics and Communication Engineering — West Bengal University of Technology, India</h3>
+          <span class="dates">2014</span>
+        </div>
+        <p class="meta">Thesis: Design and Development of a RISC Processor based on Harvard Architecture.</p>
+      </div>
+
+      <h2>Selected Positions</h2>
+
+      <div class="employer">Tesla <span class="loc">· Dallas, TX</span></div>
+      <div class="job">
+        <div class="job-header">
+          <h3>Staff Software Engineer</h3>
+          <span class="dates">Feb 2026 – Present</span>
+        </div>
+        <ul class="bullets">
+          <li>Architect AI agents that generate, run, and explain analytical SQL/DAX queries from natural-language questions over enterprise financial data, replacing manual chart and report building.</li>
+          <li>Design secure data access for external applications and agentic workflows: SQL-injection prevention, row-level security, and token-based access.</li>
+          <li>Built hybrid semantic search (vector search plus BM25) to improve search relevance across an internal analytics platform.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-header">
+          <h3>Senior Software Development Engineer</h3>
+          <span class="dates">Mar 2023 – Feb 2026</span>
+        </div>
+        <ul class="bullets">
+          <li>Sole owner of a visual, self-service data-engineering platform built on Apache Airflow; led it from requirements and architecture through development to MVP (Sep 2024) and launch (Jan 2025). Features include a visual DAG and task builder, test runs, Git integration with conflict resolution, team workspaces, and staging-to-production promotion. Became the standard pipeline-authoring front end for the data-engineering backend.</li>
+          <li>Sole owner of a financial planning and analytics application giving cost-center leaders operating-expense (OPEX) visibility, with loan, lease, and delivery simulators; optimized query performance and resource usage.</li>
+          <li>Built version 1.0 of an enterprise semantic layer and data modeler (SQL query-builder parser), the foundation for a single enterprise data model and business KPI layer.</li>
+          <li>Developed the AI agent for charts and dashboards, workbook life cycle, and datasource editor of an internal analytics platform.</li>
+          <li>Co-authored and presented a data lakehouse architecture proposal (2024).</li>
+          <li>Designed, developed, and delivered a regulatory credit trading application that moved a revenue-critical department from spreadsheets to software, with contract and invoice generation, contract-lifecycle integration, and API integrations with other internal applications.</li>
+          <li>Designed, developed, and delivered an application to productionize machine-learning model discovery and documentation, part of the infrastructure that democratizes data-science work across organizations.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-header">
+          <h3>Software Engineer</h3>
+          <span class="dates">Mar 2021 – Feb 2023</span>
+        </div>
+        <ul class="bullets">
+          <li>Designed, developed, and deployed a company-wide metadata explorer, improving data discovery and lineage tracking from business-process assets to physical database entities.</li>
+          <li>Set up the security architecture and deployment pipelines for cross-domain applications.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-header">
+          <h3>Data Engineer Intern — Fremont, CA</h3>
+          <span class="dates">Jun 2020 – Nov 2020</span>
+        </div>
+        <ul class="bullets">
+          <li>Developed and automated ETLs for Enterprise Data Warehouse solutions for Sales, Delivery, and Logistics teams in a time-constrained environment using open-source technologies.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <h3>Software Engineer Intern, IT — Tesla · Fremont, CA</h3>
+          <span class="dates">Sep 2019 – Dec 2019</span>
+        </div>
+        <ul class="bullets">
+          <li>Automated the handling and monitoring of secured infrastructure-access requests, cutting turnaround time by 90%, in support of the company’s digital transformation.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <h3>Software Development Engineer Intern — Copart · Dallas, TX</h3>
+          <span class="dates">May 2019 – Aug 2019</span>
+        </div>
+        <ul class="bullets">
+          <li>Designed and built a scalable RESTful microservices system for cross-verification and reconciliation of vendor check payments with the bank, preventing fraud worth thousands of dollars each month.</li>
+          <li>Developed and maintained web application modules and REST microservices for billing and payments operations; explored architecture feasibility and trade-offs and prepared design documents.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <h3>Software Systems Engineer — IBM · Kolkata, India</h3>
+          <span class="dates">Dec 2014 – Dec 2018</span>
+        </div>
+        <ul class="bullets">
+          <li>Developed and supported enterprise systems (client application back end) for a global shipping operation (A.P. Moller-Maersk).</li>
+          <li>Led a 15-member team for end-to-end Level 3 application support at 100% SLA, developing automations for database updates and application-queue monitoring.</li>
+          <li>Built MQ reporting tools: a Java UI for one-click daily queue-status reports and Bash automation for daily queue monitoring, eliminating manual effort.</li>
+          <li>Provided on-the-job training on application system architecture and databases; received the IBM Best Emerging Techie Award (A.P. Moller-Maersk Diamond Awards, 2016).</li>
+        </ul>
+      </div>
+      <p class="earlier">Earlier: Administrative Assistant (student worker), Office of Graduate Education, UT Dallas (2018–2019); Embedded Systems Engineer Apprentice, Hi-Q Solutions (2012–2013; FSMs, assembly, VHDL); engineering apprenticeships at Bharat Sanchar Nigam Ltd. and Siemens VAI Metal Technologies (2012–2013).</p>
+
+      <h2>Selected Projects</h2>
+      <div class="project">
+        <h3>AI agent for energy data (2026)</h3>
+        <p class="meta">Safe natural-language-to-SQL agent over public U.S. EIA electricity-generation data: questions become parameterized single SELECT statements (user text never copied into SQL), a checker blocks writes, comments, extra statements, and out-of-schema columns, and unanswerable questions are refused. Python, SQLite. <a href="https://likarajo.github.io/work/ai-agent-chatbot">likarajo.github.io/work/ai-agent-chatbot</a></p>
+      </div>
+      <div class="project">
+        <h3>Neural Machine Translation</h3>
+        <p class="meta">LSTM seq2seq encoder-decoder translation model in Keras. <a href="https://github.com/likarajo/language_translation">github.com/likarajo/language_translation</a></p>
+      </div>
+      <div class="project">
+        <h3>COVID-19 Sentiment Analysis (2020)</h3>
+        <p class="meta">Sentiment analysis of COVID-19 tweets in R. <a href="https://github.com/likarajo/covid19Sentiments">github.com/likarajo/covid19Sentiments</a></p>
+      </div>
+      <div class="project">
+        <h3>Customer Targeting</h3>
+        <p class="meta">Binary classification model trained with multiple classifiers to predict a customer’s product interest from ad-click and search data. <a href="https://github.com/likarajo/customer_targeting">github.com/likarajo/customer_targeting</a></p>
+      </div>
+      <div class="project">
+        <h3>Sentiment Analysis and Visualization</h3>
+        <p class="meta">Spark Streaming application for live tweets via the Twitter API, sentiment analysis with Stanford CoreNLP, and real-time visualization with ZooKeeper, Kafka, Elasticsearch, Logstash, Kibana. <a href="https://github.com/likarajo/twitter_sentiments">github.com/likarajo/twitter_sentiments</a></p>
+      </div>
+      <p class="more">More: house price prediction (Spark on AWS EMR), movie-review sentiment (CNN/RNN with GloVe), temperature-anomaly mapping (NASA data), Elasticsearch search app, chatbot. Full list: <a href="https://likarajo.github.io/Projects">likarajo.github.io/Projects</a></p>
+
+      <h2>Awards</h2>
+      <div class="award-block">
+        <ul class="bullets">
+          <li>IBM Best Emerging Techie Award, A.P. Moller-Maersk Diamond Awards, 2016.</li>
+          <li>First Runner-Up, IETE Technical Paper Contest, 2014: 16-bit RISC processor on an FPGA; also presented at a national seminar on Advanced Microprocessor and VLSI Devices.</li>
+        </ul>
+      </div>
+
+      <h2>Certifications &amp; Badges</h2>
+      <div class="award-block">
+        <p class="meta">Digital badges: <a href="https://www.credly.com/users/likarajo">credly.com/users/likarajo</a></p>
+        <ul class="bullets">
+          <li>Oracle Certified Associate, Java SE 8 Programmer (2017)</li>
+          <li>Chegg Skills AI Prompt Engineering Certificate (2024)</li>
+          <li>IBM: Big Data Foundations L1 (2017), L2 (2019); Hadoop Foundations L1 (2017), L2 (2019); Hadoop Programming L1 (2017); Hadoop Data Access L1 (2019); Hadoop Administration L1 (2019); Spark L1 (2019); Docker Essentials (2019); IBM Cloud Kubernetes Service (2019); Blockchain Essentials (2017); Enterprise Design Thinking Practitioner (2016)</li>
+        </ul>
+      </div>
+
+      <h2>Activities &amp; Writing</h2>
+      <div class="award-block">
+        <ul class="bullets">
+          <li>Mentor to interns and new engineers; 2013 talks on computer architecture (IETE seminar) and wireless telecom.</li>
+          <li>HackForHumanity 2018 hackathon; member and volunteer, Graduate Student Assembly and ACM, UT Dallas.</li>
+          <li>Technical articles on LinkedIn and <a href="https://likarajoblogs.wordpress.com">likarajoblogs.wordpress.com</a> (Docker, CI/CD, RISC design, COVID-19 sentiment).</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
