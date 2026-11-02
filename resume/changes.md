@@ -15,8 +15,8 @@ Nothing was published, pushed or committed. **Rev 2 (Oct 14, 11:16 PM CT):** Raj
 - Every Tesla bullet from the 2023 resume: credit trading app, ML model discovery and documentation app, company-wide metadata explorer, security architecture and deployment pipelines, Data Engineer Intern ETLs for Sales/Delivery/Logistics
 - Copart: reconciliation microservices (fraud prevention), architecture and design docs, billing and payments modules (from the 2019 resume)
 - Tesla 2019 IT internship (infrastructure-access automation)
-- IBM: L3 support automations, 15-member team, client back end, DB update and queue-monitoring automation, MQ reporting tools (from the CV), on-the-job training, Best Emerging Techie 2016 (Maersk Diamond Awards)
-- Education: UTD M.S., CGPA 3.64, coursework; WBUT B.Tech. RISC/Harvard thesis. The B.Tech. CGPA was dropped in rev 2 (see below).
+- IBM: L3 support automations, client back end, DB update and queue-monitoring automation, MQ reporting tools (from the CV), on-the-job training, Best Emerging Techie 2016 (Maersk Diamond Awards)
+- Education: UTD M.S., coursework; WBUT B.Tech. RISC/Harvard thesis. All GPAs/CGPAs dropped.
 - Projects: Customer Targeting and Twitter Sentiments in full. House price, movie-review sentiment, temperature anomaly, search app and chatbot/assistant are kept on one "More" line, with a link to likarajo.github.io/Projects
 - Skills: every skill from the 2019 and 2023 resumes (System Design, OOP, Data Modeling, full-stack, Python, React JS/TS, UNIX/Linux, SQL/NoSQL/Elastic/Graph, Java, Scala, Spring Boot, Hadoop, Spark, Git, Jenkins, Docker, AWS S3/EC2/EMR), regrouped
 - All 13 Oracle/IBM digital badges from the CV, with their years
@@ -71,8 +71,6 @@ You can add any approved metric back later.
 8. **Revenue:** no figures anywhere; "revenue-critical department" is kept.
 9. **Oracle SQL certification:** removed.
 10. **"About 10 years":** kept.
-11. **IBM "100% SLA":** kept. It is sourced from an internal profile note that says "Led a 15-person support team at 100% SLA." No earlier resume or CV has it.
-12. **B.Tech. CGPA 3.5:** dropped. No source states the scale.
 13. **All `[VERIFY]` markers are removed.** The italic line "Verify all badges at …" was also reworded to "Digital badges: credly.com/users/likarajo" so no "verify" text remains.
 
 ## Rev 2: layout and ATS checks
@@ -80,15 +78,13 @@ You can add any approved metric back later.
 - **Structure:** single column, no tables, text boxes, images, headers or footers.
 - **Bullets:** Word's auto-bullets exported as a private-use Symbol glyph (U+F0B7), which ATS parsers can garble. They are now a plain "•" character in Arial, so the PDF embeds only Liberation Sans (the Arial-metric font). Text extraction has no private-use or replacement glyphs.
 - **Page breaks:** section headings and job titles are set to keep with the next line, so a title is never stranded at the bottom of a page.
-- **Text scan:** the PDF text has no "verify", "$", phone number, Austin, Oracle SQL, B.Tech. CGPA, internal Tesla system names, or youracclaim.
+- **Text scan:** the PDF text has no "verify", "$", phone number, Austin, Oracle SQL, GPA/CGPA, 100% SLA / 15-member team claim, internal Tesla system names, or youracclaim.
 
 ## Still uncertain (not shown on the resume; for Raj's awareness)
 - **"Software engineer since 2020" vs. the resume:** the site says this, and the master file says SE from **Jun 2020**. The resume now shows a Jun–Nov 2020 internship and full-time SE from **Mar 2021**, per Raj. Dec 2020 – Feb 2021 is a gap on the resume. Consider aligning the site wording and the master file's "Software Engineer Jun 2020" line with the paperwork.
 - **2020 internship:** its title (Data Engineer Intern), its Fremont, CA location and its Nov 2020 end month come only from the 2023 resume.
 - **Copart Jan–May 2020 term:** listed on the 2023 resume, now dropped per Raj. Confirm it wasn't a real second term, or that leaving it off is intended.
-- **"100% SLA":** sourced only in the master file, which marks it as needing proof.
 - **"About 10 years":** counts IBM plus Tesla only. The master file says 12+ because it includes the 2012–13 apprenticeships.
-- **M.S. CGPA 3.64:** kept from the 2023 resume. The scale isn't stated there either, but a UTD GPA is on 4.0.
 - **AI agent for energy data:** the repo `likarajo/ai-agent-chatbot` is still empty on GitHub, so the resume links the site case study. The site case study says "over 50 years" of EIA data, but the master file says 2020–2024.
 - **Badge years:** copied from the 2020 CV. Three badge IDs were spot-checked on Credly; the rest weren't.
 - **B.Tech. dates:** only "2014" is shown. Sources disagree on the start year (2012 vs 2010).
