@@ -45,7 +45,6 @@ Nothing was published, pushed or committed. **Rev 2 (Oct 14, 11:16 PM CT):** Raj
   - Sole owner of the financial planning and analytics (OPEX) app
   - Semantic layer v1.0 and data modeler
   - Analytics-platform AI agent, workbook and datasource editor
-  - Co-authored the 2024 lakehouse proposal
 - **New Skills group "AI & Data":** LLM agents, NL-to-SQL/DAX, prompt engineering, semantic search, NLP, ML/DL. Airflow, DAX and Kubernetes are also added.
 - **Projects:** AI agent for energy data (2026), neural machine translation (language_translation), COVID-19 sentiment (covid19Sentiments)
 - **Awards section:** IETE Technical Paper Contest First Runner-Up 2014 (16-bit RISC on an FPGA, national seminar), alongside the IBM award
