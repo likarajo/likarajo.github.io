@@ -23,7 +23,7 @@ It's deliberately small. A scripted outreach agent runs through a fixed set of s
 
 <div class="video-embed" style="position:relative;width:100%;aspect-ratio:16/9;margin:1.25rem 0 0.5rem;overflow:hidden">
   <iframe
-    src="https://www.youtube-nocookie.com/embed/diLMNop0cj0"
+    src="https://www.youtube-nocookie.com/embed/1ZvNJHoKl5g"
     title="Breakpoints for AI agents: pause before email.send — Likarajo Tech"
     loading="lazy"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -33,7 +33,7 @@ It's deliberately small. A scripted outreach agent runs through a fixed set of s
   ></iframe>
 </div>
 
-<p><a href="https://youtu.be/diLMNop0cj0">https://youtu.be/diLMNop0cj0</a></p>
+<p><a href="https://youtu.be/1ZvNJHoKl5g">https://youtu.be/1ZvNJHoKl5g</a></p>
 
 ## 1. The problem: one tool call you can't take back
 
