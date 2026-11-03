@@ -19,6 +19,22 @@ Here's the big picture first. Then we'll go one piece at a time.
 
 ![Overview flowchart of how APIs, tools, MCP, plugins, skills, and RAG fit together in an AI agent stack](../../assets/writing/ai-agent-stack/00-overview.png)
 
+## Watch the video
+
+<div class="video-embed" style="position:relative;width:100%;aspect-ratio:16/9;margin:1.25rem 0 0.5rem;overflow:hidden">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/PWASrkBBZVM"
+    title="AI Agent Stack — Likarajo Tech"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"
+    style="position:absolute;inset:0;width:100%;height:100%;border:0"
+  ></iframe>
+</div>
+
+<p><a href="https://youtu.be/PWASrkBBZVM">https://youtu.be/PWASrkBBZVM</a></p>
+
 ## 1. API: the contract underneath everything
 
 An **API (Application Programming Interface)** is a documented contract that lets one program talk to another. For web services that usually means HTTPS requests and JSON responses: you send a request to an endpoint, and you get back data in a format the docs promise.
