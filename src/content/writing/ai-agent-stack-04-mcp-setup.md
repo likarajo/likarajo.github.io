@@ -185,15 +185,18 @@ Underneath, the server still calls the same `shared/issue_store.py` as the earli
 The tests don't need a model:
 
 ```bash
-PYTHONPATH=. pytest 04-mcp/tests -p no:warnings
+PYTHONPATH=. pytest 04-mcp/tests -q -rA
 ```
 
 ```text
-...                                          [100%]
-3 passed in 1.16s
+...                                                                      [100%]
+=========================== short test summary info ============================
+PASSED 04-mcp/tests/test_mcp_smoke.py::test_tools_registered
+PASSED 04-mcp/tests/test_mcp_smoke.py::test_search_tool_direct
+PASSED 04-mcp/tests/test_mcp_smoke.py::test_stdio_client_roundtrip
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
 The three smoke tests check that both tools are registered on the server, that calling `search_issues_tool` directly finds at least one open login issue, and a full stdio round trip through the demo client. That last one starts a real server process, which is why this module's tests take about a second.
 

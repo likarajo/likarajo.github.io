@@ -15,7 +15,7 @@ In the [AI Agent Stack overview](/writing/ai-agent-stack-mcp-rag-apis-tools-plug
 
 Tools give an agent hands. A skill gives it the playbook.
 
-![Sequence diagram: run.py gets the task Triage the open login issues, asks the loader for the catalog (name and one-line description only), selects issue-triage, loads the full SKILL.md, searches open login issues in the issue store, gets 101, 102, 105 and 107 back, and prints a triage report with severity call p1](../../assets/writing/ai-agent-stack-06-skills-setup/01-progressive-load.png)
+![Sequence diagram: run.py gets the task Triage the open login issues, asks the loader for the catalog of three skills (name and one-line description only), selects issue-triage, loads the full SKILL.md, searches open login issues in the issue store, gets 101, 102, 105 and 107 back, and prints a triage report with severity call p1](../../assets/writing/ai-agent-stack-06-skills-setup/01-progressive-load.png)
 
 ## Watch the video
 
@@ -32,9 +32,9 @@ The key idea is **progressive loading**, which happens in two stages:
 | At startup | Only each skill's name and one-line description: the catalog |
 | When a task matches | The full `SKILL.md`: when to use it, the steps, the rules and the report template |
 
-![Diagram: at startup the agent sees only the issue-triage name and its one-line description; when a task matches, it loads the full SKILL.md with sections When to activate, Steps, Severity rules, Report template and Rules](../../assets/writing/ai-agent-stack-06-skills-setup/02-what-the-agent-sees.png)
+![Diagram: at startup the agent sees only each skill's name and one-line description (billing-refunds, issue-triage, login-reset); when a task matches, it loads that skill's full SKILL.md with sections When to activate, Steps, Severity rules, Report template and Rules](../../assets/writing/ai-agent-stack-06-skills-setup/02-what-the-agent-sees.png)
 
-With one skill this doesn't save much. With dozens installed, it means only the short catalog sits in the context window all the time, and each playbook is loaded only when it's needed.
+With a few skills this doesn't save much. With dozens installed, it means only the short catalog sits in the context window all the time, and each playbook is loaded only when it's needed. The catalog reader stops at the closing front-matter fence, so skill bodies stay unloaded until `load_full` runs.
 
 ## 2. Why it matters
 
@@ -46,7 +46,7 @@ That gives the rule of thumb for this module: **keep explaining the same procedu
 
 ## 3. The running example
 
-The task is **"Triage the open login issues."** The repo ships one skill, `06-skills/skills/issue-triage/SKILL.md`. Its steps are:
+The task is **"Triage the open login issues."** The repo ships three skills under `06-skills/skills/`: `issue-triage`, `billing-refunds` and `login-reset`. The default task matches `issue-triage` (`06-skills/skills/issue-triage/SKILL.md`). Its steps are:
 
 1. Search open issues for the symptom text (default: `login`).
 2. For each match, read the title, labels, assignee and body.
@@ -84,7 +84,9 @@ The output has three parts. First, the catalog, which is all the agent sees at s
 
 ```text
 # Skill catalog (startup — names/descriptions only)
+- billing-refunds: Handle billing disputes, invoice corrections, and refund requests for Northwind portal charges.
 - issue-triage: Triage open issues using Northwind labels, severity rules, and a standard report template.
+- login-reset: Reset or unlock a portal login when a user cannot sign in after SSO or password failures.
 ```
 
 Then the selected skill, with the full `SKILL.md` body printed up to the report template. Then the report:
@@ -103,7 +105,7 @@ Then the selected skill, with the full `SKILL.md` body printed up to the report 
 
 The same four issues as every earlier module, now in the team's format. #105 is a docs task with no severity label, so it gets `p?` instead of a made-up level.
 
-Now try a task the skill doesn't cover:
+Now try a task no skill covers:
 
 ```bash
 PYTHONPATH=06-skills:. python 06-skills/agent/run.py --task "What's the weather in Austin?"
@@ -111,34 +113,57 @@ PYTHONPATH=06-skills:. python 06-skills/agent/run.py --task "What's the weather 
 
 ```text
 # Skill catalog (startup — names/descriptions only)
+- billing-refunds: Handle billing disputes, invoice corrections, and refund requests for Northwind portal charges.
 - issue-triage: Triage open issues using Northwind labels, severity rules, and a standard report template.
+- login-reset: Reset or unlock a portal login when a user cannot sign in after SSO or password failures.
 
 No skill matched; refusing to invent a playbook.
 ```
 
-That's the right behavior. But try one more:
+That's the right behavior. A billing question now picks the billing skill (not a login one):
 
 ```bash
 PYTHONPATH=06-skills:. python 06-skills/agent/run.py --task "Summarize the open billing issues."
 ```
 
 ```text
-# Triage report
-- Scope: open issues matching 'Summarize the open billing issues.'
+# Selected skill: billing-refunds
+...
+# Billing summary
+- Scope: open issues matching 'billing'
 - Matches:
-- Severity call: p3 (from labels + auth runbook guidance in the skill)
-- Next step: Confirm /health/auth latency and link the login-timeout runbook on each open auth bug.
+  - #106 Export CSV for billing reports [billing, enhancement]
+- Next step: Draft refund request fields; do not silently issue credits.
 ```
 
-![Diagram: three tasks through the same run.py. Triage the open login issues matches issue-triage and reports 4 matches with severity call p1. What's the weather in Austin matches no skill and refuses. Summarize the open billing issues matches on the words open and issues, searches the whole sentence and finds 0 matches, though issue 106 is an open billing issue](../../assets/writing/ai-agent-stack-06-skills-setup/03-three-tasks.png)
+But try the series' familiar question without the word "triage":
 
-Two things went wrong here. The skill was selected because the task shares the words "open" and "issues" with the skill's description. Then, since the task doesn't say "login", the demo searched for the whole sentence, found nothing, and still printed a severity call and the login next step. There is an open billing issue, #106 "Export CSV for billing reports". The matcher and the report are a simple demo of the loading pattern. In a real host, a model usually reads the catalog and decides, and it could follow step 1 by searching for "billing".
+```bash
+PYTHONPATH=06-skills:. python 06-skills/agent/run.py --task "Which open issues mention login?"
+```
+
+```text
+# Selected skill: login-reset
+...
+# Login access summary
+- Scope: open issues matching 'login'
+- Matches:
+  - #101 Login page hangs after SSO redirect [auth, bug, p1]
+  - #102 Login timeout after 30s on slow networks [auth, bug, p2]
+  - #105 Document login timeout troubleshooting [docs, auth]
+  - #107 Login rate limit too aggressive for QA [auth, infra, p3]
+- Next step: Confirm lockout vs timeout; follow login-timeout runbook if spinner hangs.
+```
+
+![Diagram: tasks through the same run.py. Triage the open login issues matches issue-triage and reports 4 matches with severity call p1. What's the weather in Austin matches no skill and refuses. Summarize the open billing issues selects billing-refunds and finds #106. Which open issues mention login selects login-reset instead of issue-triage](../../assets/writing/ai-agent-stack-06-skills-setup/03-three-tasks.png)
+
+Billing beats login when the task is about billing. The remaining matcher quirk is that **"Which open issues mention login?"** selects `login-reset` (the skill whose name contains `login`) instead of `issue-triage`. Say "triage" and you get the playbook; say only "login" and you get the reset skill. The matcher is still a simple demo of the loading pattern. In a real host, a model usually reads the catalog and decides.
 
 ## 6. How it works inside
 
 There are three files to read, in this order:
 
-1. **`06-skills/skills/issue-triage/SKILL.md`** is the skill itself. The front matter is what goes in the catalog:
+1. **`06-skills/skills/*/SKILL.md`** files are the skills. Front matter is what goes in the catalog; for triage:
 
    ```markdown
    ---
@@ -147,40 +172,50 @@ There are three files to read, in this order:
    ---
    ```
 
-   Everything below it (when to activate, steps, report template, rules) only gets loaded on a match.
+   Everything below it (when to activate, steps, report template, rules) only gets loaded on a match. `billing-refunds` and `login-reset` follow the same shape.
 
-2. **`06-skills/agent/loader.py`** has the three steps of progressive loading: `catalog` returns name and description for each skill folder, `select_skill` picks one for the task, and `load_full` returns the whole body. The matcher counts words of four letters or more from the name and description that appear in the task, with a bonus for "triage":
+2. **`06-skills/agent/loader.py`** has the three steps of progressive loading: `catalog` returns name and description for each skill folder (metadata only — it stops at the closing `---` fence), `select_skill` picks one for the task, and `load_full` returns the whole body. The matcher scores name hits higher than description hits, ignores generic stop tokens like "open" and "issues", and adds a strong boost when the task and skill name share a topic word:
 
    ```python
-   for token in re.findall(r"[a-z0-9-]+", f"{meta.name} {meta.description}".lower()):
-       if len(token) < 4:
-           continue
+   for token in name_tokens:
        if token in task_l:
-           score += 1
+           score += 5.0
+   for token in desc_tokens:
+       if token in task_l:
+           score += 1.0
+   if "billing" in task_l and "billing" in meta.name:
+       score += 20.0
+   if "login" in task_l and "login" in meta.name:
+       score += 20.0
    if "triage" in task_l and "triage" in meta.name:
-       score += 5
+       score += 20.0
    ```
 
-   That word count is why "open" and "issues" were enough to pick the skill for the billing task.
+   That topic boost is why billing questions pick `billing-refunds`, and why a plain "login" question picks `login-reset` unless you also say "triage".
 
-3. **`06-skills/agent/run.py`** follows the playbook in code. It searches open issues for `login` (or for the whole task, if the task doesn't mention login), keeps each issue's existing `p` label as its severity, takes the highest one as the overall call, and fills in the template. The "Next step" line is fixed text.
+3. **`06-skills/agent/run.py`** follows the selected playbook in code. It searches open issues for `billing`, `login`, or the whole task, then formats either a triage report, a billing summary or a login-access summary. For triage it keeps each issue's existing `p` label as its severity, takes the highest one as the overall call, and fills in the template. The "Next step" line is fixed text per skill.
 
 ## 7. Test it
 
 The tests don't need a model:
 
 ```bash
-PYTHONPATH=06-skills:. pytest 06-skills/tests -p no:warnings
+PYTHONPATH=06-skills:. pytest 06-skills/tests -q -rA
 ```
 
 ```text
-...                                          [100%]
-3 passed in 0.01s
+.....                                                                    [100%]
+=========================== short test summary info ============================
+PASSED 06-skills/tests/test_skills_smoke.py::test_catalog_is_metadata_only
+PASSED 06-skills/tests/test_skills_smoke.py::test_catalog_is_lazy_no_full_parse
+PASSED 06-skills/tests/test_skills_smoke.py::test_billing_question_selects_billing_skill
+PASSED 06-skills/tests/test_skills_smoke.py::test_select_and_load
+PASSED 06-skills/tests/test_skills_smoke.py::test_run_produces_report
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
-The three smoke tests check that the catalog includes `issue-triage`, that the login triage task selects it and loads a body with the report template and severity rules, and that a full run prints a triage report with #101 or #102 in it.
+The five smoke tests check that the catalog is metadata-only and loads lazily (no full body parse at startup), that a billing question selects `billing-refunds`, that the login triage task selects `issue-triage` and loads a body with the report template and severity rules, and that a full run prints a triage report with #101 or #102 in it.
 
 ## What's next
 
