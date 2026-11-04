@@ -71,17 +71,15 @@ Run everything from the **repo root**, so the `shared/` package (the docs, the e
 Run the question without a model:
 
 ```bash
-PYTHONHASHSEED=0 SKIP_MODEL=1 PYTHONPATH=. python 03-rag/rag_demo/ask.py
+SKIP_MODEL=1 PYTHONPATH=. python 03-rag/rag_demo/ask.py
 ```
-
-(`PYTHONHASHSEED=0` makes the scores repeatable. More on that in the next section.)
 
 ```text
 [extractive RAG — no LLM]
 Question: How do we usually fix login timeouts?
 
 Top passages:
-[auth-design-notes.md | score=0.658]
+[auth-design-notes.md | score=0.611]
 ## Agent-friendly tip
 When someone asks "how do we usually fix login timeouts?", start from the login-timeout runbook, then search open issues mentioning login.
 
@@ -92,7 +90,7 @@ When someone asks "how do we usually fix login timeouts?", start from the login-
 
 ---
 
-[auth-design-notes.md | score=0.124]
+[auth-design-notes.md | score=0.121]
 ## Timeouts
 The browser client historically used a 30s hard timeout around step 4.
 On constrained mobile networks the token exchange can exceed 30s, which looks like a hung login.
@@ -100,15 +98,15 @@ On constrained mobile networks the token exchange can exceed 30s, which looks li
 Sources: auth-design-notes.md, login-timeout-runbook.md
 ```
 
-Without a model, the module prints the retrieved passages instead of a generated answer. That's useful, because it shows exactly what a model would have been given.
+Without a model, the module prints the retrieved passages instead of a generated answer. That's useful, because it shows exactly what a model would have been given. Scores are stable across runs (fixed embedding hash plus an index-order tie-break).
 
 And here's the honest part. Look at what came back:
 
-![Ranked list of the top 6 of 15 chunks: 1 the agent-friendly tip from auth-design-notes.md at 0.658, 2 the runbook heading alone at 0.218, 3 the Timeouts section at 0.124, then below the top-3 cut-off the Login flow, the Standard fix order at 5th with 0.096, and the triage checklist](../../assets/writing/ai-agent-stack-03-rag-setup/02-what-came-back.png)
+![Ranked list of the top chunks: 1 the agent-friendly tip from auth-design-notes.md at 0.611, 2 the runbook heading alone at 0.218, 3 the Timeouts section at 0.121, then below the top-3 cut-off Login flow, Severity guide, and further down the Standard fix order](../../assets/writing/ai-agent-stack-03-rag-setup/02-what-came-back.png)
 
 - The top hit is a note that repeats the question almost word for word and says "start from the login-timeout runbook." It points at the answer but isn't the answer.
 - The second hit is the runbook's title line on its own.
-- The "Standard fix order" chunk, with the six actual steps, ranks **5th**, so it never reaches the answer.
+- The "Standard fix order" chunk, with the six actual steps, ranks **8th** (score 0.062), so it never reaches the answer.
 
 So the sources are right, but the fix steps themselves aren't in the context. A model given only these three passages has no fix steps to quote. The system prompt tells it to say it doesn't know when something's missing.
 
@@ -118,24 +116,27 @@ To use a model, run without `SKIP_MODEL` while Ollama is running (default model 
 
 There are three small files to read, in this order:
 
-1. **`shared/embeddings.py`** does the chunking and the embedding. `chunk_markdown` splits on blank lines (500 characters max per chunk), which is why a heading can end up as a chunk on its own. `hash_embed` counts words into 256 buckets:
+1. **`shared/embeddings.py`** does the chunking and the embedding. `chunk_markdown` splits on blank lines (500 characters max per chunk), which is why a heading can end up as a chunk on its own. `hash_embed` counts words into 256 buckets, with a process-stable index so scores don't depend on `PYTHONHASHSEED`:
 
    ```python
+   def _stable_token_index(token: str, dim: int) -> int:
+       """Process-stable bucket index (avoids PYTHONHASHSEED-randomized hash())."""
+       digest = hashlib.sha256(token.encode("utf-8")).digest()
+       return int.from_bytes(digest[:8], "little") % dim
+
+
    def hash_embed(text: str, dim: int = 256) -> np.ndarray:
        """Deterministic local embedding that needs no model download."""
        vec = np.zeros(dim, dtype=np.float32)
        for token in tokenize(text):
-           idx = hash(token) % dim
-           vec[idx] += 1.0
+           vec[_stable_token_index(token, dim)] += 1.0
        norm = float(np.linalg.norm(vec))
        if norm:
            vec /= norm
        return vec
    ```
 
-   This is a bag of words, not meaning. "timeouts" and "timeout" are different words to it, which is a big part of why the fix-order chunk (it says "timeout") ranks low for a question that says "timeouts".
-
-   It's also why `PYTHONHASHSEED=0` is in the run command. Python's built-in `hash()` is salted per process for strings, so without a fixed seed, words land in different buckets on every run. In my runs the top hit stayed the same, but the scores and the 2nd and 3rd hits changed from run to run.
+   This is a bag of words, not meaning. "timeouts" and "timeout" are different words to it, which is a big part of why the fix-order chunk (it says "timeout") ranks low for a question that says "timeouts". Ranking uses highest score first with a stable tie-break by chunk index, so the top hit for the example query stays `auth-design-notes.md` across rebuilds.
 
 2. **`03-rag/rag_demo/index.py`** builds the index. It reads every `*.md` file in `shared/data/docs/`, chunks it, and stacks the vectors into a 15 × 256 matrix. The index is rebuilt in memory on every run. Nothing is written to disk.
 
@@ -154,7 +155,7 @@ There are three small files to read, in this order:
 If you want to see the full ranking yourself, this prints the score of every chunk:
 
 ```bash
-PYTHONHASHSEED=0 SKIP_MODEL=1 PYTHONPATH=.:03-rag python -c "
+SKIP_MODEL=1 PYTHONPATH=.:03-rag python -c "
 from rag_demo.index import build_index
 from shared.embeddings import embed_texts, top_k
 ix = build_index()
@@ -169,17 +170,21 @@ for rank, (i, score) in enumerate(top_k(q, ix.matrix, k=15), 1):
 The tests don't need a model:
 
 ```bash
-PYTHONPATH=. pytest 03-rag/tests -p no:warnings
+PYTHONPATH=. pytest 03-rag/tests -q -rA
 ```
 
 ```text
-...                                          [100%]
-3 passed in 0.15s
+....                                                                     [100%]
+=========================== short test summary info ============================
+PASSED 03-rag/tests/test_rag_smoke.py::test_index_has_chunks
+PASSED 03-rag/tests/test_rag_smoke.py::test_retrieval_finds_login_runbook
+PASSED 03-rag/tests/test_rag_smoke.py::test_example_query_top_passage_is_deterministic
+PASSED 03-rag/tests/test_rag_smoke.py::test_extractive_answer
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
-The three smoke tests check that the index has chunks (one vector per chunk), that retrieval for the login timeout question returns login or timeout text from an auth or runbook source, and that the no-model answer includes a sources line. They check that retrieval lands in the right files, not that it finds the fix steps, which is exactly the gap the run above shows.
+The four smoke tests check that the index has chunks (one vector per chunk), that retrieval for the login timeout question returns login or timeout text from an auth or runbook source, that the example query's top passage is deterministically `auth-design-notes.md`, and that the no-model answer includes a sources line. They check that retrieval lands in the right files, not that it finds the fix steps, which is exactly the gap the run above shows.
 
 ## What's next
 

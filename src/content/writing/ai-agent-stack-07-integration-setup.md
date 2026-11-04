@@ -69,24 +69,22 @@ source .venv/bin/activate
 pip install -r 07-integration/requirements.txt
 ```
 
-This module needs the dependencies of the modules it calls, so the list is longer than before: FastAPI, Uvicorn, httpx, NumPy, the MCP Python SDK, PyYAML and pytest.
+This module needs the dependencies of the modules it calls, so the list is longer than before: FastAPI, Uvicorn, httpx, NumPy, the MCP Python SDK, PyYAML and pytest. Run everything from the **repo root**.
 
-Then, in a **second terminal**, start agent-debugger from its own repo:
+Then, in a **second terminal**, start Agent Debugger from the same repo root (needs Docker; clones the debugger into `third_party/` if needed):
 
 ```bash
-git clone https://github.com/likarajo/agent-debugger.git
-cd agent-debugger
-docker compose up --build
+make debugger-up
 ```
 
-That starts the debugger console on `http://localhost:3000` and its API on `http://localhost:8000`.
+That starts the debugger console on `http://localhost:3000`, its API on `http://localhost:8000`, and this repo's `issue-api` remapped to host `http://localhost:8001` so it does not collide with the debugger API. (You can also `docker compose up --build` inside a clone of [agent-debugger](https://github.com/likarajo/agent-debugger) for the same `:3000` / `:8000` ports without the stack's `issue-api`.)
 
 ## 5. Run it
 
 Back in the `ai-agent-stack` terminal, start the chat app and point it at the debugger API:
 
 ```bash
-AGENT_DEBUGGER_URL=http://127.0.0.1:8000 make chat
+AGENT_DEBUGGER_URL=http://127.0.0.1:8000 SKIP_MODEL=1 make chat
 ```
 
 Open `http://127.0.0.1:8080` and click **"Which open issues mention login?"**. The answer appears in the main pane, and the sidebar shows the local trace with each step and its duration:
@@ -151,10 +149,10 @@ After the seven steps and the triage report, the agent calls `email.send`. agent
 
 The payload is right there: who it would go to, the subject and the full body. Then you decide:
 
-![Sequence diagram: pipeline.py sends tool.call email.send to the agent-debugger API, the API sets the run to paused, the pipeline blocks on GET wait-decision, you click Approve or Deny in the debugger UI; approve returns Approved (demo: no real send) and the run completes, deny returns Run aborted after deny and no email is sent](../../assets/writing/ai-agent-stack-07-integration-setup/03-email-gate.png)
+![Sequence diagram: pipeline.py sends tool.call email.send to the agent-debugger API, the API sets the run to paused, the pipeline blocks on GET wait-decision, you click Approve or Deny in the debugger UI; approve returns Approved (demo: no real send) and the run completes, deny aborts the remote run with Human denied email.send and Run aborted after deny — email was not sent, and the pipeline posts no further remote events](../../assets/writing/ai-agent-stack-07-integration-setup/03-email-gate.png)
 
 - **Approve.** The debugger records `Human approved email.send` and `Approved — tool allowed to proceed (demo: no real send)`, the script prints the triage report, and the run ends with `run.completed`.
-- **Deny.** The debugger records the decision and `Run aborted after deny — email was not sent`, and the run is closed.
+- **Deny.** The debugger records `Human denied email.send` (the decision value is `denied`; legacy `denyd` is still accepted) and `Run aborted after deny — email was not sent`, aborts the remote run, and the pipeline finishes locally: it keeps the triage answer, appends `(email.send denied — answer not emailed)`, and does **not** POST any further events to the already-aborted run (a second `run.aborted` would be HTTP 400).
 
 Either way, no email goes out. The "send" is a function, `simulate_email_send`, that only returns a note saying nothing was sent. The point is the pause and the record, not the email.
 
@@ -176,9 +174,9 @@ There are three files to read, in this order:
        self.emit("tool.result", tool=tool, message=..., payload=result_payload)
    ```
 
-   `emit()` posts to `/runs/{id}/events` when `AGENT_DEBUGGER_URL` is set, and appends to `local_events` either way. For a gated tool like `email.send`, `tool_call()` posts the event and then blocks on `GET /runs/{id}/wait-decision` until you decide.
+   `emit()` posts to `/runs/{id}/events` when `AGENT_DEBUGGER_URL` is set, and appends to `local_events` either way. For a gated tool like `email.send`, `tool_call()` posts the event and then blocks on `GET /runs/{id}/wait-decision` until you decide. On Deny it records a local denied `tool.result` and marks the remote run closed so later emits stay local-only.
 
-2. **`07-integration/integration/pipeline.py`** has `answer_question()`, which calls the seven steps in order. Each one is a few lines inside `with dbg.step(...)`. Two of them take a shortcut worth knowing about: the MCP step imports the server's `search_issues_tool` function and calls it directly instead of starting the server over stdio as Module 04 did, and the API step reads from the shared issue store instead of making an HTTP request to the Module 01 server. Both keep the demo self-contained; the trace still records them as the MCP and API steps.
+2. **`07-integration/integration/pipeline.py`** has `answer_question()`, which calls the seven steps in order. Each one is a few lines inside `with dbg.step(...)`. Two of them take a shortcut worth knowing about: the MCP step imports the server's `search_issues_tool` function and calls it directly instead of starting the server over stdio as Module 04 did, and the API step reads from the shared issue store instead of making an HTTP request to the Module 01 server. Both keep the demo self-contained; the trace still records them as the MCP and API steps. After a Deny on `email.send`, the pipeline returns without calling `final_answer` / `complete` on the remote debugger.
 
 3. **`07-integration/integration/chat_app.py`** is the web chat: a FastAPI app with `POST /api/chat`, which calls `answer_question()` and returns the answer, the run id and the local events for the sidebar.
 
@@ -191,17 +189,30 @@ About the LLM step: with `SKIP_MODEL=1`, which every command in this post uses, 
 The tests don't need a model or the debugger:
 
 ```bash
-pytest 07-integration/tests -p no:warnings
+PYTHONPATH=.:07-integration:05-plugins:06-skills:04-mcp:03-rag:02-tools \
+  pytest 07-integration/tests -q -rA
 ```
 
 ```text
-...........                                                              [100%]
-11 passed in 0.59s
+............                                                             [100%]
+=========================== short test summary info ============================
+PASSED 07-integration/tests/test_chat_app.py::test_health_and_demo_questions
+PASSED 07-integration/tests/test_chat_app.py::test_chat_returns_answer_and_events
+PASSED 07-integration/tests/test_chat_app.py::test_index_html
+PASSED 07-integration/tests/test_debugger_adapter.py::test_debugger_emits_and_gates_email
+PASSED 07-integration/tests/test_debugger_adapter.py::test_deny_path_ends_cleanly_without_posting_after_abort
+PASSED 07-integration/tests/test_debugger_adapter.py::test_full_answer_trace_posted_to_fake_debugger
+PASSED 07-integration/tests/test_integration_smoke.py::test_gated_tools_match_debugger_policy
+PASSED 07-integration/tests/test_integration_smoke.py::test_demo_questions_cover_stack_narration
+PASSED 07-integration/tests/test_integration_smoke.py::test_build_report
+PASSED 07-integration/tests/test_integration_smoke.py::test_pipeline_standalone_no_email
+PASSED 07-integration/tests/test_integration_smoke.py::test_answer_emits_ordered_local_trace
+PASSED 07-integration/tests/test_integration_smoke.py::test_debugger_client_noop_without_url
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
-The 11 tests check that the gated tools match agent-debugger's policy, that the chat app's endpoints answer, that a full model-free run records all seven steps with a duration for each, and that the debugger client sends the trace, including an approved `email.send`, to a fake debugger API. None of them tests the Deny path.
+The 12 tests check that the gated tools match agent-debugger's policy, that the chat app's endpoints answer, that a full model-free run records all seven steps with a duration for each, that the debugger client sends the trace (including an approved `email.send`) to a fake debugger API, and that Deny ends cleanly without posting events after the remote abort.
 
 ## What's next
 
