@@ -68,7 +68,7 @@ source .venv/bin/activate
 pip install -r 05-plugins/requirements.txt
 ```
 
-The install step only needs `pytest`. If you want to try the optional check in section 5, also install the Module 04 requirements (`pip install -r 04-mcp/requirements.txt`) for the MCP SDK.
+That installs `mcp`, `httpx`, `pyyaml` and `pytest` — enough for the install step and for the optional host-style check in section 5 (no separate Module 04 install).
 
 Run everything from the **repo root**. The manifest's paths are relative to it.
 
@@ -90,27 +90,28 @@ Key point: packaging only — runtime still uses MCP/tools/skills/APIs.
 Wrote host config → /path/to/ai-agent-stack/05-plugins/.installed/northwind-issue-tracker.json
 ```
 
-Open the file it wrote. It's the manifest with two changes: the server script and the skill folder now have absolute paths, and there's a `source_manifest` field saying where it came from:
+Open the file it wrote. It's the manifest with a few changes: `python` is resolved to `sys.executable`, the server script and the skill folder now have absolute paths, a `cwd` points at the repo root, and there's a `source_manifest` field saying where it came from:
 
 ```json
 "mcp_servers": [
   {
     "name": "northwind-issue-tracker",
     "transport": "stdio",
-    "command": "python",
+    "command": "/path/to/ai-agent-stack/.venv/bin/python",
     "args": [
       "/path/to/ai-agent-stack/04-mcp/server/issue_tracker.py"
     ],
     "env": {
       "PYTHONPATH": "."
-    }
+    },
+    "cwd": "/path/to/ai-agent-stack"
   }
 ],
 ```
 
 The `.installed/` folder is in the repo's `.gitignore`, so the install output won't end up in a commit.
 
-**Optional: use the installed config like a host would.** The module stops at install. To check that the config actually works, I wrote a short script that reads it, starts the MCP server it describes, and runs the `/issues-login` question. Save it as `use_plugin.py` in the repo root (it needs the Module 04 requirements):
+**Optional: use the installed config like a host would.** The module stops at install. To check that the config actually works, I wrote a short script that reads it, starts the MCP server it describes, and runs the `/issues-login` question. Save it as `use_plugin.py` in the repo root:
 
 ```python
 import asyncio, json, os
@@ -183,7 +184,7 @@ There are two files to read, in this order:
        return data
    ```
 
-   Then `install_plugin` turns the relative server and skill paths into absolute ones and writes the result to `05-plugins/.installed/<name>.json`.
+   Then `install_plugin` resolves `python` / `python3` to `sys.executable`, turns the relative server and skill paths into absolute ones, sets `cwd` to the repo root, and writes the result to `05-plugins/.installed/<name>.json`.
 
 Real AI apps each have their own plugin format and installer, but the idea is the same: a manifest that lists the pieces, and an installer that wires them into the host.
 
@@ -192,17 +193,19 @@ Real AI apps each have their own plugin format and installer, but the idea is th
 The tests don't need a model:
 
 ```bash
-PYTHONPATH=. pytest 05-plugins/tests -p no:warnings
+PYTHONPATH=. pytest 05-plugins/tests -q -rA
 ```
 
 ```text
-..                                           [100%]
-2 passed in 0.02s
+..                                                                       [100%]
+=========================== short test summary info ============================
+PASSED 05-plugins/tests/test_plugins_smoke.py::test_manifest_valid
+PASSED 05-plugins/tests/test_plugins_smoke.py::test_install_writes_config
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
-The two smoke tests check that the manifest has a name, MCP servers, skills and commands, and that installing it into a temporary folder writes a config with the server's arguments and the "packaging only" note.
+The two smoke tests check that the manifest has a name, MCP servers, skills and commands, and that installing it into a temporary folder writes a config with the resolved interpreter, the server's arguments and the "packaging only" note.
 
 ## What's next
 
