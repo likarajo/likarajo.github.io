@@ -167,15 +167,20 @@ Underneath, `execute_tool` calls the same `shared/issue_store.py` that served th
 The tests don't need a model:
 
 ```bash
-PYTHONPATH=. pytest 02-tools/tests -p no:warnings
+PYTHONPATH=. pytest 02-tools/tests -q -rA
 ```
 
 ```text
-.....                                        [100%]
-5 passed in 0.04s
+.....                                                                    [100%]
+=========================== short test summary info ============================
+PASSED 02-tools/tests/test_tools_smoke.py::test_tool_schemas_present
+PASSED 02-tools/tests/test_tools_smoke.py::test_execute_search_issues
+PASSED 02-tools/tests/test_tools_smoke.py::test_execute_get_issue
+PASSED 02-tools/tests/test_tools_smoke.py::test_unknown_tool
+PASSED 02-tools/tests/test_tools_smoke.py::test_scripted_loop
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
 The five smoke tests check that both tool schemas are defined, that `search_issues` returns only open login issues, that `get_issue` returns issue 101, that an unknown tool returns an error, and that the scripted loop prints the tool call.
 

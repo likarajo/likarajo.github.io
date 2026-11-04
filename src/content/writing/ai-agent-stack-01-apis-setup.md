@@ -76,7 +76,7 @@ Run everything from the **repo root**, so the `shared/` package (the issue store
 Start the API in one terminal:
 
 ```bash
-PYTHONPATH=.:01-apis python -m uvicorn issue_api.server:app --port 8000
+PYTHONPATH=.:01-apis python -m uvicorn issue_api.server:app --host 127.0.0.1 --port 8000
 ```
 
 You'll see `Uvicorn running on http://127.0.0.1:8000`. Check it's alive from a second terminal (activate the same `.venv` there):
@@ -142,15 +142,19 @@ The same store is shared with the later modules, so the answer to the login ques
 Stop the server with Ctrl+C if you like. The tests don't need it, because they call the app in-process with FastAPI's `TestClient`:
 
 ```bash
-PYTHONPATH=. pytest 01-apis/tests -p no:warnings
+PYTHONPATH=. pytest 01-apis/tests -q -rA
 ```
 
 ```text
-....                                         [100%]
-4 passed in 0.25s
+....                                                                     [100%]
+=========================== short test summary info ============================
+PASSED 01-apis/tests/test_apis_smoke.py::test_health
+PASSED 01-apis/tests/test_apis_smoke.py::test_search_open_login_issues
+PASSED 01-apis/tests/test_apis_smoke.py::test_get_issue
+PASSED 01-apis/tests/test_apis_smoke.py::test_missing_issue
 ```
 
-(`-p no:warnings` only hides a dependency warning so the result is easy to read. The tests pass either way, and the timing will differ on your machine.)
+(`-q -rA` is the quiet progress plus short pass summary the module README uses. Pass lines may vary slightly by pytest version.)
 
 The four smoke tests check the health endpoint, the open login search (every result is open and the titles mention login), fetching issue 101, and the 404 for issue 9999. No model and no keys are involved.
 
