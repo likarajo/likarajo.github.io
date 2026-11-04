@@ -28,7 +28,7 @@ Module 07 is one function, `answer_question()`, with two front ends: a small web
 | Step | What it does |
 |------|--------------|
 | `plugin.load` (Module 05) | Installs the `northwind-issue-tracker` plugin manifest |
-| `skill.select` (Module 06) | Reads the skill catalog and picks `issue-triage` |
+| `skill.select` (Module 06) | Reads the skill catalog and picks the matching skill (`login-reset` for the two login questions, `issue-triage` for the triage task) |
 | `rag.retrieve` (Module 03) | Pulls the top 3 chunks from the team's docs |
 | `mcp.search_issues_tool` (Module 04) | Searches open issues through the MCP server's tool |
 | `tools.search_issues` (Module 02) | Runs the same search as a plain function tool |
@@ -53,7 +53,7 @@ The chat app offers three demo questions as chips:
 2. **"How do we usually fix login timeouts?"** Leans on RAG and the runbook.
 3. **"Triage the open login issues."** Uses the skill's report format, and is the one to try with email.
 
-All three run the full set of seven steps. The data is the same Northwind sample data as every earlier module: the issue store, the three docs and the `issue-triage` skill.
+All three run the full set of seven steps. The data is the same Northwind sample data as every earlier module: the issue store, the three docs and the three skills from Module 06.
 
 ## 4. Set it up
 
@@ -94,7 +94,7 @@ Open `http://127.0.0.1:8080` and click **"Which open issues mention login?"**. T
 The answer:
 
 ```text
-Found 4 open issue(s) matching the query (skill=issue-triage; sources=auth-design-notes.md, auth-design-notes.md, login-timeout-runbook.md):
+Found 4 open issue(s) matching the query (skill=login-reset; sources=login-timeout-runbook.md, auth-design-notes.md, auth-design-notes.md):
 - #101 Login page hangs after SSO redirect [auth, bug, p1]
 - #102 Login timeout after 30s on slow networks [auth, bug, p2]
 - #105 Document login timeout troubleshooting [docs, auth]
@@ -103,7 +103,7 @@ Found 4 open issue(s) matching the query (skill=issue-triage; sources=auth-desig
 Closest detail: #101 — Login page hangs after SSO redirect
 
 —
-stack: plugin=northwind-issue-tracker · skill=issue-triage · rag_chunks=3 · mcp=4 · tools=4
+stack: plugin=northwind-issue-tracker · skill=login-reset · rag_chunks=3 · mcp=4 · tools=4
 ```
 
 The same four issues as every earlier module. The last line tells you which piece contributed what.
