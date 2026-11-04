@@ -19,20 +19,7 @@ The trace comes from [agent-debugger](https://github.com/likarajo/agent-debugger
 
 ## Watch the video
 
-<!-- TODO: replace YOUTUBE_VIDEO_ID (2 places) once the video is public, or remove this section -->
-<div class="video-embed" style="position:relative;width:100%;aspect-ratio:16/9;margin:1.25rem 0 0.5rem;overflow:hidden">
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/YOUTUBE_VIDEO_ID"
-    title="AI Agent Stack, Module 07: Integration — Likarajo Tech"
-    loading="lazy"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    referrerpolicy="strict-origin-when-cross-origin"
-    style="position:absolute;inset:0;width:100%;height:100%;border:0"
-  ></iframe>
-</div>
-
-<p><a href="https://youtu.be/YOUTUBE_VIDEO_ID">https://youtu.be/YOUTUBE_VIDEO_ID</a></p>
+<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
 
 ## 1. What it is
 
