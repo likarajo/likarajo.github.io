@@ -17,10 +17,6 @@ Tools fetch live data. RAG brings in written knowledge. This module has no tools
 
 ![Flowchart: three Markdown docs are split into 15 chunks, each turned into 256 numbers and stored in an in-memory matrix; the question is turned into numbers the same way, top_k keeps the 3 closest chunks, and the answer is either the extracted passages or a model answer that cites sources](../../assets/writing/ai-agent-stack-03-rag-setup/01-index-and-ask.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 **RAG** gives a model relevant information from *your* data at question time. The model doesn't learn anything new. Your code finds the right passages and puts them in the prompt, and the answer cites where they came from.

@@ -17,10 +17,6 @@ Same issue store, same question. The new part is the plug: a standard way to con
 
 ![Sequence diagram: demo.py starts issue_tracker.py as a child process, sends initialize, list_tools and call_tool search_issues_tool with state open and text login; the server asks the issue store, which returns 4 issues, and the JSON result goes back to demo.py](../../assets/writing/ai-agent-stack-04-mcp-setup/01-stdio-session.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 **MCP** is an open protocol that standardizes how AI apps connect to outside tools and data. A common comparison is USB-C: build the connector once, and any compatible host can use it.

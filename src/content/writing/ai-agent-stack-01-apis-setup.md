@@ -17,10 +17,6 @@ It's the simplest module on purpose. There's no AI in it at all. You run a tiny 
 
 ![Sequence diagram: you ask which open issues mention login, client.py sends GET /issues?state=open&q=login to the FastAPI server, the server asks the issue store, which filters issues.json and returns 4 matches](../../assets/writing/ai-agent-stack-01-apis-setup/01-request-flow.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 An **API** is a documented contract that lets one program talk to another. You call an endpoint, and you get data back in the shape the docs promise. In this module that means HTTP requests and JSON responses.

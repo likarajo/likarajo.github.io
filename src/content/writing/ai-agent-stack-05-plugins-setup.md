@@ -17,10 +17,6 @@ This is the shortest module in the repo, and that's the point. A plugin doesn't 
 
 ![Sequence diagram: install.py reads plugin.json, checks the required keys, turns relative paths into absolute ones, writes northwind-issue-tracker.json under .installed, and prints Installed plugin: Northwind Issue Tracker (northwind-issue-tracker@1.0.0)](../../assets/writing/ai-agent-stack-05-plugins-setup/01-install.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 A **plugin** is a packaged extension for a specific app. In AI apps and IDEs, it usually bundles several pieces into one install: MCP server configs, skills, slash commands, settings, and sometimes UI.

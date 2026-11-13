@@ -17,10 +17,6 @@ Same data, same question. The difference is who picks the call. In Module 01, yo
 
 ![Sequence diagram: you ask which open issues mention login, agent.py sends the messages and two tool schemas to the model, the model replies with a search_issues tool call, execute_tool runs it against the issue store, and the JSON result goes back to the model for the final answer](../../assets/writing/ai-agent-stack-02-tools-setup/01-tool-loop.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 A **tool** is a function you describe to a model: a name, a plain-English description, and a JSON schema for the inputs. When the model decides a function would help, it replies with a structured **tool call** instead of text.

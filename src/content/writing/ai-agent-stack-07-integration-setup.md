@@ -17,10 +17,6 @@ The trace comes from [agent-debugger](https://github.com/likarajo/agent-debugger
 
 ![Flowchart: the question Which open issues mention login goes through 05 Plugin plugin.load 4.15 ms, 06 Skill skill.select 3.42 ms, 03 RAG rag.retrieve 3.85 ms, 04 MCP mcp.search_issues_tool 2.88 ms, 02 Tools tools.search_issues 2.62 ms, 01 API api.get_issue 2.97 ms and LLM llm.chat 2.63 ms, each sending tool.call and tool.result to agent-debugger, which shows 20 timeline events, 10 audit entries and status completed; the answer lists issues 101, 102, 105 and 107 and the whole turn took 58.36 ms](../../assets/writing/ai-agent-stack-07-integration-setup/01-every-step.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 Module 07 is one function, `answer_question()`, with two front ends: a small web chat and a command-line script. For every question it runs the same seven steps, in this order:

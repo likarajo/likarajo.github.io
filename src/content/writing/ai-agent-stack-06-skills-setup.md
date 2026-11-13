@@ -17,10 +17,6 @@ Tools give an agent hands. A skill gives it the playbook.
 
 ![Sequence diagram: run.py gets the task Triage the open login issues, asks the loader for the catalog of three skills (name and one-line description only), selects issue-triage, loads the full SKILL.md, searches open login issues in the issue store, gets 101, 102, 105 and 107 back, and prints a triage report with severity call p1](../../assets/writing/ai-agent-stack-06-skills-setup/01-progressive-load.png)
 
-## Watch the video
-
-<!-- VIDEO: add embed for YOUTUBE_VIDEO_ID when uploaded -->
-
 ## 1. What it is
 
 A **skill** is a reusable package of instructions. Usually it's a folder with a `SKILL.md` file: a short name and description at the top, then steps, rules, templates and sometimes helper files.
